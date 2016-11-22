@@ -14,8 +14,8 @@
 		C144877F1DDFB4300037F7E4 /* Game_EditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */; };
 		C1E0E7171DE3F1C8006D561B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */; };
 		C1E0E7191DE40115006D561B /* ffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7181DE40115006D561B /* ffs.swift */; };
-		C1E0E71B1DE405C6006D561B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1E0E71A1DE405C6006D561B /* Storyboard.storyboard */; };
 		C1E0E71D1DE40D63006D561B /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E71C1DE40D63006D561B /* ItemInfo.swift */; };
+		C1E0E71F1DE419B7006D561B /* randomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E71E1DE419B7006D561B /* randomVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,8 @@
 		C14487801DDFB4300037F7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E0E7181DE40115006D561B /* ffs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ffs.swift; sourceTree = "<group>"; };
-		C1E0E71A1DE405C6006D561B /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		C1E0E71C1DE40D63006D561B /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
+		C1E0E71E1DE419B7006D561B /* randomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +87,11 @@
 				C1E0E7181DE40115006D561B /* ffs.swift */,
 				C14487701DDFB4300037F7E4 /* Assets.xcassets */,
 				C14487721DDFB4300037F7E4 /* LaunchScreen.storyboard */,
-				C1E0E71A1DE405C6006D561B /* Storyboard.storyboard */,
 				C14487751DDFB4300037F7E4 /* Info.plist */,
 				C13F62441DE3E8B80049E10D /* Items.storyboard */,
 				C13F62421DE3E7CA0049E10D /* ItemView.swift */,
 				C1E0E71C1DE40D63006D561B /* ItemInfo.swift */,
+				C1E0E71E1DE419B7006D561B /* randomVC.swift */,
 			);
 			path = "Game Editor";
 			sourceTree = "<group>";
@@ -192,7 +192,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C14487741DDFB4300037F7E4 /* LaunchScreen.storyboard in Resources */,
-				C1E0E71B1DE405C6006D561B /* Storyboard.storyboard in Resources */,
 				C14487711DDFB4300037F7E4 /* Assets.xcassets in Resources */,
 				C13F62451DE3E8B80049E10D /* Items.storyboard in Resources */,
 			);
@@ -213,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E0E71D1DE40D63006D561B /* ItemInfo.swift in Sources */,
+				C1E0E71F1DE419B7006D561B /* randomVC.swift in Sources */,
 				C1E0E7191DE40115006D561B /* ffs.swift in Sources */,
 				C1E0E7171DE3F1C8006D561B /* AppDelegate.swift in Sources */,
 				C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */,

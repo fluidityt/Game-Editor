@@ -16,15 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="F0H-RI-hqx">
-                            <rect key="frame" x="0.0" y="73" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.98320392811092572" green="0.49214536320021551" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="Add Item"/>
+                        <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="K20-Ha-7oc">
+                            <rect key="frame" x="0.0" y="73" width="375" height="76"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
-                                <action selector="addItem:" destination="mdB-qy-g7A" eventType="touchUpInside" id="Sn4-EG-QNL"/>
+                                <segue destination="HIm-Hm-LDr" kind="embed" id="SfK-eH-xIH"/>
                             </connections>
-                        </button>
+                        </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Aah-wE-kXz">
                                 <rect key="frame" x="0.0" y="28" width="375" height="45"/>
@@ -47,12 +45,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuG-wC-I0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20" y="235"/>
+            <point key="canvasLocation" x="-20" y="234.33283358320841"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Item Info-->
         <scene sceneID="geV-DM-xxA">
             <objects>
-                <tableViewController id="9ci-4d-cgR" sceneMemberID="viewController">
+                <tableViewController id="9ci-4d-cgR" customClass="ItemInfo" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BKh-kU-9Fl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,6 +159,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzh-mq-mPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="593.5" y="247.5"/>
+        </scene>
+        <!--RandomVC-->
+        <scene sceneID="3lx-Jy-uth">
+            <objects>
+                <viewController id="HIm-Hm-LDr" customClass="RandomVC" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hSz-Ii-SY6" customClass="Rand">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0H-RI-hqx">
+                                <rect key="frame" x="202" y="12" width="167" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98320392811092572" green="0.49214536320021551" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Add Item"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-pG-FSE">
+                                <rect key="frame" x="50" y="23" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="9ci-4d-cgR" kind="presentation" id="z7v-OE-c4N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pqt-ll-WzR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="416.80000000000001" y="620.68965517241384"/>
         </scene>
     </scenes>
 </document>
