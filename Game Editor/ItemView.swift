@@ -15,9 +15,10 @@ class ItemView: UITableViewController {
 
 /* Fields: */ var
 							items				= ["Sword", "Shield"],
-
+							insertTop		= false,
 							testCounter = 0,
 							testName		= "Item "
+
 
 /* MARK: Funcs: */
 
@@ -25,12 +26,13 @@ class ItemView: UITableViewController {
 		return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 	}
 
+	// To the bottom:
 	@IBAction func addItem(_ sender: Any) {
 		testCounter += 1
 		let newItem = testName + "\(testCounter)"
 		items.append(newItem)
 
-		let newPath = IndexPath(row: items.count, section: 0)
+		let newPath = IndexPath(row: (items.count - 1), section: 0)
 		tableView.insertRows(at: [newPath], with: .automatic)
 	}
 
@@ -41,17 +43,18 @@ class ItemView: UITableViewController {
 		super.viewDidLoad();
 	}
 
-	// didSelectRow()
+	/// didSelectRow()
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		print( items[indexPath.row] )
 	}
 
+	/// getNumRows()
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
 		-> Int {
 			return items.count;
 	}
 
-	// getCellForRowAt()
+	/// getCellAtRow()
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
 		-> UITableViewCell {
 
