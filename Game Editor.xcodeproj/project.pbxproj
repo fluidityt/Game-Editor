@@ -12,6 +12,7 @@
 		C14487711DDFB4300037F7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C14487701DDFB4300037F7E4 /* Assets.xcassets */; };
 		C14487741DDFB4300037F7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14487721DDFB4300037F7E4 /* LaunchScreen.storyboard */; };
 		C144877F1DDFB4300037F7E4 /* Game_EditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */; };
+		C1476A671DE50F5800200925 /* YAN Utility GameEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */; };
 		C1E0E7171DE3F1C8006D561B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */; };
 		C1E0E7191DE40115006D561B /* ffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7181DE40115006D561B /* ffs.swift */; };
 		C1E0E71D1DE40D63006D561B /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E71C1DE40D63006D561B /* ItemInfo.swift */; };
@@ -39,6 +40,7 @@
 		C144877A1DDFB4300037F7E4 /* Game EditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Game EditorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_EditorTests.swift; sourceTree = "<group>"; };
 		C14487801DDFB4300037F7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "YAN Utility GameEditor.swift"; sourceTree = "<group>"; };
 		C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E0E7181DE40115006D561B /* ffs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ffs.swift; sourceTree = "<group>"; };
 		C1E0E71C1DE40D63006D561B /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				C13F62441DE3E8B80049E10D /* Items.storyboard */,
 				C1E0E7201DE41DD7006D561B /* item2.storyboard */,
 				C13F62421DE3E7CA0049E10D /* ItemView.swift */,
+				C1476A651DE50F2C00200925 /* Utilyt */,
 				C1E0E71C1DE40D63006D561B /* ItemInfo.swift */,
 				C1E0E71E1DE419B7006D561B /* randomVC.swift */,
 			);
@@ -106,6 +109,14 @@
 				C14487801DDFB4300037F7E4 /* Info.plist */,
 			);
 			path = "Game EditorTests";
+			sourceTree = "<group>";
+		};
+		C1476A651DE50F2C00200925 /* Utilyt */ = {
+			isa = PBXGroup;
+			children = (
+				C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */,
+			);
+			name = Utilyt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				C1E0E71F1DE419B7006D561B /* randomVC.swift in Sources */,
 				C1E0E7191DE40115006D561B /* ffs.swift in Sources */,
 				C1E0E7171DE3F1C8006D561B /* AppDelegate.swift in Sources */,
+				C1476A671DE50F5800200925 /* YAN Utility GameEditor.swift in Sources */,
 				C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

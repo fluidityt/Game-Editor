@@ -10,60 +10,60 @@ import Foundation
 import UIKit
 
 
-// Utility:
-struct MinMaxDefault {
-	var min: Float
-	var max: Float
-	var def: Float
-
-	init (_ min2: Float = 0,_ max2: Float = 1,_ def2: Float = 1) {
-		min = min2
-		max  = max2
-		def = def2
-
-	}
-}
-typealias MMD = MinMaxDefault
-
-
-protocol ViewModel {}
 // ViewModel:
-struct ItemInts: ViewModel {
+struct ItemModelInts: ViewModel {
 
-	var hp: Float = 20
-	var cost: Float = 25
+	let key: String
+
+	var hp			= MMV(0, 50,  50)
+	var cost		= MMV(1, 500, 25)
+
+	private init(forKey: String) { // Called from LoadUserDefaults()
+		key = forKey
+	}
+
+	static func loadFromUserDefaults(forKey: String) -> ItemModelInts {
+		return ItemModelInts(forKey: forKey)
+		// ... Key update stuff goes here
+	}
+	private func saveToUserDefaults(forKey: String) {}
+
+	mutating func updateFromViewModel() {		// Updates based on what is on the screen
+		saveToUserDefaults(forKey: self.key)
+	}
 
 }
 
 class ItemInfo: UITableViewController {
 
 	// Fields:
-	var item = ItemInts()
+	var item = ItemModelInts.loadFromUserDefaults(forKey: "potion")
 
 	// Funcs:
+	func saveToItemModel() {} // calls ItemModelInts.updateFromViewModel()
 
 	// HP:
 	@IBOutlet weak var hpVal: UILabel!
 	@IBOutlet weak var hpSlider: UISlider!
-	@IBAction func hpSlide(_ sender: Any) {
-		item.hp = hpSlider.value
-		hpVal.text = String(Int(item.hp))
+	@IBAction func hpSlide(_ sender: Any) { // Adjust view model and model
+		item.hp.val = hpSlider.value // TODO: Refactor this because we may not want to keep our changes (implement save button)
+		hpVal.text = String(Int(item.hp.val))
 	}
-	private func hpDidLoad() {
-		hpVal.text = String(Int(item.hp))
-		hpSlider.setValue(item.hp, animated: true)
+	private func hpDidLoad() { // Adjust view model only
+		hpVal.text = String(Int(item.hp.val))
+
 	}
 
 	// COST:
 	@IBOutlet weak var costVal: UILabel!
 	@IBOutlet weak var costSlider: UISlider!
 	@IBAction func costSlide(_ sender: Any) {
-		item.cost = costSlider.value
-		costVal.text = String(Int(item.cost))
+		item.cost.val = costSlider.value
+		costVal.text = String(Int(item.cost.val))
 	}
 	private func costDidLoad() {
-		costVal.text = String(Int(item.cost))
-		costSlider.setValue(item.cost, animated: true)
+		costVal.text = String(Int(item.cost.val))
+		costSlider.setValue(item.cost.val, animated: true)
 	}
 
 	// View stuff
