@@ -10,16 +10,16 @@ import Foundation
 
 
 private func testBuildSaveLoadSword() {
-
-
-let sword = EquipableItem()
-	let swordDict = ud.value(forKey: EquipableItem.key(sword.name)); _=swordDict
-sword.saveToFile()
-
-	let itemToLoad = EquipableItem.key(sword.name); _=itemToLoad
-
-	let newSword = EquipableItem(loadFromName: "Sword")
-
-print(newSword!)
+	
+//
+//let sword = EquipableItem()
+//	let swordDict = ud.value(forKey: EquipableItem.key(sword.name)); _=swordDict
+//sword.saveToFile()
+//
+//	let itemToLoad = EquipableItem.key(sword.name); _=itemToLoad
+//
+//	let newSword = EquipableItem(loadFromName: "Sword")
+//
+//print(newSword!)
 
 }

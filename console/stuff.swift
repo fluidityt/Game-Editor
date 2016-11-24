@@ -8,20 +8,9 @@
 
 import Foundation
 
-let ud = UserDefaults.standard
-
-// Enums can be used to generate things via the Editor, which store stuff in an array/dict:
-enum Keys:String {
-	case item = "Item->"
-		enum Item: String {
-			case equip = "Item->Equip->"
-
-	}
-}
-
 
 /// Contains key(), init?(loadFromName), and saveToFile()
-protocol HasKey {
+protocol CanSave {
 /** Make sure to use the global enoom Key
 	
 
@@ -64,7 +53,7 @@ protocol HasKey {
 		ud.set(info, forKey: EI.key(name))
 		ud.synchronize()
 */
-	func saveToFile()
+	func saveToUD()
 
 }
 
