@@ -5,18 +5,12 @@
 //  Created by Dude Guy on 11/23/16.
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
-fileprivate func tests() {
 
 
-	let sword = Equipable(name: "Sword", slot: .chest, prot: 45)
+let sword = Equipable(loadFromName: "Sword", forSlot: .hands)!
 
-	print(sword)
+print (sword.ap)
 
-	let loadedSword = Equipable.init(loadFromName: "Sword", forSlot: .chest)
-
-}; tests()
-
-listTest()
 
 
 
