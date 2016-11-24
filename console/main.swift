@@ -8,28 +8,36 @@
 
 import Foundation
 
-
+//
 // Enums used in the Equippable Item Page:
-enum Slot: String {
-	case
-	head =  "head",
-	chest = "chest"
-
-	static func load(_ ue: String) -> Slot { return Slot(rawValue: ue)! }
-}
 
 // The actual item instance
-struct EquipableItem: HasKey {	private typealias EI = EquipableItem
+struct EquipableItem: HasKey {
 
-	let name: String,
+	private typealias EI = EquipableItem
+
+	enum Slot: String {
+		case
+		head =  "head",
+		chest = "chest"
+
+		static func load(_ ue: String) -> Slot { return Slot(rawValue: ue)! }
+	}
+
+	let
+  name: String,
 	slot: Slot,
 	prot: Int
 
-	init() { name = "Sword"; slot = .chest; prot = 45 }
+	init() {
+		name = "Sword"; slot = .chest; prot = 45
+	}
 
 /* Protocol: */
 
-	static func key(_ itemName: String) -> String {return(Keys.Item.equip.rawValue + itemName)}
+	static func key(_ itemName: String) -> String {
+		return(Keys.Item.equip.rawValue + itemName)
+	}
 
 	func saveToFile() {
 		let info: [String:String]
@@ -41,8 +49,10 @@ struct EquipableItem: HasKey {	private typealias EI = EquipableItem
 		ud.synchronize()
 	}
 
-	init?(loadFromName named: String) {
-		if let dict = ud.value(forKey: EI.key(named)) as! [String:String]? {
+	init?(loadFromSlot slot: Slot, withName named: String) {
+
+		if let dict = ud.value( forKey: EI.key(named) ) as! [String: String]? {
+
 			func val(_ ue: String) -> String { return dict[ue]! }
 			func intVal(_ ue: String) -> Int { return Int(dict[ue]!)! }
 

@@ -15,8 +15,11 @@ enum Keys:String {
 	case item = "Item->"
 		enum Item: String {
 			case equip = "Item->Equip->"
-		}
+
+	}
 }
+
+
 /// Contains key(), init?(loadFromName), and saveToFile()
 protocol HasKey {
 /** Make sure to use the global enoom Key
@@ -64,3 +67,4 @@ protocol HasKey {
 	func saveToFile()
 
 }
+
