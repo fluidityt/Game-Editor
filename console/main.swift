@@ -38,51 +38,61 @@ enum Slot: String {
 	chest = "chest"
 
 	func formatForSaving() -> String { return self.rawValue }
-
+	static func load(_ ue: String) -> Slot { return Slot(rawValue: ue)! }
 }
 
 // The actual item instance
 struct EquipableItem {
-	// let uniqueID = "45356"
-	static let index = "Items->Equip->"
+	private typealias EI = EquipableItem
+
+
 	let name: String
 	let slot: Slot
-	let prot = 45
+	let prot: Int
 
+
+/* Saving / Loading: */
+
+	private static let index = "Items->Equip->"
+	private static func key(_ itemName: String) -> String { return EI.index + itemName }
 
 /* Saving: */
 
-	private func key(itemName: String) -> String { return EquipableItem.index + itemName }
-
-	func saveToFile(fileName: String) {
-		do {/*func saver(_ data: Any,_ key: String) {
-		let savedKey = uniqueID + " " + key
-		print("saved key is", savedKey)
-		}
-		saver(name,"name")
-		saver(slot,"slot")*/
-}
+	func saveToFile() {
 
 		let info:[String:String] =	["name": name,
 		                          	 "slot": slot.rawValue,
 		                          	 "prot": String(prot)]
-		print ( info )
+
+		ud.set(info, forKey: EI.key(name))
+		ud.synchronize()
 	}
 
 
 /* Loading: */
-	
-		private init(loadFromDict: [String:String]) {
 
+	private init(loadFromDict d: [String:String]) {
+		func val(_ ue: String) -> String { return d[ue]! }
+		func intVal(_ ue: String) -> Int { return Int(d[ue]!)! }
+
+		name = val("name")
+		slot = Slot.load(val("slot"))
+		prot = intVal("prot")
+
+	}
+
+	/// If let loadedItem = EequipItem.loadFromName ....
+	static func loadFromName(_ named: String) -> EquipableItem? {
+
+		if let zip = ud.value(forKey: EI.key(named)) {
+			return nil
 		}
-	static func loadFromName(_ named: String) -> EquipableItem {
-		if let dictionary = ud.value(forKey: key()) { }
-		//name = loadFromFile
-		slot = .chest // Slot(rawValue: loadFromFile)
+
+		else { return nil }
 	}
 
 	
-}
+}//EoC
 
 // Model to hold it:
 enum EquipPageInfo {
