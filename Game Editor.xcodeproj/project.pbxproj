@@ -101,8 +101,32 @@
 				C140C0441DE6F045009BB4E4 /* tests.swift */,
 				C140C0461DE6F0B4009BB4E4 /* stuff.swift */,
 				C140C0481DE70701009BB4E4 /* EquipableItems.swift */,
+				C140C04A1DE70BD5009BB4E4 /* Items */,
 			);
 			path = console;
+			sourceTree = "<group>";
+		};
+		C140C04A1DE70BD5009BB4E4 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				C140C04B1DE70BDE009BB4E4 /* Equipable */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
+		C140C04B1DE70BDE009BB4E4 /* Equipable */ = {
+			isa = PBXGroup;
+			children = (
+				C140C04C1DE70BE4009BB4E4 /* Head */,
+			);
+			name = Equipable;
+			sourceTree = "<group>";
+		};
+		C140C04C1DE70BE4009BB4E4 /* Head */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Head;
 			sourceTree = "<group>";
 		};
 		C144875B1DDFB4300037F7E4 = {
