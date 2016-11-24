@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F62421DE3E7CA0049E10D /* ItemView.swift */; };
 		C13F62451DE3E8B80049E10D /* Items.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13F62441DE3E8B80049E10D /* Items.storyboard */; };
+		C140C0401DE69B1E009BB4E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C03F1DE69B1E009BB4E4 /* main.swift */; };
 		C14487711DDFB4300037F7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C14487701DDFB4300037F7E4 /* Assets.xcassets */; };
 		C14487741DDFB4300037F7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14487721DDFB4300037F7E4 /* LaunchScreen.storyboard */; };
 		C144877F1DDFB4300037F7E4 /* Game_EditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */; };
@@ -30,9 +31,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C140C03B1DE69B1E009BB4E4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		C13F62421DE3E7CA0049E10D /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		C13F62441DE3E8B80049E10D /* Items.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Items.storyboard; sourceTree = "<group>"; };
+		C140C03D1DE69B1E009BB4E4 /* console */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = console; sourceTree = BUILT_PRODUCTS_DIR; };
+		C140C03F1DE69B1E009BB4E4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C14487641DDFB4300037F7E4 /* Game Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14487701DDFB4300037F7E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C14487731DDFB4300037F7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +64,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C140C03A1DE69B1E009BB4E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C14487611DDFB4300037F7E4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,11 +88,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C140C03E1DE69B1E009BB4E4 /* console */ = {
+			isa = PBXGroup;
+			children = (
+				C140C03F1DE69B1E009BB4E4 /* main.swift */,
+			);
+			path = console;
+			sourceTree = "<group>";
+		};
 		C144875B1DDFB4300037F7E4 = {
 			isa = PBXGroup;
 			children = (
 				C14487661DDFB4300037F7E4 /* Game Editor */,
 				C144877D1DDFB4300037F7E4 /* Game EditorTests */,
+				C140C03E1DE69B1E009BB4E4 /* console */,
 				C14487651DDFB4300037F7E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +111,7 @@
 			children = (
 				C14487641DDFB4300037F7E4 /* Game Editor.app */,
 				C144877A1DDFB4300037F7E4 /* Game EditorTests.xctest */,
+				C140C03D1DE69B1E009BB4E4 /* console */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,17 +119,8 @@
 		C14487661DDFB4300037F7E4 /* Game Editor */ = {
 			isa = PBXGroup;
 			children = (
-				C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */,
-				C1E0E7181DE40115006D561B /* ffs.swift */,
-				C14487701DDFB4300037F7E4 /* Assets.xcassets */,
-				C14487721DDFB4300037F7E4 /* LaunchScreen.storyboard */,
-				C14487751DDFB4300037F7E4 /* Info.plist */,
-				C13F62441DE3E8B80049E10D /* Items.storyboard */,
-				C1E0E7201DE41DD7006D561B /* item2.storyboard */,
-				C13F62421DE3E7CA0049E10D /* ItemView.swift */,
+				C1476A681DE53A3400200925 /* junk */,
 				C1476A651DE50F2C00200925 /* Utilyt */,
-				C1E0E71C1DE40D63006D561B /* ItemInfo.swift */,
-				C1E0E71E1DE419B7006D561B /* randomVC.swift */,
 			);
 			path = "Game Editor";
 			sourceTree = "<group>";
@@ -114,14 +137,48 @@
 		C1476A651DE50F2C00200925 /* Utilyt */ = {
 			isa = PBXGroup;
 			children = (
+				C1E0E7201DE41DD7006D561B /* item2.storyboard */,
+				C13F62421DE3E7CA0049E10D /* ItemView.swift */,
+				C1E0E71C1DE40D63006D561B /* ItemInfo.swift */,
 				C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */,
 			);
 			name = Utilyt;
 			sourceTree = "<group>";
 		};
+		C1476A681DE53A3400200925 /* junk */ = {
+			isa = PBXGroup;
+			children = (
+				C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */,
+				C1E0E7181DE40115006D561B /* ffs.swift */,
+				C14487701DDFB4300037F7E4 /* Assets.xcassets */,
+				C14487721DDFB4300037F7E4 /* LaunchScreen.storyboard */,
+				C1E0E71E1DE419B7006D561B /* randomVC.swift */,
+				C14487751DDFB4300037F7E4 /* Info.plist */,
+				C13F62441DE3E8B80049E10D /* Items.storyboard */,
+			);
+			name = junk;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C140C03C1DE69B1E009BB4E4 /* console */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C140C0431DE69B1E009BB4E4 /* Build configuration list for PBXNativeTarget "console" */;
+			buildPhases = (
+				C140C0391DE69B1E009BB4E4 /* Sources */,
+				C140C03A1DE69B1E009BB4E4 /* Frameworks */,
+				C140C03B1DE69B1E009BB4E4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = console;
+			productName = console;
+			productReference = C140C03D1DE69B1E009BB4E4 /* console */;
+			productType = "com.apple.product-type.tool";
+		};
 		C14487631DDFB4300037F7E4 /* Game Editor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C14487831DDFB4300037F7E4 /* Build configuration list for PBXNativeTarget "Game Editor" */;
@@ -167,6 +224,11 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Dude Guy";
 				TargetAttributes = {
+					C140C03C1DE69B1E009BB4E4 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = UT65PER42P;
+						ProvisioningStyle = Automatic;
+					};
 					C14487631DDFB4300037F7E4 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = UT65PER42P;
@@ -196,6 +258,7 @@
 			targets = (
 				C14487631DDFB4300037F7E4 /* Game Editor */,
 				C14487791DDFB4300037F7E4 /* Game EditorTests */,
+				C140C03C1DE69B1E009BB4E4 /* console */,
 			);
 		};
 /* End PBXProject section */
@@ -222,6 +285,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C140C0391DE69B1E009BB4E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C140C0401DE69B1E009BB4E4 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C14487601DDFB4300037F7E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +336,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C140C0411DE69B1E009BB4E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = UT65PER42P;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C140C0421DE69B1E009BB4E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = UT65PER42P;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		C14487811DDFB4300037F7E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -422,6 +517,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C140C0431DE69B1E009BB4E4 /* Build configuration list for PBXNativeTarget "console" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C140C0411DE69B1E009BB4E4 /* Debug */,
+				C140C0421DE69B1E009BB4E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C144875F1DDFB4300037F7E4 /* Build configuration list for PBXProject "Game Editor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

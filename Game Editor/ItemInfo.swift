@@ -5,45 +5,53 @@
 //  Created by Dude Guy on 11/22/16.
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
+/** TODO: Figure out how to make sliders increments of five etc
+	TODO: Import key from the first tableView (should be something like didselect cell to a global or something)
+	USAGE: var item = ItemModelInts.loadFromuserDefaults(forKey: desiredKey)
+	ViewModel:
+*/
 
 import Foundation
 import UIKit
 
 
-// ViewModel:
-struct ItemModelInts: ViewModel {
-
-	let key: String
-
-	var hp			= MMV(0, 50,  50)
-	var cost		= MMV(1, 500, 25)
-
-	private init(forKey: String) { // Called from LoadUserDefaults()
-		key = forKey
-	}
-
-	static func loadFromUserDefaults(forKey: String) -> ItemModelInts {
-		return ItemModelInts(forKey: forKey)
-		// ... Key update stuff goes here
-	}
-	private func saveToUserDefaults(forKey: String) {}
-
-	mutating func updateFromViewModel() {		// Updates based on what is on the screen
-		saveToUserDefaults(forKey: self.key)
-	}
-
-}
 
 class ItemInfo: UITableViewController {
 
+	private struct ItemModelInts: ViewModel {
+
+		let key: String
+
+		var hp			= MMV(0, 50,  50)
+		var cost		= MMV(1, 500, 25)
+
+	/* Place older stuff~!!! */
+
+		private init(forKey: String) { // Called from LoadUserDefaults()
+			key = forKey
+		}
+
+		static func loadFromUserDefaults(forKey: String) -> ItemModelInts {
+			return ItemModelInts(forKey: forKey)
+			// ... Key update stuff goes here
+		}
+
+		private func saveToUserDefaults(forKey: String) {}
+
+		mutating func updateFromViewModel() {		// Updates based on what is on the screen
+			saveToUserDefaults(forKey: self.key)
+		}
+
+	}
+
 	// Fields:
-	var item = ItemModelInts.loadFromUserDefaults(forKey: "potion")
+	private var item = ItemModelInts.loadFromUserDefaults(forKey: "potion")
 
 	// Funcs:
-	func saveToItemModel() {} // calls ItemModelInts.updateFromViewModel()
+	private func saveToItemModel() {} // calls ItemModelInts.updateFromViewModel()
 
 	// HP:
-	@IBOutlet weak var hpVal: UILabel!
+  @IBOutlet weak var hpVal: UILabel!
 	@IBOutlet weak var hpSlider: UISlider!
 	@IBAction func hpSlide(_ sender: Any) { // Adjust view model and model
 		item.hp.val = hpSlider.value // TODO: Refactor this because we may not want to keep our changes (implement save button)
