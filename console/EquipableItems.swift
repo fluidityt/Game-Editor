@@ -19,12 +19,12 @@
 	/// Used everywhere:
 	enum Slot: String {
 		case
-		head =  "head",
-		chest = "chest",
-		hands = "hands",
-		feet = "feet",
-		legs = "legs",
-		finger = "finger"
+		head =  "Head->",
+		chest = "Chest->",
+		hands = "Hands->",
+		feet = "Feet->",
+		legs = "Legs->",
+		finger = "Finger->"
 
 		static func load(_ ue: String) -> Slot { return Slot(rawValue: ue)! }
 	}
@@ -32,14 +32,11 @@
 // MARK: -
 
 	/// Enums can be used to generate things via the Editor, which store stuff in an array/dict:
-	fileprivate enum Keys:String {
+	 enum Keys:String {
 	/**/case item = "Item->"
 	/**//**/enum Item: String {
 	/**//**//**/case equip = "Item->Equip->"
-	/**//**//**//**/enum Equip: String {
-	/**//**//**//**//**/case head = "Item->Equip->Head->"
-	/**//**//**//**//**/case chest = "Item->Equip->Chest->"
-	/**//**//**//**/}
+	/**//**//**/
 	/**//**/}
 	}
 
@@ -48,7 +45,7 @@
 	/// The actual item instance:
 	struct Equipable {
 
-	/* Properties: */ let
+	/* Properties: */ var
 
 		name: String,
 		slot: Slot,
@@ -96,10 +93,14 @@
 	extension Equipable {
 
 		private typealias E = Equipable // For convenience
+		
+		func key() -> String {																			// Used in save
+			return(Keys.Item.equip.rawValue + slot.rawValue + name)
+		}
 
-		func key() -> String { return(slot.rawValue + name)	}
-
-		static func key(name2: String, slot2: Slot) -> String { return(slot2.rawValue + name2) }
+		static func key(name2: String, slot2: Slot) -> String {			// Used in load
+			return(Keys.Item.equip.rawValue + slot2.rawValue + name2)
+		}
 
 		/// Called only in the item editor page
 		func saveToUD() {
@@ -112,7 +113,6 @@
 					 "mp"  : String(mp),
 					 "ap"  : String(ap),
 					 "mpow": String(mpow)]
-
 			ud.set(info, forKey: key())
 			ud.synchronize()
 
@@ -157,6 +157,30 @@
 
 		}
 	}
+
+// MARK: Utility: 
+
+	func makeSword() -> Equipable? {
+		return Equipable(name: "Sword", slot: .hands, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 45, mpow: 0)
+	}
+
+	func printHands() {
+		let searcher = Keys.Item.equip.rawValue + Slot.hands.rawValue
+		func printItemList(by key: String) {
+			let dict = UserDefaults.standard.dictionaryRepresentation()
+
+			for (dKey, val) in dict {
+				if dKey.contains(key) {
+					print( dKey.replacingOccurrences( of: searcher, with: "" ),
+					       val, "\n"
+					);
+				}
+			}
+		}
+		printItemList(by: searcher)
+	}
+
+
 
 // MARK: - Bottom -
 
