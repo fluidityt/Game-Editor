@@ -8,5 +8,17 @@
 import Foundation
 
 
-printHands()
-/*  ************ ***************** ************** ************* ************ ******************/ print("")
+
+
+
+
+
+let sword = makeSword()!
+sword.saveToUD()
+
+udef.printl()
+
+/* MARK: End */ print("")
+
+
+

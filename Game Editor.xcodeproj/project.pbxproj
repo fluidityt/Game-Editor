@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C13EEBAE1DE7E1B500BC40F7 /* console utilities gameeditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EEBAD1DE7E1B500BC40F7 /* console utilities gameeditor.swift */; };
 		C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F62421DE3E7CA0049E10D /* ItemView.swift */; };
 		C13F62451DE3E8B80049E10D /* Items.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13F62441DE3E8B80049E10D /* Items.storyboard */; };
 		C140C0401DE69B1E009BB4E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C03F1DE69B1E009BB4E4 /* main.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C13EEBAD1DE7E1B500BC40F7 /* console utilities gameeditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "console utilities gameeditor.swift"; sourceTree = "<group>"; };
 		C13F62421DE3E7CA0049E10D /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		C13F62441DE3E8B80049E10D /* Items.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Items.storyboard; sourceTree = "<group>"; };
 		C140C03D1DE69B1E009BB4E4 /* console */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = console; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C140C03F1DE69B1E009BB4E4 /* main.swift */,
+				C13EEBAD1DE7E1B500BC40F7 /* console utilities gameeditor.swift */,
 				C140C0441DE6F045009BB4E4 /* tests.swift */,
 				C140C0461DE6F0B4009BB4E4 /* stuff.swift */,
 				C140C0481DE70701009BB4E4 /* EquipableItems.swift */,
@@ -324,6 +327,7 @@
 			files = (
 				C140C0401DE69B1E009BB4E4 /* main.swift in Sources */,
 				C140C0491DE70701009BB4E4 /* EquipableItems.swift in Sources */,
+				C13EEBAE1DE7E1B500BC40F7 /* console utilities gameeditor.swift in Sources */,
 				C140C0471DE6F0B4009BB4E4 /* stuff.swift in Sources */,
 				C140C0451DE6F045009BB4E4 /* tests.swift in Sources */,
 			);

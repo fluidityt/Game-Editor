@@ -30,3 +30,5 @@ struct MinMaxValue {
 typealias MMV = MinMaxValue
 
 protocol ViewModel {}
+
+
