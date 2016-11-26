@@ -15,54 +15,59 @@
  TODO: Make a config screen / view for the sliders etc..
  TODO: Battle tester :)
  
+ TODO: Figure out how to change uislider increments
 */
 
 import Foundation
 import UIKit
 
+
+
 // MARK: - ViewModel / ViewConfig stuff:
+
+  
+  // This data will be used on .save() to create / modify an Equipable so it can .saveToUD()
+  // NOTE: Also serves as configuration data (for now).
+
+  // This is used as "default" stuff:
+  // TODO: Change this with a config screen / file
+fileprivate enum itemConfig {
+    static var
+				hp   = MMV( 0, 50, 50 ),
+				cost = MMV( 1, 500, 25 )
+    
+    
+}
+
+private extension UILabel {
+  var int: Int { get {} set {} }
+}
+
+private extension UISlider {
+
+}
+// MARK: - GUI Stuff:
 
 class ItemInfo: UITableViewController {
 
-  // This data will be used on .save() to create / modify an Equipable so it can .saveToUD()
-  // NOTE: Also serves as configuration data (for now).
-  private enum item {
-		static var
-    hp			= MMV(0, 50,  50),
-	  cost		= MMV(1, 500, 25)
-    
-    static func saveToEquipableModel() {}
-	}
-}
-
-// MARK: - GUI Stuff:
-
-extension ItemInfo {
-  
   // HP:
-  
-  @IBOutlet weak var hpVal: UILabel! { get { item.hp.val } }
+	@IBOutlet weak var hpVal:    UILabel!
 	@IBOutlet weak var hpSlider: UISlider!
-	@IBAction func hpSlide(_ sender: Any) { // Adjust view model and model
-		item.hp.val = hpSlider.value // TODO: Refactor this because we may not want to keep our changes (implement save button)
-		hpVal.text = String(Int(item.hp.val))
-	}
-	private func hpDidLoad() { // Adjust view model only
-		hpVal.text = String(Int(item.hp.val))
-
+	@IBAction func hpSlide( _ sender: Any ) {
+		hpVal.int = Int(hpSlider.value)
+		hpVal.text = String(hpVal.int)
 	}
 
 	// COST:
-	@IBOutlet weak var costVal: UILabel!
+	@IBOutlet weak var costVal:    UILabel!
 	@IBOutlet weak var costSlider: UISlider!
-	@IBAction func costSlide(_ sender: Any) {
+	@IBAction func costSlide( _ sender: Any ) {
 		item.cost.val = costSlider.value
-		costVal.text = String(Int(item.cost.val))
+		costVal.text = String( Int( item.cost.val ) )
 	}
-	private func costDidLoad() {
-		costVal.text = String(Int(item.cost.val))
-		costSlider.setValue(item.cost.val, animated: true)
-	}
+
+
+	func saveToEquipableModel() { }
 }
 
 // MARK: - View stuff:
@@ -71,8 +76,7 @@ extension ItemInfo {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		hpDidLoad()
-		costDidLoad()
+
 	}
 }
 
