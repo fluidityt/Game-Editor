@@ -7,19 +7,24 @@
 //
 
 import Foundation
+
 enum udef {
 
+	static private var udKey = "Ziggly: "
+
+	/// Saves values with easy to find id:
 	static func set(_ val: Any?,_ forKey: String) {
 		let ud = UserDefaults.standard
-		ud.setValue(val, forKey: "Ziggly: \(forKey)")
+		ud.setValue(val, forKey: udKey + forKey)
 		ud.synchronize()
 	}
 
+	/// Loads all values:
 	static func load() -> NSDictionary {
 		var returnMatchedDict: [String: Any?] = [:]
 		for (key, val) in UserDefaults.standard.dictionaryRepresentation() {
-			if key.contains("Ziggly: ") {
-				returnMatchedDict[key.replacingOccurrences(of: "Ziggly: ", with: "")] = val
+			if key.contains(udKey) {
+				returnMatchedDict[key.replacingOccurrences(of: udKey, with: "")] = val
 			}
 		}
 		return returnMatchedDict as NSDictionary

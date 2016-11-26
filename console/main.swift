@@ -9,10 +9,6 @@ import Foundation
 
 
 
-
-
-
-
 let sword = makeSword()!
 sword.saveToUD()
 

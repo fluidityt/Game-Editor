@@ -1,184 +1,161 @@
-	//
-	//  EquipableItems.swift
-	//  Game Editor
-	//
-	//  Created by Dude Guy on 11/24/16.
-	//  Copyright © 2016 Dude Guy. All rights reserved.
-	//
+/*
+//  EquipableItems.swift
+//  Game Editor
+//
+//  Created by Dude Guy on 11/24/16.
+//  Copyright © 2016 Dude Guy. All rights reserved.
+*/
 
-	import Foundation
+import Foundation
 
-	// ********************************************** \\
-	// ********** EQUIPABLE ITEMS.swift ************* \\
-	// ********************************************** \\
+
+
+// *****≥***************************************** \\
+// ********** EQUIPABLE ITEMS.swift ************* \\
+// ********************************************** \\
 
 // MARK: - TOP -
 
-	fileprivate let ud = UserDefaults.standard
+fileprivate let ud = UserDefaults.standard
 
-	/// Used everywhere:
-	enum Slot: String {
-		case
-		head =  "Head->",
-		chest = "Chest->",
-		hands = "Hands->",
-		feet = "Feet->",
-		legs = "Legs->",
-		finger = "Finger->"
+/// Used everywhere:
+enum Slot: String {
+	case
+			head   = "Head->",
+			chest  = "Chest->",
+			hands  = "Hands->",
+			feet   = "Feet->",
+			legs   = "Legs->",
+			finger = "Finger->"
 
-		static func load(_ ue: String) -> Slot { return Slot(rawValue: ue)! }
+	static func load( _ ue: String ) -> Slot {
+		return Slot( rawValue: ue )!
 	}
+}
 
 // MARK: -
 
-	/// Enums can be used to generate things via the Editor, which store stuff in an array/dict:
-	 enum Keys:String {
-	/**/case item = "Item->"
-	/**//**/enum Item: String {
-	/**//**//**/case equip = "Item->Equip->"
-	/**//**//**/
-	/**//**/}
+/// Enums can be used to generate things via the Editor, which store stuff in an array/dict:
+enum Keys: String {
+	case item = "Item->"
+	enum Item: String {
+		case equip = "Item->Equip->"
 	}
+}
 
 // MARK: - Main:
 
-	/// The actual item instance:
-	struct Equipable {
+/// The actual item instance:
+struct Equipable {
 
-	/* Properties: */ var
-
-		name: String,
-		slot: Slot,
-
-		prot: Int,
-		mdef: Int,
-
-		hp:		Int,
-		mp:		Int,
-
-		ap:		Int,
-		mpow: Int
-
-	}
-
-// MARK: - Lists:
-
-	extension Equipable {
-
-		enum Lists {
-
-			fileprivate static var listOfItems:[String: String] = [:]
-			fileprivate static let listOfItemsKey = "Equip Items Key"
-
-			fileprivate static func list(_ name: String,_ slot: Slot) { listOfItems[name] = slot.rawValue }
-			fileprivate static func saveList() { ud.set(listOfItems, forKey: listOfItemsKey); ud.synchronize() }
-			fileprivate static func loadList() { listOfItems = ud.value(forKey: listOfItemsKey) as! [String:String] }
-
-			static func listTest() {
-				list("Dagger",.hands)
-				list("Sword",.hands)
-				list("BronzeHelm",.head)
-
-				saveList()
-
-				listOfItems = [:]
-				loadList()
-				print(NSDictionary(dictionary: listOfItems))
-			}
-		}
-	}
+	/* Properties: */
+	var
+			name: String,
+			slot: Slot,
+			prot: Int,
+			mdef: Int,
+			hp:   Int,
+			mp:   Int,
+			ap:   Int,
+			mpow: Int
+}
 
 // MARK: - Protocol:
 
-	extension Equipable {
+extension Equipable {
 
-		private typealias E = Equipable // For convenience
-		
-		func key() -> String {																			// Used in save
-			return(Keys.Item.equip.rawValue + slot.rawValue + name)
-		}
+	private typealias E = Equipable // For convenience
 
-		static func key(name2: String, slot2: Slot) -> String {			// Used in load
-			return(Keys.Item.equip.rawValue + slot2.rawValue + name2)
-		}
+	/** Used in save: */
+	func key() -> String {
+		// TODO: Update this with udef
+		return (Keys.Item.equip.rawValue + slot.rawValue + name)
+	}
 
-		/// Called only in the item editor page
-		func saveToUD() {
-			let info: [String:String]
-				=	["name": name,
-					 "slot": slot.rawValue,
-					 "prot": String(prot),
-					 "mdef": String(mdef),
-					 "hp"  : String(hp),
-					 "mp"  : String(mp),
-					 "ap"  : String(ap),
-					 "mpow": String(mpow)]
-			ud.set(info, forKey: key())
-			ud.synchronize()
+	/** Used in load:*/
+	static func key( name2: String, slot2: Slot ) -> String {
+		return (Keys.Item.equip.rawValue + slot2.rawValue + name2)
+	}
 
-			Lists.list(name, slot)
-			Lists.saveList()
-		}
+	/** Called only in the item editor page:*/
+	func saveToUD() {
+		let info: [String: String]
+				= ["name": name,
+				   "slot": slot.rawValue,
+				   "prot": String( prot ),
+				   "mdef": String( mdef ),
+				   "hp": String( hp ),
+				   "mp": String( mp ),
+				   "ap": String( ap ),
+				   "mpow": String( mpow )
+		]
+		udef.set( info, key() )
+	}
 
-		init?(loadFromName named: String, forSlot slotted: Slot) {
+	init?( loadFromName named: String, forSlot slotted: Slot ) {
 
-			let key1 = E.key(name2: named, slot2: slotted)
-			if let dict = ud.value( forKey: key1 ) as! [String: String]? {
+		let key1 = E.key( name2: named, slot2: slotted )
+		if let dict = ud.value( forKey: key1 ) as! [String: String]? {
 
-				func val(_ ue: String) -> String { return dict[ue]! }
-				func intVal(_ ue: String) -> Int { return Int(dict[ue]!)! }
-
-				name = val("name")
-				slot = Slot.load(val("slot"))
-				prot = intVal("prot")
-				mdef = intVal("mdef")
-				hp   = intVal("hp")
-				mp   = intVal("mp")
-				ap   = intVal("ap")
-				mpow = intVal("mpow")
-
-				Lists.loadList()
+			func val( _ ue: String ) -> String {
+				return dict[ue]!
+			}
+			func intVal( _ ue: String ) -> Int {
+				return Int( dict[ue]! )!
 			}
 
-			else { return nil }
+			name = val( "name" )
+			slot = Slot.load( val( "slot" ) )
+			prot = intVal( "prot" )
+			mdef = intVal( "mdef" )
+			hp = intVal( "hp" )
+			mp = intVal( "mp" )
+			ap = intVal( "ap" )
+			mpow = intVal( "mpow" )
+
 		}
 
+		else {
+			return nil
+		}
 	}
+
+}
 
 // MARK: - ViewModel:
 
-	/// Model to hold it:
-	enum EquipHeadPageInfo {
+/// Model to hold it:
+enum EquipHeadPageInfo {
 
-		static var name = ""
+	static var name = ""
 
-		static func clickSave(toItem: Equipable){
-			// for stuff in self, copy to item
+	static func clickSave( toItem: Equipable ) {
+		// for stuff in self, copy to item
 
-		}
 	}
+}
 
 // MARK: Utility: 
 
-	func makeSword() -> Equipable? {
-		return Equipable(name: "Sword", slot: .hands, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 45, mpow: 0)
-	}
+func makeSword() -> Equipable? {
+	return Equipable( name: "Sword", slot: .hands, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 45, mpow: 0 )
+}
 
-	func printHands() {
-		let searcher = Keys.Item.equip.rawValue + Slot.hands.rawValue
-		func printItemList(by key: String) {
-			let dict = UserDefaults.standard.dictionaryRepresentation()
+func printHands() {
+	let searcher = Keys.Item.equip.rawValue + Slot.hands.rawValue
+	func printItemList( by key: String ) {
+		let dict = UserDefaults.standard.dictionaryRepresentation()
 
-			for (dKey, val) in dict {
-				if dKey.contains(key) {
-					print( dKey.replacingOccurrences( of: searcher, with: "" ),
-					       val, "\n"
-					);
-				}
+		for (dKey, val) in dict {
+			if dKey.contains( key ) {
+				print( dKey.replacingOccurrences( of: searcher, with: "" ),
+				       val, "\n"
+				);
 			}
 		}
-		printItemList(by: searcher)
 	}
+	printItemList( by: searcher )
+}
 
 
 
