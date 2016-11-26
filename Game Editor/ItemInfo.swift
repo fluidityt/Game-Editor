@@ -21,7 +21,16 @@
 import Foundation
 import UIKit
 
+// MARK: Template:
 
+/*
+  // <#name#>:
+  @IBOutlet weak var <#name#>Val:    UILabel!
+  @IBOutlet weak var <#name#>Slider: UISlider!
+	@IBAction func <#name#>Slide( _ sender: Any ) {
+    matchLabelToSlider(label: <#name#>Val, slider: <#name#>Slider)
+	}
+*/
 
 // MARK: - ViewModel / ViewConfig stuff:
 
@@ -43,11 +52,48 @@ fileprivate enum itemConfig {
 
 class ItemInfo: UITableViewController {
 
+  // TODO: Make the labels editText
+  
+  // prot:
+  @IBOutlet weak var protVal:    UILabel!
+  @IBOutlet weak var protSlider: UISlider!
+	@IBAction func protSlide( _ sender: Any ) {
+    matchLabelToSlider(label: protVal, slider: protSlider)
+	}
+  
+  // mdef:
+  @IBOutlet weak var mdefVal:    UILabel!
+  @IBOutlet weak var mdefSlider: UISlider!
+	@IBAction func mdefSlide( _ sender: Any ) {
+    matchLabelToSlider(label: mdefVal, slider: mdefSlider)
+	}
+
   // HP:
 	@IBOutlet weak var hpVal:    UILabel!
 	@IBOutlet weak var hpSlider: UISlider!
 	@IBAction func hpSlide( _ sender: Any ) {
     matchLabelToSlider(label: hpVal, slider: hpSlider)
+	}
+ 
+  // mp:
+  @IBOutlet weak var mpVal:    UILabel!
+  @IBOutlet weak var mpSlider: UISlider!
+	@IBAction func mpSlide( _ sender: Any ) {
+    matchLabelToSlider(label: mpVal, slider: mpSlider)
+	}
+
+  // AP:
+  @IBOutlet weak var apVal:    UILabel!
+  @IBOutlet weak var apSlider: UISlider!
+	@IBAction func apSlide( _ sender: Any ) {
+    matchLabelToSlider(label: apVal, slider: apSlider)
+	}
+
+  // MPOW:
+  @IBOutlet weak var mpowVal:    UILabel!
+  @IBOutlet weak var mpowSlider: UISlider!
+	@IBAction func mpowSlide( _ sender: Any ) {
+    matchLabelToSlider(label: mpowVal, slider: mpowSlider)
 	}
 
 	// COST:
@@ -56,6 +102,7 @@ class ItemInfo: UITableViewController {
 	@IBAction func costSlide( _ sender: Any ) {
 		matchLabelToSlider(label: costVal, slider: costSlider)
 	}
+
 
 
 	func saveToEquipableModel() { }
