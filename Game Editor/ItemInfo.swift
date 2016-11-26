@@ -72,18 +72,30 @@ class ItemInfo: UITableViewController {
   
   // TODO: Minimum value and stuff auto-jumps based on level.
   
-  private func getScale(_ level: Int) -> (min: Float, max: Float) {
-    let minner = Float(1.0)
-    let maxxer = Float(50.0)
-    
-    if level <= 0 { return (minner, maxxer) }
+  
+  struct Item35 {
+    var level = 1
+  
+  }
+  private func setSlider(slider: UISlider, fromItem item: Item35) {
+  
+    func getScale(_ level: Int) -> (min: Float, max: Float) {
+      let minner = Float(1.0)
+      let maxxer = Float(50.0)
       
-    func scale(_ val: Float, by level2: Int, forMax max: Float) -> Float {
-      return val + (max * Float(level2-1))
+      if level <= 0 { return (minner, maxxer) }
+      
+      func scale(_ val: Float, by level2: Int, forMax max: Float) -> Float {
+        return val + (max * Float(level2-1))
+      }
+      
+      return (min: scale(minner, by: level, forMax: maxxer),
+              max: scale(maxxer, by: level, forMax: maxxer))
     }
     
-    return (min: scale(minner, by: level, forMax: maxxer),
-            max: scale(maxxer, by: level, forMax: maxxer))
+    slider.minimumValue = getScale(item.level).min
+    slider.maximumValue = getScale(item.level).max
+    
   }
   
   // PROT:
@@ -92,6 +104,9 @@ class ItemInfo: UITableViewController {
 	@IBAction func protSlide( _ sender: Any ) {
     matchLabelToSlider(label: protVal, slider: protSlider)
 	}
+  fileprivate func protDidLoad(fromItem item: Any) {
+    protSlider
+  }
   
   
   // MDEF:
@@ -149,7 +164,7 @@ extension ItemInfo {
   }
   override func viewDidLoad() {
 		super.viewDidLoad()
-    
+
   }
 }
 
