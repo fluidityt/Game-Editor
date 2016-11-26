@@ -39,13 +39,6 @@ fileprivate enum itemConfig {
     
 }
 
-private extension UILabel {
-  var int: Int { get {} set {} }
-}
-
-private extension UISlider {
-
-}
 // MARK: - GUI Stuff:
 
 class ItemInfo: UITableViewController {
@@ -54,16 +47,14 @@ class ItemInfo: UITableViewController {
 	@IBOutlet weak var hpVal:    UILabel!
 	@IBOutlet weak var hpSlider: UISlider!
 	@IBAction func hpSlide( _ sender: Any ) {
-		hpVal.int = Int(hpSlider.value)
-		hpVal.text = String(hpVal.int)
+    matchLabelToSlider(label: hpVal, slider: hpSlider)
 	}
 
 	// COST:
 	@IBOutlet weak var costVal:    UILabel!
 	@IBOutlet weak var costSlider: UISlider!
 	@IBAction func costSlide( _ sender: Any ) {
-		item.cost.val = costSlider.value
-		costVal.text = String( Int( item.cost.val ) )
+		matchLabelToSlider(label: costVal, slider: costSlider)
 	}
 
 
