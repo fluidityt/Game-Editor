@@ -7,7 +7,9 @@
 //
 import Foundation
 
+var s = "hey there"
 
+print(s.remove("hey"))
 
 let sword = makeSword()!
 sword.saveToUD()

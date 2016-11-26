@@ -9,49 +9,39 @@
 	TODO: Import key from the first tableView (should be something like didselect cell to a global or something)
 	USAGE: var item = ItemModelInts.loadFromuserDefaults(forKey: desiredKey)
 	ViewModel:
+ TODO: Figure out configuration stuff
+ 
+ TODO: Put in levels for items and config data for each one 
+ TODO: Make a config screen / view for the sliders etc..
+ TODO: Battle tester :)
+ 
 */
 
 import Foundation
 import UIKit
 
-
+// MARK: - ViewModel / ViewConfig stuff:
 
 class ItemInfo: UITableViewController {
 
-	private struct ItemModelInts: ViewModel {
-
-		let key: String
-
-		var hp			= MMV(0, 50,  50)
-		var cost		= MMV(1, 500, 25)
-
-	/* Place older stuff~!!! */
-
-		private init(forKey: String) { // Called from LoadUserDefaults()
-			key = forKey
-		}
-
-		static func loadFromUserDefaults(forKey: String) -> ItemModelInts {
-			return ItemModelInts(forKey: forKey)
-			// ... Key update stuff goes here
-		}
-
-		private func saveToUserDefaults(forKey: String) {}
-
-		mutating func updateFromViewModel() {		// Updates based on what is on the screen
-			saveToUserDefaults(forKey: self.key)
-		}
-
+  // This data will be used on .save() to create / modify an Equipable so it can .saveToUD()
+  // NOTE: Also serves as configuration data (for now).
+  private enum item {
+		static var
+    hp			= MMV(0, 50,  50),
+	  cost		= MMV(1, 500, 25)
+    
+    static func saveToEquipableModel() {}
 	}
+}
 
-	// Fields:
-	private var item = ItemModelInts.loadFromUserDefaults(forKey: "potion")
+// MARK: - GUI Stuff:
 
-	// Funcs:
-	private func saveToItemModel() {} // calls ItemModelInts.updateFromViewModel()
-
-	// HP:
-  @IBOutlet weak var hpVal: UILabel!
+extension ItemInfo {
+  
+  // HP:
+  
+  @IBOutlet weak var hpVal: UILabel! { get { item.hp.val } }
 	@IBOutlet weak var hpSlider: UISlider!
 	@IBAction func hpSlide(_ sender: Any) { // Adjust view model and model
 		item.hp.val = hpSlider.value // TODO: Refactor this because we may not want to keep our changes (implement save button)
@@ -73,11 +63,35 @@ class ItemInfo: UITableViewController {
 		costVal.text = String(Int(item.cost.val))
 		costSlider.setValue(item.cost.val, animated: true)
 	}
+}
 
-	// View stuff
+// MARK: - View stuff:
+
+extension ItemInfo {
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		hpDidLoad()
 		costDidLoad()
 	}
 }
+
+// MARK: - Placeholder stuff:
+
+/* NOT FUNCTIONING:
+
+ // HEY!! We should already have a list of items created that then populates here...
+ static func loadFromUserDefaults(forKey: String) -> ItemModelInts {
+   return ItemModelInts(forKey: forKey)
+   // ... Key update stuff goes here
+ }
+
+ private func saveToUserDefaults(forKey: String) {}
+ 
+ // Updates based on what is on the screen
+ mutating func updateFromViewModel() {
+   saveToUserDefaults(forKey: self.key)
+ }
+ 
+*/
+

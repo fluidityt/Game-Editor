@@ -122,18 +122,6 @@ extension Equipable {
 
 }
 
-// MARK: - ViewModel:
-
-/// Model to hold it:
-enum EquipHeadPageInfo {
-
-	static var name = ""
-
-	static func clickSave( toItem: Equipable ) {
-		// for stuff in self, copy to item
-
-	}
-}
 
 // MARK: Utility: 
 

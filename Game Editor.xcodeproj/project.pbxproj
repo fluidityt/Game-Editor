@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C13EEBAE1DE7E1B500BC40F7 /* console utilities gameeditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EEBAD1DE7E1B500BC40F7 /* console utilities gameeditor.swift */; };
+		C13EEBAE1DE7E1B500BC40F7 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EEBAD1DE7E1B500BC40F7 /* utilities.swift */; };
 		C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F62421DE3E7CA0049E10D /* ItemView.swift */; };
 		C13F62451DE3E8B80049E10D /* Items.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13F62441DE3E8B80049E10D /* Items.storyboard */; };
 		C140C0401DE69B1E009BB4E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C03F1DE69B1E009BB4E4 /* main.swift */; };
 		C140C0451DE6F045009BB4E4 /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C0441DE6F045009BB4E4 /* tests.swift */; };
-		C140C0471DE6F0B4009BB4E4 /* stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C0461DE6F0B4009BB4E4 /* stuff.swift */; };
+		C140C0471DE6F0B4009BB4E4 /* protocls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C0461DE6F0B4009BB4E4 /* protocls.swift */; };
 		C140C0491DE70701009BB4E4 /* EquipableItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C0481DE70701009BB4E4 /* EquipableItems.swift */; };
 		C14487711DDFB4300037F7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C14487701DDFB4300037F7E4 /* Assets.xcassets */; };
 		C14487741DDFB4300037F7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14487721DDFB4300037F7E4 /* LaunchScreen.storyboard */; };
 		C144877F1DDFB4300037F7E4 /* Game_EditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */; };
 		C1476A671DE50F5800200925 /* YAN Utility GameEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */; };
+		C1BEC2BD1DE997320084487E /* EquipableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BEC2BC1DE997320084487E /* EquipableView.swift */; };
 		C1E0E7171DE3F1C8006D561B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */; };
 		C1E0E7191DE40115006D561B /* ffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7181DE40115006D561B /* ffs.swift */; };
 		C1E0E71D1DE40D63006D561B /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E71C1DE40D63006D561B /* ItemInfo.swift */; };
@@ -48,13 +49,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C13EEBAD1DE7E1B500BC40F7 /* console utilities gameeditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "console utilities gameeditor.swift"; sourceTree = "<group>"; };
+		C13EEBAD1DE7E1B500BC40F7 /* utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
 		C13F62421DE3E7CA0049E10D /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		C13F62441DE3E8B80049E10D /* Items.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Items.storyboard; sourceTree = "<group>"; };
 		C140C03D1DE69B1E009BB4E4 /* console */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = console; sourceTree = BUILT_PRODUCTS_DIR; };
 		C140C03F1DE69B1E009BB4E4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C140C0441DE6F045009BB4E4 /* tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
-		C140C0461DE6F0B4009BB4E4 /* stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stuff.swift; sourceTree = "<group>"; };
+		C140C0461DE6F0B4009BB4E4 /* protocls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocls.swift; sourceTree = "<group>"; };
 		C140C0481DE70701009BB4E4 /* EquipableItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipableItems.swift; sourceTree = "<group>"; };
 		C14487641DDFB4300037F7E4 /* Game Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14487701DDFB4300037F7E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_EditorTests.swift; sourceTree = "<group>"; };
 		C14487801DDFB4300037F7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "YAN Utility GameEditor.swift"; sourceTree = "<group>"; };
+		C1BEC2BC1DE997320084487E /* EquipableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipableView.swift; sourceTree = "<group>"; };
 		C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E0E7181DE40115006D561B /* ffs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ffs.swift; sourceTree = "<group>"; };
 		C1E0E71C1DE40D63006D561B /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
@@ -100,10 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				C140C03F1DE69B1E009BB4E4 /* main.swift */,
-				C13EEBAD1DE7E1B500BC40F7 /* console utilities gameeditor.swift */,
+				C13EEBAD1DE7E1B500BC40F7 /* utilities.swift */,
+				C140C0461DE6F0B4009BB4E4 /* protocls.swift */,
 				C140C0441DE6F045009BB4E4 /* tests.swift */,
-				C140C0461DE6F0B4009BB4E4 /* stuff.swift */,
-				C140C0481DE70701009BB4E4 /* EquipableItems.swift */,
+				C1BEC2BB1DE996EF0084487E /* Views */,
 				C140C04A1DE70BD5009BB4E4 /* Items */,
 			);
 			path = console;
@@ -120,16 +122,9 @@
 		C140C04B1DE70BDE009BB4E4 /* Equipable */ = {
 			isa = PBXGroup;
 			children = (
-				C140C04C1DE70BE4009BB4E4 /* Head */,
+				C140C0481DE70701009BB4E4 /* EquipableItems.swift */,
 			);
 			name = Equipable;
-			sourceTree = "<group>";
-		};
-		C140C04C1DE70BE4009BB4E4 /* Head */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Head;
 			sourceTree = "<group>";
 		};
 		C144875B1DDFB4300037F7E4 = {
@@ -193,6 +188,14 @@
 				C13F62441DE3E8B80049E10D /* Items.storyboard */,
 			);
 			name = junk;
+			sourceTree = "<group>";
+		};
+		C1BEC2BB1DE996EF0084487E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C1BEC2BC1DE997320084487E /* EquipableView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,9 +330,10 @@
 			files = (
 				C140C0401DE69B1E009BB4E4 /* main.swift in Sources */,
 				C140C0491DE70701009BB4E4 /* EquipableItems.swift in Sources */,
-				C13EEBAE1DE7E1B500BC40F7 /* console utilities gameeditor.swift in Sources */,
-				C140C0471DE6F0B4009BB4E4 /* stuff.swift in Sources */,
+				C13EEBAE1DE7E1B500BC40F7 /* utilities.swift in Sources */,
+				C140C0471DE6F0B4009BB4E4 /* protocls.swift in Sources */,
 				C140C0451DE6F045009BB4E4 /* tests.swift in Sources */,
+				C1BEC2BD1DE997320084487E /* EquipableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
