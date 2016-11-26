@@ -31,13 +31,3 @@ typealias MMV = MinMaxValue
 
 protocol ViewModel {}
 
-
-public extension UILabel {
-  var int: Int { get {return self.int} set {} }
-}
-
-public func matchLabelToSlider(label: UILabel, slider: UISlider) {
-  // TODO: round to 5 algo
-  label.int = Int(slider.value)
-  label.text = String(label.int)
-}

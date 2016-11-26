@@ -57,7 +57,11 @@ struct Equipable {
 			hp:   Int,
 			mp:   Int,
 			ap:   Int,
-			mpow: Int
+			mpow: Int,
+  
+      cost: Int
+      // TODO: fill in:
+      level = 1
 }
 
 // MARK: - Protocol:
@@ -87,7 +91,9 @@ extension Equipable {
 				   "hp": String( hp ),
 				   "mp": String( mp ),
 				   "ap": String( ap ),
-				   "mpow": String( mpow )
+				   "mpow": String( mpow ),
+				   "cost": String( cost )
+          
 		]
 		udef.set( info, key() )
 	}
@@ -112,6 +118,7 @@ extension Equipable {
 			mp = intVal( "mp" )
 			ap = intVal( "ap" )
 			mpow = intVal( "mpow" )
+      cost = intVal( "cost" )
 
 		}
 
@@ -126,7 +133,7 @@ extension Equipable {
 // MARK: Utility: 
 
 func makeSword() -> Equipable? {
-	return Equipable( name: "Sword", slot: .hands, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 45, mpow: 0 )
+	return Equipable( name: "Sword", slot: .hands, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 45, mpow: 0, cost: 1 )
 }
 
 func printHands() {

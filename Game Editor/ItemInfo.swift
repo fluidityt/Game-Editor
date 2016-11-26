@@ -40,13 +40,27 @@ import UIKit
 
   // This is used as "default" stuff:
   // TODO: Change this with a config screen / file
-fileprivate enum itemConfig {
-    static var
-				hp   = MMV( 0, 50, 50 ),
-				cost = MMV( 1, 500, 25 )
-    
-    
-}
+
+  fileprivate enum itemConfig {
+      static var
+          hp   = MMV( 0, 50, 50 ),
+          cost = MMV( 1, 500, 25 )
+      
+      
+  }
+
+// MARK: Util stuff:
+
+    public extension UILabel {
+        
+      var int: Int { get {return self.int} set {} }
+    }
+
+    public func matchLabelToSlider(label: UILabel, slider: UISlider) {
+      // TODO: round to 5 algo
+      label.int = Int(slider.value)
+      label.text = String(label.int)
+    }
 
 // MARK: - GUI Stuff:
 
@@ -54,14 +68,33 @@ class ItemInfo: UITableViewController {
 
   // TODO: Make the labels editText
   
-  // prot:
+  // NOTE: Matches up with EquipableItems.swift.
+  
+  // TODO: Minimum value and stuff auto-jumps based on level.
+  
+  private func getScale(_ level: Int) -> (min: Float, max: Float) {
+    let minner = Float(1.0)
+    let maxxer = Float(50.0)
+    
+    if level <= 0 { return (minner, maxxer) }
+      
+    func scale(_ val: Float, by level2: Int, forMax max: Float) -> Float {
+      return val + (max * Float(level2-1))
+    }
+    
+    return (min: scale(minner, by: level, forMax: maxxer),
+            max: scale(maxxer, by: level, forMax: maxxer))
+  }
+  
+  // PROT:
   @IBOutlet weak var protVal:    UILabel!
   @IBOutlet weak var protSlider: UISlider!
 	@IBAction func protSlide( _ sender: Any ) {
     matchLabelToSlider(label: protVal, slider: protSlider)
 	}
   
-  // mdef:
+  
+  // MDEF:
   @IBOutlet weak var mdefVal:    UILabel!
   @IBOutlet weak var mdefSlider: UISlider!
 	@IBAction func mdefSlide( _ sender: Any ) {
@@ -105,21 +138,24 @@ class ItemInfo: UITableViewController {
 
 
 
-	func saveToEquipableModel() { }
 }
 
 // MARK: - View stuff:
 
 extension ItemInfo {
-
-	override func viewDidLoad() {
+  func scaleToLevel(_ level: Int) {
+   
+    
+  }
+  override func viewDidLoad() {
 		super.viewDidLoad()
-
-	}
+    
+  }
 }
 
 // MARK: - Placeholder stuff:
 
+private func placeholder() {
 /* NOT FUNCTIONING:
 
  // HEY!! We should already have a list of items created that then populates here...
@@ -134,6 +170,9 @@ extension ItemInfo {
  mutating func updateFromViewModel() {
    saveToUserDefaults(forKey: self.key)
  }
- 
+
+   // @IBYADADYA func saveToEquipableModel() { }
+  // @IBYADA    func reset()
 */
+}
 
