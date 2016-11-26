@@ -21,34 +21,6 @@
 import Foundation
 import UIKit
 
-// MARK: Template:
-
-/*
-  // <#name#>:
-  @IBOutlet weak var <#name#>Val:    UILabel!
-  @IBOutlet weak var <#name#>Slider: UISlider!
-	@IBAction func <#name#>Slide( _ sender: Any ) {
-    matchLabelToSlider(label: <#name#>Val, slider: <#name#>Slider)
-	}
-*/
-
-// MARK: - ViewModel / ViewConfig stuff:
-
-  
-  // This data will be used on .save() to create / modify an Equipable so it can .saveToUD()
-  // NOTE: Also serves as configuration data (for now).
-
-  // This is used as "default" stuff:
-  // TODO: Change this with a config screen / file
-
-  fileprivate enum itemConfig {
-      static var
-          hp   = MMV( 0, 50, 50 ),
-          cost = MMV( 1, 500, 25 )
-      
-      
-  }
-
 // MARK: Util stuff:
 
     public extension UILabel {
@@ -66,48 +38,32 @@ import UIKit
 
 class ItemInfo: UITableViewController {
 
-  // TODO: Make the labels editText
-  
   // NOTE: Matches up with EquipableItems.swift.
   
-  // TODO: Minimum value and stuff auto-jumps based on level.
+  // TODO: Make the labels editText
   
+  /*
+   
+   // <#NAME#>:
+   @IBOutlet weak var <#name#>Val:    UILabel!
+   @IBOutlet weak var <#name#>Slider: UISlider!
+   @IBAction func <#name#>Slide( _ sender: Any ) {
+   matchLabelToSlider(label: <#name#>Val, slider: <#name#>Slider)
+   }
+   
+ */
   
   struct Item35 {
     var level = 1
-  
+    var prot = 45
   }
-  private func setSlider(slider: UISlider, fromItem item: Item35) {
-  
-    func getScale(_ level: Int) -> (min: Float, max: Float) {
-      let minner = Float(1.0)
-      let maxxer = Float(50.0)
-      
-      if level <= 0 { return (minner, maxxer) }
-      
-      func scale(_ val: Float, by level2: Int, forMax max: Float) -> Float {
-        return val + (max * Float(level2-1))
-      }
-      
-      return (min: scale(minner, by: level, forMax: maxxer),
-              max: scale(maxxer, by: level, forMax: maxxer))
-    }
-    
-    slider.minimumValue = getScale(item.level).min
-    slider.maximumValue = getScale(item.level).max
-    
-  }
-  
+
   // PROT:
   @IBOutlet weak var protVal:    UILabel!
   @IBOutlet weak var protSlider: UISlider!
-	@IBAction func protSlide( _ sender: Any ) {
+  @IBAction func protSlide( _ sender: Any ) {
     matchLabelToSlider(label: protVal, slider: protSlider)
-	}
-  fileprivate func protDidLoad(fromItem item: Any) {
-    protSlider
   }
-  
   
   // MDEF:
   @IBOutlet weak var mdefVal:    UILabel!
@@ -123,7 +79,7 @@ class ItemInfo: UITableViewController {
     matchLabelToSlider(label: hpVal, slider: hpSlider)
 	}
  
-  // mp:
+  // MP:
   @IBOutlet weak var mpVal:    UILabel!
   @IBOutlet weak var mpSlider: UISlider!
 	@IBAction func mpSlide( _ sender: Any ) {
@@ -149,21 +105,58 @@ class ItemInfo: UITableViewController {
 	@IBOutlet weak var costSlider: UISlider!
 	@IBAction func costSlide( _ sender: Any ) {
 		matchLabelToSlider(label: costVal, slider: costSlider)
-	}
-
-
+ }
 
 }
 
 // MARK: - View stuff:
 
+/*     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>) */
+
 extension ItemInfo {
-  func scaleToLevel(_ level: Int) {
-   
+  
+  // Item that we"re working on:
+  var itemTWWO: Item35 { get {return self.itemTWWO} set {} }
+  
+  // setSlider():
+  private func setSlider(slider: UISlider,
+                         fromItem item: Item35,
+                         min1: Float = 1,
+                         max1: Float = 50,
+                         itemValue: Int) {
+  
+    // getScale():
+    func getScale(_ level: Int,
+                  min2: Float,
+                  max2: Float) -> (min: Float, max: Float) {
+      
+      if level <= 0 { return (min2, max2) }
+      
+      // scale():
+      func scale(_ val: Float,
+                 by level2: Int,
+                 forMax max3: Float) -> Float {
+        
+        return val + (max3 * Float(level2-1))
+      }
+      
+      return (min: scale(min2, by: level, forMax: max2),
+              max: scale(max2, by: level, forMax: max2))
+    }
+  
+    let results = getScale(item.level, min2: min1, max2: max1)
     
+    // Assignment:
+    slider.minimumValue = results.min
+    slider.maximumValue = results.max
+    slider.value = Float(itemValue)
   }
+  
+
+  
   override func viewDidLoad() {
 		super.viewDidLoad()
+    setSlider(slider: protSlider, fromItem: itemTWWO, itemValue: itemTWWO.prot)
 
   }
 }
