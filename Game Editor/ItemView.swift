@@ -14,6 +14,8 @@ import UIKit
 class ItemView: UITableViewController {
 
 /* Fields: */ var
+              // Can I use a dictionary for this?
+              // Can use udef.load for this? Followed by = Equipable(loadFrom: )?
 							items				= ["Sword", "Shield"],
 							insertTop		= false,
 							testCounter = 0,

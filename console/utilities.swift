@@ -51,3 +51,25 @@ enum udef {
 		}
 	}
 }
+
+// For equipables?
+extension udef {
+  
+  private static var udKey = "Ziggly: "
+  
+  static func loadItemKeys() {
+    
+    var returnMatchedDict: [String: Any?] = [:]
+    
+    let itemKey = udKey + Keys.Item.equip.rawValue
+    
+    for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
+      if key.contains(itemKey) {
+        
+      }
+    }
+    
+    
+    
+  }
+}

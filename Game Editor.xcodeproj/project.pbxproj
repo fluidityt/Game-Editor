@@ -18,7 +18,6 @@
 		C14487741DDFB4300037F7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14487721DDFB4300037F7E4 /* LaunchScreen.storyboard */; };
 		C144877F1DDFB4300037F7E4 /* Game_EditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */; };
 		C1476A671DE50F5800200925 /* YAN Utility GameEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */; };
-		C1BEC2BD1DE997320084487E /* EquipableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BEC2BC1DE997320084487E /* EquipableView.swift */; };
 		C1E0E7171DE3F1C8006D561B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */; };
 		C1E0E7191DE40115006D561B /* ffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E7181DE40115006D561B /* ffs.swift */; };
 		C1E0E71D1DE40D63006D561B /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0E71C1DE40D63006D561B /* ItemInfo.swift */; };
@@ -65,7 +64,6 @@
 		C144877E1DDFB4300037F7E4 /* Game_EditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_EditorTests.swift; sourceTree = "<group>"; };
 		C14487801DDFB4300037F7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "YAN Utility GameEditor.swift"; sourceTree = "<group>"; };
-		C1BEC2BC1DE997320084487E /* EquipableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipableView.swift; sourceTree = "<group>"; };
 		C1E0E7161DE3F1C8006D561B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E0E7181DE40115006D561B /* ffs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ffs.swift; sourceTree = "<group>"; };
 		C1E0E71C1DE40D63006D561B /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 		C1BEC2BB1DE996EF0084487E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C1BEC2BC1DE997320084487E /* EquipableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -333,7 +330,6 @@
 				C13EEBAE1DE7E1B500BC40F7 /* utilities.swift in Sources */,
 				C140C0471DE6F0B4009BB4E4 /* protocls.swift in Sources */,
 				C140C0451DE6F045009BB4E4 /* tests.swift in Sources */,
-				C1BEC2BD1DE997320084487E /* EquipableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

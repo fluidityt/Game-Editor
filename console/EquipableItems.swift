@@ -103,6 +103,7 @@ extension Equipable {
 		let key1 = E.key( name2: named, slot2: slotted )
 		if let dict = ud.value( forKey: key1 ) as! [String: String]? {
 
+      
 			func val( _ ue: String ) -> String {
 				return dict[ue]!
 			}
