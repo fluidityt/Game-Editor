@@ -28,7 +28,7 @@ class ItemInfo: UITableViewController {
 
   // NOTE: Matches up with EquipableItems.swift.
   
-  // FIXME: Make the labels editText
+
   
 
   // Temporary item
@@ -57,6 +57,9 @@ class ItemInfo: UITableViewController {
    }
    
  */
+  
+  // FIXME: Put in the edit texts here
+  // TODO: Make the labels editText
   
   // PROT:
   @IBOutlet weak var protVal:    UILabel!
@@ -107,6 +110,13 @@ class ItemInfo: UITableViewController {
 		matchLabelToSlider(label: costVal, slider: costSlider)
  }
 
+ // LEVEL:
+ @IBOutlet weak var levelVal:    UILabel!
+ @IBOutlet weak var levelSlider: UISlider!
+ @IBAction func levelSlide( _ sender: Any ) {
+ matchLabelToSlider(label: levelVal, slider: levelSlider)
+ }
+  
 }
 
 // MARK: - View stuff:
