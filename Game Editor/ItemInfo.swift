@@ -42,6 +42,23 @@ class ItemInfo: UITableViewController {
   
   // TODO: Make the labels editText
   
+
+  // Temporary item
+  struct Item35 {
+    var
+    name: String,
+    slot: String,
+    prot: Int,
+    mdef: Int,
+    hp:   Int,
+    mp:   Int,
+    ap:   Int,
+    mpow: Int,
+    // TODO: fill in
+    cost: Int,
+    level: Int
+  }
+  
   /*
    
    // <#NAME#>:
@@ -53,11 +70,6 @@ class ItemInfo: UITableViewController {
    
  */
   
-  struct Item35 {
-    var level = 1
-    var prot = 45
-  }
-
   // PROT:
   @IBOutlet weak var protVal:    UILabel!
   @IBOutlet weak var protSlider: UISlider!
@@ -111,20 +123,23 @@ class ItemInfo: UITableViewController {
 
 // MARK: - View stuff:
 
-/*     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>) */
-
 extension ItemInfo {
   
-  // Item that we"re working on:
-  var itemTWWO: Item35 { get {return self.itemTWWO} set {} }
+  // This gets updated in the previous view controller's .didSelectCell()
+  static var itemToWorkOn: Item35 { get {return self.itemToWorkOn} set {} }
+  
+  override func viewDidLoad() {
+
+    // Local copy:
+    let itemTWWO = ItemInfo.itemToWorkOn
   
   // setSlider():
-  private func setSlider(slider: UISlider,
+   func setSlider(slider: UISlider,
                          fromItem item: Item35,
                          min1: Float = 1,
                          max1: Float = 50,
                          itemValue: Int) {
-  
+    
     // getScale():
     func getScale(_ level: Int,
                   min2: Float,
@@ -143,22 +158,38 @@ extension ItemInfo {
       return (min: scale(min2, by: level, forMax: max2),
               max: scale(max2, by: level, forMax: max2))
     }
-  
+    
     let results = getScale(item.level, min2: min1, max2: max1)
     
     // Assignment:
     slider.minimumValue = results.min
     slider.maximumValue = results.max
     slider.value = Float(itemValue)
-  }
-  
-
-  
-  override func viewDidLoad() {
+    }
+    
 		super.viewDidLoad()
-    setSlider(slider: protSlider, fromItem: itemTWWO, itemValue: itemTWWO.prot)
-
+    /* Placeholders: */ do {
+    /*
+     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>)
+     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>)
+     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>)
+     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>)
+     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>)
+     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>)
+     setSlider(slider: <#name#>Slider, fromItem: itemTWWO, itemValue: itemTWWO.<#name#>)
+     */
   }
+    setSlider(slider: protSlider, fromItem: itemTWWO, itemValue: itemTWWO.prot)
+    setSlider(slider: mdefSlider, fromItem: itemTWWO, itemValue: itemTWWO.mdef)
+    setSlider(slider: hpSlider,   fromItem: itemTWWO, itemValue: itemTWWO.hp)
+    setSlider(slider: mpSlider,   fromItem: itemTWWO, itemValue: itemTWWO.mp)
+    setSlider(slider: apSlider,   fromItem: itemTWWO, itemValue: itemTWWO.ap)
+    setSlider(slider: mpowSlider, fromItem: itemTWWO, itemValue: itemTWWO.mpow)
+  }
+  
+  // TODO: Make a save function, but we need data from the other controller.
+  
+
 }
 
 // MARK: - Placeholder stuff:
