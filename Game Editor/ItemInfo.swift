@@ -5,18 +5,19 @@
 //  Created by Dude Guy on 11/22/16.
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
-/** TODO: Figure out how to make sliders increments of five etc
-	TODO: Import key from the first tableView (should be something like didselect cell to a global or something)
-	USAGE: var item = ItemModelInts.loadFromuserDefaults(forKey: desiredKey)
-	ViewModel:
- TODO: Figure out configuration stuff
+
+// 
+// 
+// 
+
+// 
  
- TODO: Put in levels for items and config data for each one 
- TODO: Make a config screen / view for the sliders etc..
- TODO: Battle tester :)
+// 
+// 
+// 
  
- TODO: Figure out how to change uislider increments
-*/
+// 
+
 
 import Foundation
 import UIKit
@@ -40,7 +41,7 @@ class ItemInfo: UITableViewController {
 
   // NOTE: Matches up with EquipableItems.swift.
   
-  // TODO: Make the labels editText
+  // FIXME: Make the labels editText
   
 
   // Temporary item
@@ -54,7 +55,7 @@ class ItemInfo: UITableViewController {
     mp:   Int,
     ap:   Int,
     mpow: Int,
-    // TODO: fill in
+    // FIXME: fill in
     cost: Int,
     level: Int
   }
