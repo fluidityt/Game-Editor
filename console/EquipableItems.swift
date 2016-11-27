@@ -67,74 +67,97 @@ struct Equipable {
 // MARK: - Protocol:
 
 extension Equipable {
+  
+  private typealias E = Equipable // For convenience
+  
+  /** Used in save: */
+  func key() -> String {
+    // TODO: Update this with udef
+    return (Keys.Item.equip.rawValue + slot.rawValue + name)
+  }
+  
+  /** Used in load:*/
+  static func key( nameOfItem: String, slotOfItem: String ) -> String {
+    return (Keys.Item.equip.rawValue + slotOfItem + nameOfItem)
+  }
+  
+  /** Called only in the item editor page:*/
+  func saveToUD() {
+    let info: [String: String]
+      = ["name": name,
+         "slot": slot.rawValue,
+         "prot": String( prot ),
+         "mdef": String( mdef ),
+         "hp": String( hp ),
+         "mp": String( mp ),
+         "ap": String( ap ),
+         "mpow": String( mpow ),
+         "cost": String( cost )
+        
+    ]
+    udef.set( info, key() )
+  }
+  
+  
+  // Check initializer and early exit in reverse order (if init3, exit... if init2, exit...
+  
+  init?(  // Initializer 1:
+          loadFromName named: String?, forSlot slotted: Slot?,
+        
+          // Initializer 2:
+          loadFromKey: String? = nil ) {
 
-	private typealias E = Equipable // For convenience
-
-	/** Used in save: */
-	func key() -> String {
-		// TODO: Update this with udef
-		return (Keys.Item.equip.rawValue + slot.rawValue + name)
-	}
-
-	/** Used in load:*/
-	static func key( name2: String, slot2: Slot ) -> String {
-		return (Keys.Item.equip.rawValue + slot2.rawValue + name2)
-	}
-
-	/** Called only in the item editor page:*/
-	func saveToUD() {
-		let info: [String: String]
-				= ["name": name,
-				   "slot": slot.rawValue,
-				   "prot": String( prot ),
-				   "mdef": String( mdef ),
-				   "hp": String( hp ),
-				   "mp": String( mp ),
-				   "ap": String( ap ),
-				   "mpow": String( mpow ),
-				   "cost": String( cost )
-          
-		]
-		udef.set( info, key() )
-	}
-
-	init?( loadFromName named: String, forSlot slotted: Slot ) {
-
-		let key1 = E.key( name2: named, slot2: slotted )
-		if let dict = ud.value( forKey: key1 ) as! [String: String]? {
-
+    func findTheDict() -> [String:String] {
+      initializer2: do {
+        if let key = loadFromKey {
+          return ud.value(forKey: key) as! [String : String]
+        }
+      }
       
-			func val( _ ue: String ) -> String {
-				return dict[ue]!
-			}
-			func intVal( _ ue: String ) -> Int {
-				return Int( dict[ue]! )!
-			}
-
-			name = val( "name" )
-			slot = Slot.load( val( "slot" ) )
-			prot = intVal( "prot" )
-			mdef = intVal( "mdef" )
-			hp = intVal( "hp" )
-			mp = intVal( "mp" )
-			ap = intVal( "ap" )
-			mpow = intVal( "mpow" )
+      initializer1: do {
+        if let name = named { if let slot = slotted {
+          let key = E.key( nameOfItem: name, slotOfItem: slot.rawValue )
+          return ud.value( forKey: key ) as! [String: String] /**/ } /**/
+        }
+      }
+      
+      print("error incoming")
+      return [:]
+    }
+    
+    let dict = findTheDict()
+    
+    if dict.isEmpty { return nil }
+    
+    assignTheThings: do {
+      
+      func val( _ value: String ) -> String {
+        return dict[value]!
+      }
+      func intVal( _ value: String ) -> Int {
+        return Int( dict[value]! )!
+      }
+      
+      
+      name = val( "name" )
+      slot = Slot.load( val( "slot" ) )
+      prot = intVal( "prot" )
+      mdef = intVal( "mdef" )
+      hp = intVal( "hp" )
+      mp = intVal( "mp" )
+      ap = intVal( "ap" )
+      mpow = intVal( "mpow" )
       cost = intVal( "cost" )
-
-		}
-
-		else {
-			return nil
-		}
-	}
-
+      level = 1 // FIXME: add this
+    }
+  }
 }
 
 
-// MARK: Utility: 
+// MARK: Utility:
 
 func makeSword() -> Equipable? {
-	return Equipable( name: "Sword", slot: .hands, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 45, mpow: 0, cost: 1 )
+	return Equipable.init(name: "Sword", slot: .hands, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 45, mpow: 0, cost: 100, level: 1)
 }
 
 func printHands() {
