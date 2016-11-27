@@ -66,6 +66,9 @@ extension udef {
     for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
       if key.contains(itemKey) {
         
+        // make a list of all equipment.. Then subtract out and you will be left with just .name
+        
+        
       }
     }
     

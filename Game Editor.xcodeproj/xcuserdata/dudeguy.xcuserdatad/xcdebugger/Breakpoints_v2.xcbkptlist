@@ -25,46 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "console/EquipableItems.swift"
-            timestampString = "501908637.039908"
+            filePath = "console/utilities.swift"
+            timestampString = "501909552.272676"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "Equipable"
-            landmarkType = "4">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "console.Equipable.init (loadFromName : Swift.Optional&lt;Swift.String&gt;, forSlot : Swift.Optional&lt;console.Slot&gt;, loadFromKey : Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.Optional&lt;console.Equipable&gt;"
-                  moduleName = "console"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dudeguy/Dropbox/Shared%20Desktop/XCODE/5%20Text%20Engine/Game%20Editor/console/EquipableItems.swift"
-                  timestampString = "501912147.544373"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "165">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "console.Equipable.init (loadFromName : Swift.Optional&lt;Swift.String&gt;, forSlot : Swift.Optional&lt;console.Slot&gt;, loadFromKey : Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.Optional&lt;console.Equipable&gt;"
-                  moduleName = "console"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dudeguy/Dropbox/Shared%20Desktop/XCODE/5%20Text%20Engine/Game%20Editor/console/EquipableItems.swift"
-                  timestampString = "501912147.548267"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "3048">
-               </Location>
-            </Locations>
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "loadItemKeys()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -73,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "console/utilities.swift"
-            timestampString = "501909552.272676"
+            filePath = "console/EquipableItems.swift"
+            timestampString = "501914067.196483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "loadItemKeys()"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "init(loadFromName:forSlot:loadFromKey:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

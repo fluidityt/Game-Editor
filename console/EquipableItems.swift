@@ -125,19 +125,18 @@ extension Equipable {
       return [:]
     }
     
-    let dict = findTheDict()
-    
-    if dict.isEmpty { return nil }
-    
     assignTheThings: do {
+    
+      let foundDict = findTheDict()
+      if  foundDict.isEmpty { return nil }
       
+      // Convenience:
       func val( _ value: String ) -> String {
-        return dict[value]!
+        return foundDict[value]!
       }
       func intVal( _ value: String ) -> Int {
-        return Int( dict[value]! )!
+        return Int( foundDict[value]! )!
       }
-      
       
       name = val( "name" )
       slot = Slot.load( val( "slot" ) )

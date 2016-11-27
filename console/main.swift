@@ -7,15 +7,25 @@
 //
 import Foundation
 
-var s = "hey there"
-
-print(s.remove("hey"))
-
+/*
 let sword = makeSword()!
 sword.saveToUD()
-
 udef.printl()
+*/
 
+/*
+ 
+ 0. Load the list of equipment into a dictionary listOfEquipmentModel = [nameToDisplayInView: keyToInstantiateWith]
+ 
+ 1. Make the "list of equipment" table view from that dictionary.count and
+    (this will list names but not instantiate)
+  2. Instantiate object on .didSelectCell() with `keyTo..` which is `listOf..[nameTo..]` 
+     -- dealloc on "return"
+ 3. Store object into the target View Controller's static property "itemToWorkOn"
+ 4. Make changes to IBOutlet vars on GUI change
+ 5. update "itemToWorkOn" on "save", then .saveToUD() -- only do: `dealloc` if click return with no saving
+ 
+ 
 /* MARK: End */ print("")
 
 
