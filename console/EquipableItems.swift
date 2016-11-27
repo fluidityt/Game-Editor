@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 // *****≥***************************************** \\
 // ********** EQUIPABLE ITEMS.swift ************* \\
 // ********************************************** \\
@@ -60,8 +58,7 @@ struct Equipable {
 			mpow: Int,
   
       cost: Int,
-      // TODO: fill in:
-      level = 1
+      level: Int
 }
 
 // MARK: - Protocol:
@@ -72,7 +69,6 @@ extension Equipable {
   
   /** Used in save: */
   func key() -> String {
-    // TODO: Update this with udef
     return (Keys.Item.equip.rawValue + slot.rawValue + name)
   }
   
@@ -86,18 +82,19 @@ extension Equipable {
     let info: [String: String]
       = ["name": name,
          "slot": slot.rawValue,
-         "prot": String( prot ),
+         "prot": String( describing: prot ), // WTF
          "mdef": String( mdef ),
-         "hp": String( hp ),
-         "mp": String( mp ),
-         "ap": String( ap ),
+         "hp":   String( hp ),
+         "mp":   String( mp ),
+         "ap":   String( ap ),
          "mpow": String( mpow ),
-         "cost": String( cost )
-        
+         
+         "cost": String( cost ),
+         "level": String( level )
     ]
+    
     udef.set( info, key() )
   }
-  
   
   // Check initializer and early exit in reverse order (if init3, exit... if init2, exit...
   
@@ -146,12 +143,12 @@ extension Equipable {
       mp = intVal( "mp" )
       ap = intVal( "ap" )
       mpow = intVal( "mpow" )
+      
       cost = intVal( "cost" )
-      level = 1 // FIXME: add this
+      level = intVal( "level" )
     }
   }
 }
-
 
 // MARK: Utility:
 

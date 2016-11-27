@@ -6,19 +6,6 @@
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
 
-// 
-// 
-// 
-
-// 
- 
-// 
-// 
-// 
- 
-// 
-
-
 import Foundation
 import UIKit
 
@@ -55,7 +42,7 @@ class ItemInfo: UITableViewController {
     mp:   Int,
     ap:   Int,
     mpow: Int,
-    // FIXME: fill in
+    
     cost: Int,
     level: Int
   }
