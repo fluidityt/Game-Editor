@@ -7,11 +7,13 @@
 //
 import Foundation
 
-/*
-let sword = makeSword()!
+
+var sword = makeSword()!
 sword.saveToUD()
-udef.printl()
-*/
+sword.name = "Buster"
+sword.saveToUD()
+//print(udef.loadEquipmentKeysAsDictVals())
+udef.printl(Keys.Item.equip.rawValue)
 
 /*
  
@@ -29,4 +31,4 @@ udef.printl()
 /* MARK: End */ print("")
 
 
-
+*/

@@ -57,22 +57,19 @@ extension udef {
   
   private static var udKey = "Ziggly: "
   
-  static func loadItemKeys() {
+  static func loadEquipmentKeysAsDictVals() -> [String:String] {
     
-    var returnMatchedDict: [String: Any?] = [:]
+    var returnMatchedDict: [String: String] = [:]
     
     let itemKey = udKey + Keys.Item.equip.rawValue
     
-    for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
+    for (key, val) in UserDefaults.standard.dictionaryRepresentation() {
       if key.contains(itemKey) {
-        
-        // make a list of all equipment.. Then subtract out and you will be left with just .name
-        
-        
+        let v = val as! NSDictionary
+        returnMatchedDict[v.value(forKey: "name") as! String] = key
       }
     }
     
-    
-    
+    return returnMatchedDict
   }
 }
