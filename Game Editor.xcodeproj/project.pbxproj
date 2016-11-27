@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1071FEF1DEAA2E600DB6D36 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C1071FEE1DEAA2E600DB6D36 /* TODO.rtf */; };
 		C13EEBAE1DE7E1B500BC40F7 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EEBAD1DE7E1B500BC40F7 /* utilities.swift */; };
 		C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F62421DE3E7CA0049E10D /* ItemView.swift */; };
 		C13F62451DE3E8B80049E10D /* Items.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13F62441DE3E8B80049E10D /* Items.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C1071FEE1DEAA2E600DB6D36 /* TODO.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 		C13EEBAD1DE7E1B500BC40F7 /* utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
 		C13F62421DE3E7CA0049E10D /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		C13F62441DE3E8B80049E10D /* Items.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Items.storyboard; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		C144875B1DDFB4300037F7E4 = {
 			isa = PBXGroup;
 			children = (
+				C1071FEE1DEAA2E600DB6D36 /* TODO.rtf */,
 				C14487661DDFB4300037F7E4 /* Game Editor */,
 				C144877D1DDFB4300037F7E4 /* Game EditorTests */,
 				C140C03E1DE69B1E009BB4E4 /* console */,
@@ -304,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1071FEF1DEAA2E600DB6D36 /* TODO.rtf in Resources */,
 				C1E0E7211DE41DD7006D561B /* item2.storyboard in Resources */,
 				C14487741DDFB4300037F7E4 /* LaunchScreen.storyboard in Resources */,
 				C14487711DDFB4300037F7E4 /* Assets.xcassets in Resources */,
