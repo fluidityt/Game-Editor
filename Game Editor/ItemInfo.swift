@@ -8,8 +8,6 @@
 
 // FIXME: Make the labels editText
 // FIXME: Make a save function, but we need data from the other controller.
-// FIXME: Showing -1 instead of 0
-// FIXME: Shows 1 if you set a value over the maximum
 
 import Foundation
 import UIKit
@@ -64,36 +62,46 @@ fileprivate func setSlider(_ slider: UISlider,
 
 // MARK: - GUI Stuff:
 
+  
+enum globalEquipItemStuff {
+  
+  static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+  static func errorItem() -> Equipable { return Equipable(name: "Error in loading cell!", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+  static var item: Equipable? { didSet { fatalError("crap") } }// Should be a let :{
+
+}
+
 class ItemInfo: UITableViewController {
   
+  private var itemModSave = globalEquipItemStuff.item ?? globalEquipItemStuff.errorItem()
+  
+  private func placeholder() {
   /*
    
    // <#NAME#>:
    @IBOutlet weak var <#name#>Val:    IntLabel! { didSet { item.<#name#> = <#name#>.int } }
    @IBOutlet weak var <#name#>Slider: UISlider!
-   @IBAction func <#name#>Slide( _ sender: UISlider ) { sender.matchToLabel(label: <#name#>Val) }
-   fileprivate func <#name#>DidLoad() { setSlider(<#name#>Slider, fromItem: item, itemValue: item.<#name#>) }
+   @IBAction func <#name#>Slide( _ sender: UISlider ) {
+     sender.matchToLabel(label: <#name#>Val)
+   }
+   fileprivate func <#name#>DidLoad() {
+     setSlider(<#name#>Slider, fromItem: item, itemValue: item.<#name#>)
+   }
  
  */
-  
-  // STATIC FUNC:
-  static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func errorItem() -> Equipable { return Equipable(name: "Error in loading cell!", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  
-  // ITEM:
-  static var item: Equipable? // Should be a let :{
-  private var itemToModThenSave = ItemInfo.item ?? ItemInfo.errorItem()
-  fileprivate func didLoad() {    itemToModThenSave = ItemInfo.item ?? ItemInfo.defaultItem()  }
+  }
+
+// MARK: - Values:
   
   // PROT:
   @IBOutlet weak var protVal: IntLabel!
   @IBOutlet weak var protSlider: UISlider!
   @IBAction func protSlide( _ sender: UISlider ) {
     sender.matchLabelToSelf(label: protVal)
-    itemToModThenSave.prot = protVal.int
+    itemModSave.prot = protVal.int
   }
   fileprivate func protDidLoad() {
-    setSlider(protSlider, fromItem: itemToModThenSave, itemValue: itemToModThenSave.prot)
+    setSlider(protSlider, fromItem: itemModSave, itemValue: itemModSave.prot)
     protSlider.matchLabelToSelf(label: protVal)
   }
   
@@ -148,7 +156,6 @@ extension ItemInfo {
     
   		super.viewDidLoad()
     
-    didLoad()
     protDidLoad()
     /*mdefDidLoad()
     hpDidLoad()
