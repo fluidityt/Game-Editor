@@ -7,96 +7,99 @@
 //
 
 
+// FIXME: I need to set up new / loaded item
+// FIXME: I need to rig the name / slot and a second TableView that shows teh list of slots then returns a string 
 
 // TODO: Make the labels editText
+// TODO: Two VC so I can close the vars?
 // NOTE: If you change the item to a class, then we will need to refactor and avoid crash..
 
 import Foundation
 import UIKit
 
- class IntLabel: UILabel {
+// MARK: - Util stuff:
 
-  var int: Int = -1
-}
+          private func placeholder() {
+            /*
+             
+             // <#NAME#>:
+             @IBOutlet weak var <#name#>Val:    IntLabel!
+             @IBOutlet weak var <#name#>Slider: UISlider!
+             @IBAction func <#name#>Slide( _ sender: UISlider ) {
+               sender.matchLabelToSelf(label: <#name#>Val)
+               itemModSave.<#name#> = <#name#>Val.int
+             }
+             fileprivate func <#name#>DidLoad() {
+               setSlider(<#name#>Slider, fromItem: itemModSave, itemValue: itemModSave.<#name#>)
+               <#name#>Slider.matchLabelToSelf(label: <#name#>Val)
+             }
+           
+           */
+            }
 
- extension UISlider {
-  
-    func matchLabelToSelf(label: IntLabel) {
-      // FIXME: round to 5 algo
-      label.int = Int(value)
-      label.text = String(label.int)
-    }
+          class IntLabel: UILabel {
+            var int: Int = -1
+          }
 
-}
+           extension UISlider {
+            
+              func matchLabelToSelf(label: IntLabel) {
+                // FIXME: round to 5 algo
+                label.int = Int(value)
+                label.text = String(label.int)
+              }
 
-fileprivate func setSlider(_ slider: UISlider,
-                         fromItem item: Equipable,
-                         min1: Float = 1,
-                         max1: Float = 50,
-                         itemValue: Int) {
+          }
 
-    // getScale():
-    func getScale(_ level: Int,
-                  min2: Float,
-                  max2: Float) -> (min: Float, max: Float) {
-      
-      if level <= 0 { return (min2, max2) }
-      
-      // scale():
-      func scale(_ val: Float,
-                 by level2: Int,
-                 forMax max3: Float) -> Float {
-        
-        return val + (max3 * Float(level2-1))
-      }
-      
-      return (min: scale(min2, by: level, forMax: max2),
-              max: scale(max2, by: level, forMax: max2))
-    }
-    
-    let results = getScale(item.level, min2: min1, max2: max1)
-    
-    // Assignment:
-    slider.minimumValue = results.min
-    slider.maximumValue = results.max
-    slider.value = Float(itemValue)
-  }
+          fileprivate func setSlider(_ slider: UISlider,
+                                   fromItem item: Equipable,
+                                   min1: Float = 1,
+                                   max1: Float = 50,
+                                   itemValue: Int) {
 
-// MARK: - GUI Stuff:
+              // getScale():
+              func getScale(_ level: Int,
+                            min2: Float,
+                            max2: Float) -> (min: Float, max: Float) {
+                
+                if level <= 0 { return (min2, max2) }
+                
+                // scale():
+                func scale(_ val: Float,
+                           by level2: Int,
+                           forMax max3: Float) -> Float {
+                  
+                  return val + (max3 * Float(level2-1))
+                }
+                
+                return (min: scale(min2, by: level, forMax: max2),
+                        max: scale(max2, by: level, forMax: max2))
+              }
+              
+              let results = getScale(item.level, min2: min1, max2: max1)
+              
+              // Assignment:
+              slider.minimumValue = results.min
+              slider.maximumValue = results.max
+              slider.value = Float(itemValue)
+            }
 
-// NOTE: Modify this in the previous VC .didSelectCell before .presentView or whatever...
-enum globalEquipItemStuff {
-  
-  static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func errorItem() -> Equipable { return Equipable(name: "Error in loading cell!", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static var item: Equipable? { didSet { fatalError("crap") } }// Should be a let :{
-
-}
+          // NOTE: Modify this in the previous VC .didSelectCell before .presentView or whatever...
+          enum globalEquipItemStuff {
+            
+            static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+            static func errorItem() -> Equipable { return Equipable(name: "Error", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+            static func newItem() -> Equipable { return Equipable(name: "New", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+            static var item: Equipable? { didSet { fatalError("crap") } }// Should be a let :{
+            
+          }
 
 class ItemInfo: UITableViewController {
   
-  private var itemModSave = globalEquipItemStuff.item ?? globalEquipItemStuff.errorItem()
+  /* Item: */ private var itemModSave = globalEquipItemStuff.item ?? globalEquipItemStuff.errorItem()
   
-  private func placeholder() {
-  /*
-   
-   // <#NAME#>:
-   @IBOutlet weak var <#name#>Val:    IntLabel!
-   @IBOutlet weak var <#name#>Slider: UISlider!
-   @IBAction func <#name#>Slide( _ sender: UISlider ) {
-     sender.matchLabelToSelf(label: <#name#>Val)
-     itemModSave.<#name#> = <#name#>Val.int
-   }
-   fileprivate func <#name#>DidLoad() {
-     setSlider(<#name#>Slider, fromItem: itemModSave, itemValue: itemModSave.<#name#>)
-     <#name#>Slider.matchLabelToSelf(label: <#name#>Val)
-   }
- 
- */
-  }
-
 // MARK: - Values:
-  
+ 
   // PROT:
   @IBOutlet weak var protVal: IntLabel!
   @IBOutlet weak var protSlider: UISlider!
@@ -200,6 +203,21 @@ class ItemInfo: UITableViewController {
     udef.printl(itemModSave.key())
   }
   
+  @IBAction func clickLoad(_ sender: UIButton) {
+    if let loadedItem = Equipable(loadFromName: nil, forSlot: nil, loadFromKey: itemModSave.key()) {
+      itemModSave = loadedItem
+    } else { itemModSave = globalEquipItemStuff.defaultItem() }
+    
+    protDidLoad()
+    mdefDidLoad()
+    hpDidLoad()
+    mpDidLoad()
+    apDidLoad()
+    mpowDidLoad()
+    costDidLoad()
+    levelDidLoad()
+    
+  }
   
 }
 
@@ -225,7 +243,7 @@ extension ItemInfo {
 
 // MARK: - Placeholder stuff:
 
-private func placeholder() {
+private func placeholder2() {
 /* NOT FUNCTIONING:
 
  // HEY!! We should already have a list of items created that then populates here...

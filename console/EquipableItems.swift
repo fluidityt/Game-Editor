@@ -107,7 +107,7 @@ extension Equipable {
     func findTheDict() -> [String:String] {
       initializer2: do {
         if let key = loadFromKey {
-          return ud.value(forKey: key) as! [String : String]
+          return ud.value(forKey: "Ziggly: " + key) as! [String : String]
         }
       }
       
