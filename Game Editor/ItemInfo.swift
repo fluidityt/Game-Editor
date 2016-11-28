@@ -6,9 +6,9 @@
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
 
-
 // FIXME: I need to set up new / loaded item
-// FIXME: I need to rig the name / slot and a second TableView that shows teh list of slots then returns a string 
+// FIXME: I need to rig the name / slot and a second TableView that shows teh list of slots then returns a string
+// FIXME: Make the first view controller
 
 // TODO: Make the labels editText
 // TODO: Two VC so I can close the vars?
@@ -206,7 +206,12 @@ class ItemInfo: UITableViewController {
   @IBAction func clickLoad(_ sender: UIButton) {
     if let loadedItem = Equipable(loadFromName: nil, forSlot: nil, loadFromKey: itemModSave.key()) {
       itemModSave = loadedItem
-    } else { itemModSave = globalEquipItemStuff.defaultItem() }
+    } else {
+      print("default item--key may crash")
+      itemModSave = globalEquipItemStuff.defaultItem()
+    }
+    
+    
     
     protDidLoad()
     mdefDidLoad()
@@ -227,7 +232,7 @@ extension ItemInfo {
   
   override func viewDidLoad() {
     
-  		super.viewDidLoad()
+    super.viewDidLoad()
     
     protDidLoad()
     mdefDidLoad()
