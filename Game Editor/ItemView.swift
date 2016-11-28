@@ -21,6 +21,14 @@
 import Foundation
 import UIKit
 
+extension UIViewController {
+  func presentVC(named vc: String) {
+    if let sb2 = storyboard {
+      present(sb2.instantiateViewController(withIdentifier: vc), animated: true, completion: nil)
+    } else { fatalError("couldnt load storyboard") }
+  }
+}
+
 // TODO: Header
 
 class ItemView: UITableViewController {
@@ -30,8 +38,6 @@ class ItemView: UITableViewController {
               // Can use udef.load for this? Followed by = Equipable(loadFrom: )?
 							equipment		= [(name: "Crash Inc", key: "Crash Key")],
 							insertTop		= false
-
-
 
 /* MARK: Funcs: */
 
@@ -45,6 +51,7 @@ class ItemView: UITableViewController {
     for (key, val) in udef.loadEquipmentKeysAsDictVals() {
       equipment.append((key, val))
     }
+    
     if equipment.isEmpty { // Makes sure that we have a key to load for didSelect():
       let ourOnlyItem = globalEquipItemStuff.defaultItem()
       ourOnlyItem.saveToUD()
@@ -63,9 +70,7 @@ class ItemView: UITableViewController {
 	/// didSelectRow()
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     globalEquipItemStuff.item = Equipable.loadFromKey( udef.udKey + equipment[indexPath.row].key )
-    
-    let nextVC = UIStoryboard(name: "item2", bundle: nil).instantiateViewController(withIdentifier: "Item Info") as! UITableViewController
-    present(nextVC, animated: true, completion: nil)
+    presentVC(named: "Item Info")
 	}
 
 	/// makeRows()

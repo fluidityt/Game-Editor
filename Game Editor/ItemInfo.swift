@@ -100,101 +100,110 @@ class ItemInfo: UITableViewController {
   
 // MARK: - Values:
  
+  //NAME:
+  @IBOutlet weak var nameVal: UITextField!
+  fileprivate func nameDidLoad() {
+    nameVal.text = itemModSave.name
+  }
+  @IBAction func nameChange(_ sender: UITextField) {
+    itemModSave.name = nameVal.text!
+  }
+  
   // PROT:
   @IBOutlet weak var protVal: IntLabel!
   @IBOutlet weak var protSlider: UISlider!
-  @IBAction func protSlide( _ sender: UISlider ) {
-    sender.matchLabelToSelf(label: protVal)
-    itemModSave.prot = protVal.int
-  }
   fileprivate func protDidLoad() {
     setSlider(protSlider, fromItem: itemModSave, itemValue: itemModSave.prot)
     protSlider.matchLabelToSelf(label: protVal)
+  }
+  @IBAction func protSlide( _ sender: UISlider ) {
+    sender.matchLabelToSelf(label: protVal)
+    itemModSave.prot = protVal.int
   }
   
   // MDEF:
   @IBOutlet weak var mdefVal:    IntLabel!
   @IBOutlet weak var mdefSlider: UISlider!
-  @IBAction func mdefSlide( _ sender: UISlider ) {
-    sender.matchLabelToSelf(label: mdefVal)
-    itemModSave.mdef = mdefVal.int
-  }
   fileprivate func mdefDidLoad() {
     setSlider(mdefSlider, fromItem: itemModSave, itemValue: itemModSave.mdef)
     mdefSlider.matchLabelToSelf(label: mdefVal)
+  }
+  @IBAction func mdefSlide( _ sender: UISlider ) {
+    sender.matchLabelToSelf(label: mdefVal)
+    itemModSave.mdef = mdefVal.int
   }
   
   // HP:
   @IBOutlet weak var hpVal:    IntLabel!
   @IBOutlet weak var hpSlider: UISlider!
-  @IBAction func hpSlide( _ sender: UISlider ) {
-     sender.matchLabelToSelf(label: hpVal)
-     itemModSave.hp = hpVal.int
-   }
    fileprivate func hpDidLoad() {
      setSlider(hpSlider, fromItem: itemModSave, itemValue: itemModSave.hp)
      hpSlider.matchLabelToSelf(label: hpVal)
    }
+  @IBAction func hpSlide( _ sender: UISlider ) {
+    sender.matchLabelToSelf(label: hpVal)
+    itemModSave.hp = hpVal.int
+  }
   
   // MP:
   @IBOutlet weak var mpVal:    IntLabel!
   @IBOutlet weak var mpSlider: UISlider!
-  @IBAction func mpSlide( _ sender: UISlider ) {
-     sender.matchLabelToSelf(label: mpVal)
-     itemModSave.mp = mpVal.int
-   }
    fileprivate func mpDidLoad() {
      setSlider(mpSlider, fromItem: itemModSave, itemValue: itemModSave.mp)
      mpSlider.matchLabelToSelf(label: mpVal)
    }
+  @IBAction func mpSlide( _ sender: UISlider ) {
+    sender.matchLabelToSelf(label: mpVal)
+    itemModSave.mp = mpVal.int
+  }
   
   // AP:
   @IBOutlet weak var apVal:    IntLabel!
   @IBOutlet weak var apSlider: UISlider!
-  @IBAction func apSlide( _ sender: UISlider ) {
-     sender.matchLabelToSelf(label: apVal)
-     itemModSave.ap = apVal.int
-   }
    fileprivate func apDidLoad() {
      setSlider(apSlider, fromItem: itemModSave, itemValue: itemModSave.ap)
      apSlider.matchLabelToSelf(label: apVal)
    }
+  @IBAction func apSlide( _ sender: UISlider ) {
+    sender.matchLabelToSelf(label: apVal)
+    itemModSave.ap = apVal.int
+  }
   
   // MPOW:
   @IBOutlet weak var mpowVal:    IntLabel!
   @IBOutlet weak var mpowSlider: UISlider!
-  @IBAction func mpowSlide( _ sender: UISlider ){
-     sender.matchLabelToSelf(label: mpowVal)
-     itemModSave.mpow = mpowVal.int
-   }
    fileprivate func mpowDidLoad() {
      setSlider(mpowSlider, fromItem: itemModSave, itemValue: itemModSave.mpow)
      mpowSlider.matchLabelToSelf(label: mpowVal)
    }
+  @IBAction func mpowSlide( _ sender: UISlider ){
+    sender.matchLabelToSelf(label: mpowVal)
+    itemModSave.mpow = mpowVal.int
+  }
 
   // COST:
   @IBOutlet weak var costVal:    IntLabel!
   @IBOutlet weak var costSlider: UISlider!
-  @IBAction func costSlide( _ sender: UISlider ){
-     sender.matchLabelToSelf(label: costVal)
-     itemModSave.cost = costVal.int
-   }
    fileprivate func costDidLoad() {
      setSlider(costSlider, fromItem: itemModSave, itemValue: itemModSave.cost)
      costSlider.matchLabelToSelf(label: costVal)
    }
+  @IBAction func costSlide( _ sender: UISlider ){
+    sender.matchLabelToSelf(label: costVal)
+    itemModSave.cost = costVal.int
+  }
   
   // LEVEL:
   @IBOutlet weak var levelVal:    IntLabel!
   @IBOutlet weak var levelSlider: UISlider!
-  @IBAction func levelSlide( _ sender: UISlider ){
-     sender.matchLabelToSelf(label: levelVal)
-     itemModSave.level = levelVal.int
-   }
    fileprivate func levelDidLoad() {
      setSlider(levelSlider, fromItem: itemModSave, itemValue: itemModSave.level)
      levelSlider.matchLabelToSelf(label: levelVal)
    }
+  @IBAction func levelSlide( _ sender: UISlider ){
+    sender.matchLabelToSelf(label: levelVal)
+    itemModSave.level = levelVal.int
+  }
   
 // MARK: - Buttons:
   
@@ -242,7 +251,8 @@ extension ItemInfo {
     mpowDidLoad()
     costDidLoad()
     levelDidLoad()
-    
+  
+    globalEquipItemStuff.item = nil // Because!
   }
 }
 
