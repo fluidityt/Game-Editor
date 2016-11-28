@@ -48,7 +48,7 @@
         <!--Item Info-->
         <scene sceneID="byd-VG-C8n">
             <objects>
-                <tableViewController id="tvM-ZU-MDY" customClass="ItemInfo" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Item Info" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tvM-ZU-MDY" customClass="ItemInfo" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8TM-ft-1QJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -499,7 +499,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akn-qU-e0a" userLabel="Val">
-                                <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                <rect key="frame" x="137" y="10" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

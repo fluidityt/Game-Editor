@@ -6,6 +6,18 @@
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
 
+
+// To the bottom:
+//	@IBAction func addItem(_ sender: Any) {
+//		testCounter += 1
+//		let newItem = testName + "\(testCounter)"
+//		items.append(newItem)
+//
+//		let newPath = IndexPath(row: (items.count - 1), section: 0)
+//		tableView.insertRows(at: [newPath], with: .automatic)
+//	}
+
+
 import Foundation
 import UIKit
 
@@ -16,7 +28,7 @@ class ItemView: UITableViewController {
 /* Fields: */ private var
               // Can I use a dictionary for this?
               // Can use udef.load for this? Followed by = Equipable(loadFrom: )?
-							equipment		= [(name: "Test", key: "Test2")],
+							equipment		= [(name: "Crash Inc", key: "Crash Key")],
 							insertTop		= false,
 							testCounter = 0,
 							testName		= "Item "
@@ -36,31 +48,25 @@ class ItemView: UITableViewController {
     }
     if equipment.isEmpty { // Makes sure that we have a key to load for didSelect():
       let ourOnlyItem = globalEquipItemStuff.defaultItem()
-        ourOnlyItem.saveToUD()
-      
-      equipment.append((ourOnlyItem.name, ourOnlyItem.key()))
-    
+      ourOnlyItem.saveToUD()
+      equipment.append((ourOnlyItem.name, "Ziggly: " + ourOnlyItem.key()))
+    }
   }
-	// To the bottom:
-//	@IBAction func addItem(_ sender: Any) {
-//		testCounter += 1
-//		let newItem = testName + "\(testCounter)"
-//		items.append(newItem)
-//
-//		let newPath = IndexPath(row: (items.count - 1), section: 0)
-//		tableView.insertRows(at: [newPath], with: .automatic)
-//	}
-
+  
 
 /* MARK: - Overrides: */
 
 	override func viewDidLoad() {
-		super.viewDidLoad();
+		super.viewDidLoad()
+    loadEquipment()
 	}
 
 	/// didSelectRow()
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		print( equipment[indexPath.row] )
+    globalEquipItemStuff.item = Equipable(loadFromName: nil, forSlot: nil,
+                                          loadFromKey: udef.udKey + equipment[indexPath.row].key)
+    let nextVC = UIStoryboard(name: "item2", bundle: nil).instantiateViewController(withIdentifier: "Item Info") as! UITableViewController
+    present(nextVC, animated: true, completion: nil)
 	}
 
 	/// makeRows()

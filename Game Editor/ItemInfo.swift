@@ -90,7 +90,7 @@ import UIKit
             static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
             static func errorItem() -> Equipable { return Equipable(name: "Error", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
             static func newItem() -> Equipable { return Equipable(name: "New", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-            static var item: Equipable? { didSet { fatalError("crap") } }// Should be a let :{
+            static var item: Equipable? { didSet { print("should be a let") } }// Should be a let :{
             
           }
 

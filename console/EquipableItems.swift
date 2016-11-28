@@ -106,8 +106,12 @@ extension Equipable {
 
     func findTheDict() -> [String:String] {
       initializer2: do {
-        if let key = loadFromKey {
+        if var key = loadFromKey { // FIXME: Hotfixed...
+          if key.contains("Ziggly") { // Why doesnt tern work?
+            while key.contains("Ziggly: ") { key = key.remove("Ziggly: ") }
+          }
           return ud.value(forKey: "Ziggly: " + key) as! [String : String]
+          
         }
       }
       

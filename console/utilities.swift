@@ -20,7 +20,7 @@ extension String {
 // TODO: Figure out how to do a backup / multiple saves
 enum udef {
 
-	private static var udKey = "Ziggly: "
+	static var udKey = "Ziggly: "
 
 	/** Saves values with easy to find id: */
 	static func set( _ val: Any?, _ forKey: String ) {
@@ -54,9 +54,7 @@ enum udef {
 
 // For equipables?
 extension udef {
-  
-  private static var udKey = "Ziggly: "
-  
+    
   static func loadEquipmentKeysAsDictVals() -> [String:String] {
     
     var returnMatchedDict: [String: String] = [:]
