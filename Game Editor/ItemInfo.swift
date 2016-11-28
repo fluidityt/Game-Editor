@@ -106,14 +106,15 @@ class ItemInfo: UITableViewController {
     nameVal.text = itemModSave.name
   }
   fileprivate func nameDidSave() {
-
+    
     if itemModSave.name != nameVal.text {
       // Delete old key: with nil?
-      pri
       UserDefaults.standard.set(nil, forKey: itemModSave.key())
+    }
     
     itemModSave.name = nameVal.text!
   }
+  
   
   // PROT:
   @IBOutlet weak var protVal: IntLabel!

@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "console/EquipableItems.swift"
-            timestampString = "501914067.196483"
+            filePath = "Game Editor/ItemInfo.swift"
+            timestampString = "502042404.765442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "init(loadFromName:forSlot:loadFromKey:)"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "levelSlide(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Game Editor/ItemInfo.swift"
-            timestampString = "502009181.745397"
+            timestampString = "502042404.765442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "levelSlide(_:)"
-            landmarkType = "9">
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "nameDidSave()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

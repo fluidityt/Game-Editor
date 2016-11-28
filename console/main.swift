@@ -13,7 +13,8 @@ sword.saveToUD()
 sword.name = "Buster"
 sword.saveToUD()
 print(udef.loadEquipmentKeysAsDictVals())
-udef.printl(Keys.Item.equip.rawValue)
+UserDefaults.resetStandardUserDefaults()
+print(udef.loadEquipmentKeysAsDictVals())
 
 /*
  

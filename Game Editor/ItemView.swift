@@ -55,7 +55,7 @@ class ItemView: UITableViewController {
     if equipment.isEmpty { // Makes sure that we have a key to load for didSelect():
       let ourOnlyItem = globalEquipItemStuff.defaultItem()
       ourOnlyItem.saveToUD()
-      equipment.append((ourOnlyItem.name, "Ziggly: " + ourOnlyItem.key()))
+      equipment.append((ourOnlyItem.name, ourOnlyItem.key()))
     }
   }
   
@@ -69,7 +69,7 @@ class ItemView: UITableViewController {
 
 	/// didSelectRow()
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    globalEquipItemStuff.item = Equipable.loadFromKey( udef.udKey + equipment[indexPath.row].key )
+    globalEquipItemStuff.item = Equipable.loadFromKey( ziggly(equipment[indexPath.row].key) )
     presentVC(named: "Item Info")
 	}
 

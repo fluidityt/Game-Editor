@@ -20,21 +20,25 @@ extension String {
 // TODO: Figure out how to do a backup / multiple saves
 enum udef {
 
-	static var udKey = "Ziggly: "
+	fileprivate static var udKey = "Ziggly: "
+}
 
-  private static func ziggly(from: String) -> String {
-    var improperZigKey = from
-    while from.contains(udKey) {
-      improperZigKey = improperZigKey.remove(udKey)
-    }
-    
-    let properZigKey = udKey + improperZigKey
-    return properZigKey
+func ziggly(_ key: String) -> String {
+  var improperZigKey = key
+  while improperZigKey.contains(udef.udKey) {
+    improperZigKey = improperZigKey.remove(udef.udKey)
   }
+  
+  let properZigKey = udef.udKey + improperZigKey
+  return properZigKey
+}
+
+extension udef {
+  
 	/** Saves values with easy to find id: */
 	static func set( _ val: Any?, _ forKey: String ) {
 		let ud = UserDefaults.standard
-		ud.setValue( val, forKey: udKey + forKey )
+		ud.setValue( val, forKey: ziggly(forKey) )
 		ud.synchronize()
 	}
 
@@ -68,13 +72,13 @@ extension udef {
     
     var returnMatchedDict: [String: String] = [:]
     
-    let itemKey = udKey + Keys.Item.equip.rawValue
+    let itemKey = ziggly(Keys.Item.equip.rawValue)
     
     for (key, val) in UserDefaults.standard.dictionaryRepresentation() {
       if key.contains(itemKey) {
         let val2 = val as! NSDictionary
         let name = val2.value(forKey: "name") as! String
-        returnMatchedDict[name] = key // Our desired format: ["Sword": "Ziggy->Sword
+        returnMatchedDict[name] = ziggly(key) // Our desired format: ["Sword": "Ziggy->Sword
       }
     }
     

@@ -69,12 +69,12 @@ extension Equipable {
   
   /** Used in save: */
   func key() -> String {
-    return (Keys.Item.equip.rawValue + slot.rawValue + name)
+    return ziggly(Keys.Item.equip.rawValue + slot.rawValue + name)
   }
   
   /** Used in load:*/
   static func key( nameOfItem: String, slotOfItem: String ) -> String {
-    return (Keys.Item.equip.rawValue + slotOfItem + nameOfItem)
+    return ziggly(Keys.Item.equip.rawValue + slotOfItem + nameOfItem)
   }
   
   /** Called only in the item editor page:*/
@@ -106,12 +106,8 @@ extension Equipable {
 
     func findTheDict() -> [String:String] {
       initializer2: do {
-        if var key = loadFromKey { // FIXME: Hotfixed...
-          if key.contains("Ziggly") { // Why doesnt tern work?
-            while key.contains("Ziggly: ") { key = key.remove("Ziggly: ") }
-          }
-          return ud.value(forKey: "Ziggly: " + key) as! [String : String]
-          
+        if let key = loadFromKey {
+          return ud.value(forKey: ziggly(key)) as! [String : String]
         }
       }
       
