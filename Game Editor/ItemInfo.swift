@@ -9,20 +9,6 @@
 import Foundation
 import UIKit
 
-var gInt = 0
-
-// MARK: Util stuff:
-
-    public extension UILabel {
-        
-      var int: Int { 
-
-    public func matchLabelToSlider(label: UILabel, slider: UISlider) {
-      // TODO: round to 5 algo
-      label.int = Int(slider.value)
-      label.text = String(label.int)
-    }
-
 // MARK: - GUI Stuff:
 
 class ItemInfo: UITableViewController {

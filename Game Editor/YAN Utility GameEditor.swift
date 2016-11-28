@@ -29,5 +29,15 @@ struct MinMaxValue {
 }
 typealias MMV = MinMaxValue
 
-protocol ViewModel {}
 
+class IntLabel: UILabel {
+
+  var int: Int = -1
+  
+    public func matchToSlider(label: UILabel, slider: UISlider) {
+      // TODO: round to 5 algo
+      int = Int(slider.value)
+      label.text = String(int)
+    }
+
+}
