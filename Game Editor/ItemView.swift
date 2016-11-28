@@ -13,10 +13,10 @@ import UIKit
 
 class ItemView: UITableViewController {
 
-/* Fields: */ var
+/* Fields: */ private var
               // Can I use a dictionary for this?
               // Can use udef.load for this? Followed by = Equipable(loadFrom: )?
-							items				= ["Sword", "Shield"],
+							equipment		= [(name: "Test", key: "Test2")],
 							insertTop		= false,
 							testCounter = 0,
 							testName		= "Item "
@@ -28,15 +28,28 @@ class ItemView: UITableViewController {
 		return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 	}
 
+  private func loadEquipment() {
+    
+    equipment = []
+    for (key, val) in udef.loadEquipmentKeysAsDictVals() {
+      equipment.append((key, val))
+    }
+    if equipment.isEmpty { // Makes sure that we have a key to load for didSelect():
+      let ourOnlyItem = globalEquipItemStuff.defaultItem()
+        ourOnlyItem.saveToUD()
+      
+      equipment.append((ourOnlyItem.name, ourOnlyItem.key()))
+    
+  }
 	// To the bottom:
-	@IBAction func addItem(_ sender: Any) {
-		testCounter += 1
-		let newItem = testName + "\(testCounter)"
-		items.append(newItem)
-
-		let newPath = IndexPath(row: (items.count - 1), section: 0)
-		tableView.insertRows(at: [newPath], with: .automatic)
-	}
+//	@IBAction func addItem(_ sender: Any) {
+//		testCounter += 1
+//		let newItem = testName + "\(testCounter)"
+//		items.append(newItem)
+//
+//		let newPath = IndexPath(row: (items.count - 1), section: 0)
+//		tableView.insertRows(at: [newPath], with: .automatic)
+//	}
 
 
 /* MARK: - Overrides: */
@@ -47,13 +60,13 @@ class ItemView: UITableViewController {
 
 	/// didSelectRow()
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		print( items[indexPath.row] )
+		print( equipment[indexPath.row] )
 	}
 
 	/// makeRows()
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
 		-> Int {
-			return items.count;
+      return equipment.count;
 	}
 
 	/// grabCellAtRow()
@@ -61,7 +74,7 @@ class ItemView: UITableViewController {
 		-> UITableViewCell {
 
 			let cell = grabCell(indexPath: indexPath)
-			cell.textLabel?.text = items[indexPath.row]
+			cell.textLabel?.text = equipment[indexPath.row].name
 
 			return cell
 	}

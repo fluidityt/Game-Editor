@@ -65,8 +65,9 @@ extension udef {
     
     for (key, val) in UserDefaults.standard.dictionaryRepresentation() {
       if key.contains(itemKey) {
-        let v = val as! NSDictionary
-        returnMatchedDict[v.value(forKey: "name") as! String] = key
+        let val2 = val as! NSDictionary
+        let name = val2.value(forKey: "name") as! String
+        returnMatchedDict[name] = key // Our desired format: ["Sword": "Ziggy->Sword
       }
     }
     
