@@ -152,6 +152,10 @@ extension Equipable {
       level = intVal( "level" )
     }
   }
+  
+  static func loadFromKey(_ key: String) -> Equipable? {
+    return Equipable(loadFromName: nil, forSlot: nil, loadFromKey: key)
+  }
 }
 
 // MARK: Utility:

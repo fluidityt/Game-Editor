@@ -29,9 +29,8 @@ class ItemView: UITableViewController {
               // Can I use a dictionary for this?
               // Can use udef.load for this? Followed by = Equipable(loadFrom: )?
 							equipment		= [(name: "Crash Inc", key: "Crash Key")],
-							insertTop		= false,
-							testCounter = 0,
-							testName		= "Item "
+							insertTop		= false
+
 
 
 /* MARK: Funcs: */
@@ -63,8 +62,8 @@ class ItemView: UITableViewController {
 
 	/// didSelectRow()
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    globalEquipItemStuff.item = Equipable(loadFromName: nil, forSlot: nil,
-                                          loadFromKey: udef.udKey + equipment[indexPath.row].key)
+    globalEquipItemStuff.item = Equipable.loadFromKey( udef.udKey + equipment[indexPath.row].key )
+    
     let nextVC = UIStoryboard(name: "item2", bundle: nil).instantiateViewController(withIdentifier: "Item Info") as! UITableViewController
     present(nextVC, animated: true, completion: nil)
 	}
