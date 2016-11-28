@@ -50,13 +50,13 @@ class ItemView: UITableViewController {
 		print( items[indexPath.row] )
 	}
 
-	/// getNumRows()
+	/// makeRows()
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
 		-> Int {
 			return items.count;
 	}
 
-	/// getCellAtRow()
+	/// grabCellAtRow()
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
 		-> UITableViewCell {
 

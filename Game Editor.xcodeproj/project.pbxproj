@@ -154,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				C1476A681DE53A3400200925 /* junk */,
-				C1476A651DE50F2C00200925 /* Utilyt */,
+				C1476A651DE50F2C00200925 /* good */,
 			);
 			path = "Game Editor";
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 			path = "Game EditorTests";
 			sourceTree = "<group>";
 		};
-		C1476A651DE50F2C00200925 /* Utilyt */ = {
+		C1476A651DE50F2C00200925 /* good */ = {
 			isa = PBXGroup;
 			children = (
 				C1E0E7201DE41DD7006D561B /* item2.storyboard */,
@@ -176,7 +176,7 @@
 				C1E0E71C1DE40D63006D561B /* ItemInfo.swift */,
 				C1476A661DE50F5800200925 /* YAN Utility GameEditor.swift */,
 			);
-			name = Utilyt;
+			name = good;
 			sourceTree = "<group>";
 		};
 		C1476A681DE53A3400200925 /* junk */ = {
