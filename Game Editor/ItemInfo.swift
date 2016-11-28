@@ -40,7 +40,7 @@ class ItemInfo: UITableViewController {
    @IBOutlet weak var <#name#>Val:    UILabel!
    @IBOutlet weak var <#name#>Slider: UISlider!
    @IBAction func <#name#>Slide( _ sender: UISlider ) {
-   matchToSlider(label: <#name#>Val, slider: <#name#>Slider)
+   matchLabelToSlider(label: <#name#>Val, slider: <#name#>Slider)
    }
    
  */
@@ -52,55 +52,55 @@ class ItemInfo: UITableViewController {
   @IBOutlet weak var protVal:    UILabel!
   @IBOutlet weak var protSlider: UISlider!
   @IBAction func protSlide( _ sender: UISlider ) {
-    matchToSlider(slider: protSlider)
+    matchLabelToSlider(label: protVal, slider: protSlider)
   }
   
   // MDEF:
   @IBOutlet weak var mdefVal:    UILabel!
   @IBOutlet weak var mdefSlider: UISlider!
 	@IBAction func mdefSlide( _ sender: UISlider ) {
-    matchToSlider(label: mdefVal, slider: mdefSlider)
+    matchLabelToSlider(label: mdefVal, slider: mdefSlider)
 	}
     // HP:
 	@IBOutlet weak var hpVal:    UILabel!
 	@IBOutlet weak var hpSlider: UISlider!
 	@IBAction func hpSlide( _ sender: UISlider ) {
-    matchToSlider(label: hpVal, slider: hpSlider)
+    matchLabelToSlider(label: hpVal, slider: hpSlider)
 	}
  
   // MP:
   @IBOutlet weak var mpVal:    UILabel!
   @IBOutlet weak var mpSlider: UISlider!
 	@IBAction func mpSlide( _ sender: UISlider ) {
-    matchToSlider(label: mpVal, slider: mpSlider)
+    matchLabelToSlider(label: mpVal, slider: mpSlider)
 	}
 
   // AP:
   @IBOutlet weak var apVal:    UILabel!
   @IBOutlet weak var apSlider: UISlider!
 	@IBAction func apSlide( _ sender: UISlider ) {
-    matchToSlider(label: apVal, slider: apSlider)
+    matchLabelToSlider(label: apVal, slider: apSlider)
 	}
 
   // MPOW:
   @IBOutlet weak var mpowVal:    UILabel!
   @IBOutlet weak var mpowSlider: UISlider!
 	@IBAction func mpowSlide( _ sender: UISlider ) {
-    matchToSlider(label: mpowVal, slider: mpowSlider)
+    matchLabelToSlider(label: mpowVal, slider: mpowSlider)
 	}
 
 	// COST:
 	@IBOutlet weak var costVal:    UILabel!
 	@IBOutlet weak var costSlider: UISlider!
 	@IBAction func costSlide( _ sender: UISlider ) {
-		matchToSlider(label: costVal, slider: costSlider)
+		matchLabelToSlider(label: costVal, slider: costSlider)
  }
 
  // LEVEL:
  @IBOutlet weak var levelVal:    UILabel!
  @IBOutlet weak var levelSlider: UISlider!
  @IBAction func levelSlide( _ sender: UISlider ) {
- matchToSlider(label: levelVal, slider: levelSlider)
+ matchLabelToSlider(label: levelVal, slider: levelSlider)
  }
   
 }
