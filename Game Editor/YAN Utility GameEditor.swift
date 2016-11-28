@@ -21,7 +21,7 @@ struct MinMaxValue {
 		val = val2
 	}
 
-	func setSliderToMinMaxVal(slider: inout UISlider) {
+	func setSliderToMinMaxVal(_ slider: UISlider) {
 		slider.maximumValue = max
 		slider.minimumValue = min
 		slider.value				= val
@@ -34,10 +34,10 @@ class IntLabel: UILabel {
 
   var int: Int = -1
   
-    public func matchToSlider(label: UILabel, slider: UISlider) {
+    public func matchToSlider(_ slider: UISlider) {
       // TODO: round to 5 algo
       int = Int(slider.value)
-      label.text = String(int)
+      text = String(int)
     }
 
 }
