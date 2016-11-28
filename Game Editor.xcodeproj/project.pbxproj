@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C100FFB71DEBE62500864C30 /* EquipableItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C0481DE70701009BB4E4 /* EquipableItems.swift */; };
+		C100FFB81DEBE63100864C30 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EEBAD1DE7E1B500BC40F7 /* utilities.swift */; };
 		C1071FEF1DEAA2E600DB6D36 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C1071FEE1DEAA2E600DB6D36 /* TODO.rtf */; };
 		C13EEBAE1DE7E1B500BC40F7 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EEBAD1DE7E1B500BC40F7 /* utilities.swift */; };
 		C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F62421DE3E7CA0049E10D /* ItemView.swift */; };
@@ -341,11 +343,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C100FFB71DEBE62500864C30 /* EquipableItems.swift in Sources */,
 				C1E0E71D1DE40D63006D561B /* ItemInfo.swift in Sources */,
 				C1E0E71F1DE419B7006D561B /* randomVC.swift in Sources */,
 				C1E0E7191DE40115006D561B /* ffs.swift in Sources */,
 				C1E0E7171DE3F1C8006D561B /* AppDelegate.swift in Sources */,
 				C1476A671DE50F5800200925 /* YAN Utility GameEditor.swift in Sources */,
+				C100FFB81DEBE63100864C30 /* utilities.swift in Sources */,
 				C13F62431DE3E7CA0049E10D /* ItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

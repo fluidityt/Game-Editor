@@ -20,19 +20,3 @@ struct MinMaxValue {
 	}
 }
 typealias MMV = MinMaxValue
-
-
-class IntLabel: UILabel {
-
-  var int: Int = -1
-}
-
-extension UISlider {
-  
-    func matchToLabel(label: IntLabel) {
-      // TODO: round to 5 algo
-      label.int = Int(value)
-      label.text = String(label.int)
-    }
-
-}
