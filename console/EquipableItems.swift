@@ -47,10 +47,10 @@ enum Keys: String {
 struct Equipable {
 
 	/* Properties: */
-	var
-			name: String,
-			slot: Slot,
-			prot: Int,
+	var name: String { didSet { if name == "" { name = "empty" } } }
+  
+  var slot: Slot,
+      prot: Int,
 			mdef: Int,
 			hp:   Int,
 			mp:   Int,

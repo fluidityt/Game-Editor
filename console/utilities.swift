@@ -22,6 +22,15 @@ enum udef {
 
 	static var udKey = "Ziggly: "
 
+  private static func ziggly(from: String) -> String {
+    var improperZigKey = from
+    while from.contains(udKey) {
+      improperZigKey = improperZigKey.remove(udKey)
+    }
+    
+    let properZigKey = udKey + improperZigKey
+    return properZigKey
+  }
 	/** Saves values with easy to find id: */
 	static func set( _ val: Any?, _ forKey: String ) {
 		let ud = UserDefaults.standard

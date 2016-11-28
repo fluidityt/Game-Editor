@@ -105,7 +105,13 @@ class ItemInfo: UITableViewController {
   fileprivate func nameDidLoad() {
     nameVal.text = itemModSave.name
   }
-  @IBAction func nameChange(_ sender: UITextField) {
+  fileprivate func nameDidSave() {
+
+    if itemModSave.name != nameVal.text {
+      // Delete old key: with nil?
+      pri
+      UserDefaults.standard.set(nil, forKey: itemModSave.key())
+    
     itemModSave.name = nameVal.text!
   }
   
@@ -208,6 +214,7 @@ class ItemInfo: UITableViewController {
 // MARK: - Buttons:
   
   @IBAction func clickSave(_ sender: UIButton) {
+    nameDidSave()
     itemModSave.saveToUD()
     udef.printl(itemModSave.key())
   }
@@ -221,7 +228,7 @@ class ItemInfo: UITableViewController {
     }
     
     
-    
+    nameDidLoad()
     protDidLoad()
     mdefDidLoad()
     hpDidLoad()
@@ -243,6 +250,7 @@ extension ItemInfo {
     
     super.viewDidLoad()
     
+    nameDidLoad()
     protDidLoad()
     mdefDidLoad()
     hpDidLoad()
