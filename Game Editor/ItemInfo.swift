@@ -6,8 +6,10 @@
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
 
-// FIXME: Make the labels editText
-// FIXME: Make a save function, but we need data from the other controller.
+
+
+// TODO: Make the labels editText
+// NOTE: If you change the item to a class, then we will need to refactor and avoid crash..
 
 import Foundation
 import UIKit
@@ -32,7 +34,7 @@ fileprivate func setSlider(_ slider: UISlider,
                          min1: Float = 1,
                          max1: Float = 50,
                          itemValue: Int) {
-    print(item)
+
     // getScale():
     func getScale(_ level: Int,
                   min2: Float,
@@ -62,7 +64,7 @@ fileprivate func setSlider(_ slider: UISlider,
 
 // MARK: - GUI Stuff:
 
-  
+// NOTE: Modify this in the previous VC .didSelectCell before .presentView or whatever...
 enum globalEquipItemStuff {
   
   static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
@@ -79,13 +81,15 @@ class ItemInfo: UITableViewController {
   /*
    
    // <#NAME#>:
-   @IBOutlet weak var <#name#>Val:    IntLabel! { didSet { item.<#name#> = <#name#>.int } }
+   @IBOutlet weak var <#name#>Val:    IntLabel!
    @IBOutlet weak var <#name#>Slider: UISlider!
    @IBAction func <#name#>Slide( _ sender: UISlider ) {
-     sender.matchToLabel(label: <#name#>Val)
+     sender.matchLabelToSelf(label: <#name#>Val)
+     itemModSave.<#name#> = <#name#>Val.int
    }
    fileprivate func <#name#>DidLoad() {
-     setSlider(<#name#>Slider, fromItem: item, itemValue: item.<#name#>)
+     setSlider(<#name#>Slider, fromItem: itemModSave, itemValue: itemModSave.<#name#>)
+     <#name#>Slider.matchLabelToSelf(label: <#name#>Val)
    }
  
  */
@@ -108,44 +112,95 @@ class ItemInfo: UITableViewController {
   // MDEF:
   @IBOutlet weak var mdefVal:    IntLabel!
   @IBOutlet weak var mdefSlider: UISlider!
-  @IBAction func mdefSlide( _ sender: UISlider ) { sender.matchLabelToSelf(label: mdefVal) }
-  //fileprivate func mdefDidLoad() { setSlider(mdefSlider, fromItem: item, itemValue: item.mdef) }
+  @IBAction func mdefSlide( _ sender: UISlider ) {
+    sender.matchLabelToSelf(label: mdefVal)
+    itemModSave.mdef = mdefVal.int
+  }
+  fileprivate func mdefDidLoad() {
+    setSlider(mdefSlider, fromItem: itemModSave, itemValue: itemModSave.mdef)
+    mdefSlider.matchLabelToSelf(label: mdefVal)
+  }
   
   // HP:
   @IBOutlet weak var hpVal:    IntLabel!
   @IBOutlet weak var hpSlider: UISlider!
-  @IBAction func hpSlide( _ sender: UISlider ) { sender.matchLabelToSelf(label: hpVal)	}
-  //fileprivate func hpDidLoad() { setSlider(hpSlider, fromItem: item, itemValue: item.hp) }
+  @IBAction func hpSlide( _ sender: UISlider ) {
+     sender.matchLabelToSelf(label: hpVal)
+     itemModSave.hp = hpVal.int
+   }
+   fileprivate func hpDidLoad() {
+     setSlider(hpSlider, fromItem: itemModSave, itemValue: itemModSave.hp)
+     hpSlider.matchLabelToSelf(label: hpVal)
+   }
   
   // MP:
   @IBOutlet weak var mpVal:    IntLabel!
   @IBOutlet weak var mpSlider: UISlider!
-  @IBAction func mpSlide( _ sender: UISlider ) {    sender.matchLabelToSelf(label: mpVal)  }
-  //fileprivate func mpDidLoad() { setSlider(mpSlider, fromItem: item, itemValue: item.mp) }
+  @IBAction func mpSlide( _ sender: UISlider ) {
+     sender.matchLabelToSelf(label: mpVal)
+     itemModSave.mp = mpVal.int
+   }
+   fileprivate func mpDidLoad() {
+     setSlider(mpSlider, fromItem: itemModSave, itemValue: itemModSave.mp)
+     mpSlider.matchLabelToSelf(label: mpVal)
+   }
   
   // AP:
   @IBOutlet weak var apVal:    IntLabel!
   @IBOutlet weak var apSlider: UISlider!
-  @IBAction func apSlide( _ sender: UISlider ) {    sender.matchLabelToSelf(label: apVal)  }
-  //fileprivate func apDidLoad() { setSlider(apSlider, fromItem: item, itemValue: item.ap) }
+  @IBAction func apSlide( _ sender: UISlider ) {
+     sender.matchLabelToSelf(label: apVal)
+     itemModSave.ap = apVal.int
+   }
+   fileprivate func apDidLoad() {
+     setSlider(apSlider, fromItem: itemModSave, itemValue: itemModSave.ap)
+     apSlider.matchLabelToSelf(label: apVal)
+   }
   
   // MPOW:
   @IBOutlet weak var mpowVal:    IntLabel!
   @IBOutlet weak var mpowSlider: UISlider!
-  @IBAction func mpowSlide( _ sender: UISlider ) {    sender.matchLabelToSelf(label: mpowVal)  }
-  //fileprivate func mpowDidLoad() { setSlider(mpowSlider, fromItem: item, itemValue: item.mpow) }
+  @IBAction func mpowSlide( _ sender: UISlider ){
+     sender.matchLabelToSelf(label: mpowVal)
+     itemModSave.mpow = mpowVal.int
+   }
+   fileprivate func mpowDidLoad() {
+     setSlider(mpowSlider, fromItem: itemModSave, itemValue: itemModSave.mpow)
+     mpowSlider.matchLabelToSelf(label: mpowVal)
+   }
 
   // COST:
   @IBOutlet weak var costVal:    IntLabel!
   @IBOutlet weak var costSlider: UISlider!
-  @IBAction func costSlide( _ sender: UISlider ) {    sender.matchLabelToSelf(label: costVal)  }
-  //fileprivate func costDidLoad() { setSlider(costSlider, fromItem: item, itemValue: item.cost) }
+  @IBAction func costSlide( _ sender: UISlider ){
+     sender.matchLabelToSelf(label: costVal)
+     itemModSave.cost = costVal.int
+   }
+   fileprivate func costDidLoad() {
+     setSlider(costSlider, fromItem: itemModSave, itemValue: itemModSave.cost)
+     costSlider.matchLabelToSelf(label: costVal)
+   }
   
   // LEVEL:
   @IBOutlet weak var levelVal:    IntLabel!
   @IBOutlet weak var levelSlider: UISlider!
-  @IBAction func levelSlide( _ sender: UISlider ) {    sender.matchLabelToSelf(label: levelVal)  }
-  //fileprivate func levelDidLoad() { setSlider(levelSlider, fromItem: item, itemValue: item.level) }
+  @IBAction func levelSlide( _ sender: UISlider ){
+     sender.matchLabelToSelf(label: levelVal)
+     itemModSave.level = levelVal.int
+   }
+   fileprivate func levelDidLoad() {
+     setSlider(levelSlider, fromItem: itemModSave, itemValue: itemModSave.level)
+     levelSlider.matchLabelToSelf(label: levelVal)
+   }
+  
+// MARK: - Buttons:
+  
+  @IBAction func clickSave(_ sender: UIButton) {
+    itemModSave.saveToUD()
+    udef.printl(itemModSave.key())
+  }
+  
+  
 }
 
 // MARK: - View stuff:
@@ -157,14 +212,14 @@ extension ItemInfo {
   		super.viewDidLoad()
     
     protDidLoad()
-    /*mdefDidLoad()
+    mdefDidLoad()
     hpDidLoad()
     mpDidLoad()
     apDidLoad()
     mpowDidLoad()
     costDidLoad()
     levelDidLoad()
-    */
+    
   }
 }
 

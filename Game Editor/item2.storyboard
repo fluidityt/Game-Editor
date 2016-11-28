@@ -53,14 +53,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.84658333330000002" green="0.83363540709999995" blue="0.8057795794" alpha="1" colorSpace="calibratedRGB"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6wE-M9-nGl">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="dbz-2E-x3o">
                             <rect key="frame" x="0.0" y="540" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Back"/>
-                            <connections>
-                                <segue destination="NxL-q2-9Bu" kind="show" id="2xK-yE-uzn"/>
-                            </connections>
-                        </button>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wE-M9-nGl">
+                                    <rect key="frame" x="0.0" y="0.0" width="162" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Back"/>
+                                    <connections>
+                                        <segue destination="NxL-q2-9Bu" kind="show" id="2xK-yE-uzn"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsz-Ow-MlA">
+                                    <rect key="frame" x="170" y="6" width="142" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Save"/>
+                                    <connections>
+                                        <action selector="clickSave:" destination="tvM-ZU-MDY" eventType="touchUpInside" id="0fW-9y-GDf"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="Strings:" id="EgF-HD-ak5">
                                 <cells>
@@ -492,7 +507,7 @@
                 </tableViewCell>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRW-WH-LNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="241.52923538230885"/>
+            <point key="canvasLocation" x="1546.875" y="240.8450704225352"/>
         </scene>
     </scenes>
 </document>
