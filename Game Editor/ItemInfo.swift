@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
+var gInt = 0
+
 // MARK: Util stuff:
 
     public extension UILabel {
         
-      var int: Int { get {return self.int} set {} }
-    }
+      var int: Int { 
 
     public func matchLabelToSlider(label: UILabel, slider: UISlider) {
       // TODO: round to 5 algo
@@ -52,7 +53,7 @@ class ItemInfo: UITableViewController {
    // <#NAME#>:
    @IBOutlet weak var <#name#>Val:    UILabel!
    @IBOutlet weak var <#name#>Slider: UISlider!
-   @IBAction func <#name#>Slide( _ sender: Any ) {
+   @IBAction func <#name#>Slide( _ sender: UISlider ) {
    matchLabelToSlider(label: <#name#>Val, slider: <#name#>Slider)
    }
    
@@ -64,56 +65,55 @@ class ItemInfo: UITableViewController {
   // PROT:
   @IBOutlet weak var protVal:    UILabel!
   @IBOutlet weak var protSlider: UISlider!
-  @IBAction func protSlide( _ sender: Any ) {
+  @IBAction func protSlide( _ sender: UISlider ) {
     matchLabelToSlider(label: protVal, slider: protSlider)
   }
   
   // MDEF:
   @IBOutlet weak var mdefVal:    UILabel!
   @IBOutlet weak var mdefSlider: UISlider!
-	@IBAction func mdefSlide( _ sender: Any ) {
+	@IBAction func mdefSlide( _ sender: UISlider ) {
     matchLabelToSlider(label: mdefVal, slider: mdefSlider)
 	}
-
-  // HP:
+    // HP:
 	@IBOutlet weak var hpVal:    UILabel!
 	@IBOutlet weak var hpSlider: UISlider!
-	@IBAction func hpSlide( _ sender: Any ) {
+	@IBAction func hpSlide( _ sender: UISlider ) {
     matchLabelToSlider(label: hpVal, slider: hpSlider)
 	}
  
   // MP:
   @IBOutlet weak var mpVal:    UILabel!
   @IBOutlet weak var mpSlider: UISlider!
-	@IBAction func mpSlide( _ sender: Any ) {
+	@IBAction func mpSlide( _ sender: UISlider ) {
     matchLabelToSlider(label: mpVal, slider: mpSlider)
 	}
 
   // AP:
   @IBOutlet weak var apVal:    UILabel!
   @IBOutlet weak var apSlider: UISlider!
-	@IBAction func apSlide( _ sender: Any ) {
+	@IBAction func apSlide( _ sender: UISlider ) {
     matchLabelToSlider(label: apVal, slider: apSlider)
 	}
 
   // MPOW:
   @IBOutlet weak var mpowVal:    UILabel!
   @IBOutlet weak var mpowSlider: UISlider!
-	@IBAction func mpowSlide( _ sender: Any ) {
+	@IBAction func mpowSlide( _ sender: UISlider ) {
     matchLabelToSlider(label: mpowVal, slider: mpowSlider)
 	}
 
 	// COST:
 	@IBOutlet weak var costVal:    UILabel!
 	@IBOutlet weak var costSlider: UISlider!
-	@IBAction func costSlide( _ sender: Any ) {
+	@IBAction func costSlide( _ sender: UISlider ) {
 		matchLabelToSlider(label: costVal, slider: costSlider)
  }
 
  // LEVEL:
  @IBOutlet weak var levelVal:    UILabel!
  @IBOutlet weak var levelSlider: UISlider!
- @IBAction func levelSlide( _ sender: Any ) {
+ @IBAction func levelSlide( _ sender: UISlider ) {
  matchLabelToSlider(label: levelVal, slider: levelSlider)
  }
   
@@ -124,7 +124,7 @@ class ItemInfo: UITableViewController {
 extension ItemInfo {
   
   // This gets updated in the previous view controller's .didSelectCell()
-  static var itemToWorkOn: Item35 { get {return self.itemToWorkOn} set {} }
+  static var itemToWorkOn = Item35.init(name: "Bow", slot: "hands", prot: 0, mdef: 0, hp: 0, mp: 0, ap: 25, mpow: 0, cost: 250, level: 1)
   
   override func viewDidLoad() {
 

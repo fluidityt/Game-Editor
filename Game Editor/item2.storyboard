@@ -43,7 +43,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5E9-05-9zc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="242"/>
+            <point key="canvasLocation" x="696" y="241"/>
         </scene>
         <!--Item Info-->
         <scene sceneID="byd-VG-C8n">
@@ -54,7 +54,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.84658333330000002" green="0.83363540709999995" blue="0.8057795794" alpha="1" colorSpace="calibratedRGB"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6wE-M9-nGl">
-                            <rect key="frame" x="0.0" y="496" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="540" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Back"/>
                             <connections>
@@ -139,7 +139,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPLATE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7N-6U-xW9" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PROT:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7N-6U-xW9" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
                                                     <rect key="frame" x="29" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -155,6 +155,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="pYX-WE-iUd" userLabel="nameSlider">
                                                     <rect key="frame" x="220" y="6" width="105" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="protSlide:" destination="tvM-ZU-MDY" eventType="valueChanged" id="WWi-ci-HpF"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -170,7 +173,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPLATE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y2-r1-uXy" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MDEF:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y2-r1-uXy" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
                                                     <rect key="frame" x="29" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -186,6 +189,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="0QR-dZ-8L7" userLabel="nameSlider">
                                                     <rect key="frame" x="220" y="6" width="105" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="mdefSlide:" destination="tvM-ZU-MDY" eventType="valueChanged" id="PVr-eD-TNi"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -235,7 +241,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPLATE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okY-Zg-FVf" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MP:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okY-Zg-FVf" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
                                                     <rect key="frame" x="29" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -251,6 +257,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="5GG-LJ-jUM" userLabel="nameSlider">
                                                     <rect key="frame" x="220" y="6" width="105" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="mpSlide:" destination="tvM-ZU-MDY" eventType="valueChanged" id="FJJ-NO-Z8U"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -266,7 +275,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPLATE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypn-q1-vox" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AP:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypn-q1-vox" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
                                                     <rect key="frame" x="29" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -282,6 +291,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="D7G-j1-woe" userLabel="nameSlider">
                                                     <rect key="frame" x="220" y="6" width="105" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="apSlide:" destination="tvM-ZU-MDY" eventType="valueChanged" id="Zil-D4-VsS"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -297,7 +309,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPLATE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46h-UH-9NX" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MPOW:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46h-UH-9NX" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
                                                     <rect key="frame" x="29" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -313,6 +325,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="Hbi-9L-Shr" userLabel="nameSlider">
                                                     <rect key="frame" x="220" y="6" width="105" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="mpowSlide:" destination="tvM-ZU-MDY" eventType="valueChanged" id="wGo-MX-ucX"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -321,7 +336,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AHd-l6-gbp" userLabel="COST">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AHd-l6-gbp" userLabel="Cost Cell">
                                         <rect key="frame" x="0.0" y="452" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AHd-l6-gbp" id="ExE-9d-Ud0" userLabel="Cost View">
@@ -355,6 +370,40 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="C6g-Wf-6Ec" userLabel="Level Cell">
+                                        <rect key="frame" x="0.0" y="496" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C6g-Wf-6Ec" id="yRW-cV-b1C" userLabel="Name View">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LEVEL:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk6-FC-CmG" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
+                                                    <rect key="frame" x="29" y="11" width="100" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2za-b2-Sha" userLabel="nameVal">
+                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="sUr-Bd-Jab" userLabel="nameSlider">
+                                                    <rect key="frame" x="220" y="6" width="105" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="levelSlide:" destination="tvM-ZU-MDY" eventType="valueChanged" id="uVQ-Bp-jSF"/>
+                                                    </connections>
+                                                </slider>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2za-b2-Sha" firstAttribute="centerX" secondItem="yRW-cV-b1C" secondAttribute="centerX" id="8OS-rS-l2n"/>
+                                                <constraint firstItem="2za-b2-Sha" firstAttribute="centerY" secondItem="yRW-cV-b1C" secondAttribute="centerY" id="X2T-9c-gKj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -364,10 +413,22 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="apSlider" destination="D7G-j1-woe" id="cfl-jb-JEG"/>
+                        <outlet property="apVal" destination="K8t-Im-SDh" id="2IQ-CW-bQl"/>
                         <outlet property="costSlider" destination="rPj-ET-cjB" id="jdy-QK-F9N"/>
                         <outlet property="costVal" destination="H5R-Zn-dGf" id="s1M-bN-cZq"/>
                         <outlet property="hpSlider" destination="ckh-p6-MF5" id="ECX-o0-yXQ"/>
                         <outlet property="hpVal" destination="gub-9l-0Z5" id="z3B-il-N30"/>
+                        <outlet property="levelSlider" destination="sUr-Bd-Jab" id="YK3-Zu-aO4"/>
+                        <outlet property="levelVal" destination="2za-b2-Sha" id="CtR-km-dxE"/>
+                        <outlet property="mdefSlider" destination="0QR-dZ-8L7" id="C56-Et-qFN"/>
+                        <outlet property="mdefVal" destination="cJ8-Y3-QAW" id="w5S-Bg-7ee"/>
+                        <outlet property="mpSlider" destination="5GG-LJ-jUM" id="Wls-xw-QUo"/>
+                        <outlet property="mpVal" destination="Afs-sT-3DU" id="YFy-l1-sJo"/>
+                        <outlet property="mpowSlider" destination="Hbi-9L-Shr" id="GjG-Mg-9td"/>
+                        <outlet property="mpowVal" destination="Sdd-0o-PmB" id="YJr-Xo-15N"/>
+                        <outlet property="protSlider" destination="pYX-WE-iUd" id="LAS-RU-Kh4"/>
+                        <outlet property="protVal" destination="Ibg-LG-1kw" id="NGQ-hy-4tC"/>
                     </connections>
                 </tableViewController>
                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pL7-cs-B8A" userLabel="STR TEMPLATE">
@@ -384,7 +445,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hht-Pz-hl8" userLabel=".. Name">
+                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hht-Pz-hl8" userLabel="ED">
                                 <rect key="frame" x="137" y="6" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.84658333330000002" green="0.84658333330000002" blue="0.84658333330000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
@@ -401,24 +462,24 @@
                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nf2-KR-uM9" userLabel="INT TEMPLATE">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nf2-KR-uM9" id="bLV-8D-2Lu" userLabel="Name View">
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nf2-KR-uM9" id="bLV-8D-2Lu" userLabel="View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPLATE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4av-98-MwJ" userLabel="nameTag" colorLabel="IBBuiltInLabel-Blue">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPLATE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4av-98-MwJ" userLabel="Tag" colorLabel="IBBuiltInLabel-Blue">
                                 <rect key="frame" x="29" y="11" width="100" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akn-qU-e0a" userLabel="nameVal">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akn-qU-e0a" userLabel="Val">
                                 <rect key="frame" x="137" y="11" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="oIg-aD-Rhw" userLabel="nameSlider">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="oIg-aD-Rhw" userLabel="Slider">
                                 <rect key="frame" x="220" y="6" width="105" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
