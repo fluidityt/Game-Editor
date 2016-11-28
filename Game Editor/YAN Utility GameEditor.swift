@@ -1,11 +1,3 @@
-//
-//  YAN Utility GameEditor.swift
-//  Game Editor
-//
-//  Created by Dude Guy on 11/22/16.
-//  Copyright © 2016 Dude Guy. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -33,11 +25,14 @@ typealias MMV = MinMaxValue
 class IntLabel: UILabel {
 
   var int: Int = -1
+}
+
+extension UISlider {
   
-    public func matchToSlider(label: UILabel, slider: UISlider) {
+    func matchToLabel(label: IntLabel) {
       // TODO: round to 5 algo
-      int = Int(slider.value)
-      label.text = String(int)
+      label.int = Int(value)
+      label.text = String(label.int)
     }
 
 }
