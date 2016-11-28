@@ -52,7 +52,7 @@ class ItemInfo: UITableViewController {
   @IBOutlet weak var protVal:    UILabel!
   @IBOutlet weak var protSlider: UISlider!
   @IBAction func protSlide( _ sender: UISlider ) {
-    matchToSlider(slider: protSlider)
+    matchToSlider(protSlider)
   }
   
   // MDEF:
