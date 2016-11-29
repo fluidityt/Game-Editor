@@ -16,14 +16,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.84658333330000002" green="0.83363540709999995" blue="0.8057795794" alpha="1" colorSpace="calibratedRGB"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mwk-4C-nfT">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="5TV-vA-B0A" userLabel="Buttons View">
                             <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <segue destination="tvM-ZU-MDY" kind="presentation" id="GJp-3E-Ka3"/>
-                            </connections>
-                        </button>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPK-nQ-is1">
+                                    <rect key="frame" x="0.0" y="0.0" width="133" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.90992030199999996" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" title="Delete Mode"/>
+                                    <connections>
+                                        <action selector="clickDeleteMode:" destination="NxL-q2-9Bu" eventType="touchUpInside" id="YBQ-0k-nBM"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jht-ho-ph7">
+                                    <rect key="frame" x="191" y="0.0" width="110" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.83664534400000001" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" title="New"/>
+                                    <connections>
+                                        <action selector="clickNew:" destination="NxL-q2-9Bu" eventType="touchUpInside" id="mPK-bH-Pq6"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="fxK-od-Uej">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -53,7 +70,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.84658333330000002" green="0.83363540709999995" blue="0.8057795794" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="dbz-2E-x3o">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="dbz-2E-x3o" userLabel="Buttons View">
                             <rect key="frame" x="0.0" y="540" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
