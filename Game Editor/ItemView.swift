@@ -62,34 +62,42 @@ class ItemView: UITableViewController {
     loadEquipment()
 	}
 
+  
   // MARK: - didSelectRow():
   
   private var isDeleteMode = false
   
   @IBAction func clickDeleteMode(_ sender: Any) {
+    // FIXME: Import toggle()
+    isDeleteMode
+    ? (isDeleteMode = false)
+    : (isDeleteMode = true)
   }
+  
   private func doDeleteMode(selectedRow: Int) {
   }
+  
   private func doRegularMode(selectedRow: Int) {
   
-    globalEquipItemStuff.item = Equipable.loadFromKey( ziggly(equipment[indexPath.row].key) )
+    globalEquipItemStuff.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
     presentVC(named: "Item Info")
   }
   
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     isDeleteMode
-    ? doDeleteMode(selectedRow: indexPath.row)
-    : doRegularMode(selectedRow: indexPath.row)
-    
+    ? doDeleteMode ( selectedRow: indexPath.row )
+    : doRegularMode( selectedRow: indexPath.row )
 	}
 
-    // MARK: - numberOfRowsInSection:
+  
+  // MARK: - numberOfRowsInSection:
     
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
 		-> Int {
       return equipment.count;
 	}
 
+  
 // MARK: - cellForRowAt():
     
 func grabCell(indexPath: IndexPath) -> UITableViewCell {
