@@ -32,21 +32,10 @@ extension UIViewController {
   }
 }
 
-func toast(title: String = "Toast", message: String, duration: Int = 2, viewController vc: UIViewController) {
-  
-    Toast(inViewController: vc, title: title, message: message, duration: duration).showAlertMsg()
-  
-}
+
 // MARK: - Class:
 
 class ItemView: UITableViewController {
-  
-  
-
-  
-  
-  
-  
   
   @IBOutlet var itemViewTable: UITableView!
   
@@ -55,7 +44,7 @@ class ItemView: UITableViewController {
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {
     // FIXME: Hotfixed... change to let and not a UUID:
     var newItem = globalEquipItemStuff.newItem()
-    newItem.name += UUID().uuidString
+    newItem.name += ( " item with ID:  " + UUID().uuidString )
     newItem.saveToUD()
     equipArray.append( (name: newItem.name, key: newItem.key()) )
   }
@@ -63,15 +52,15 @@ class ItemView: UITableViewController {
   
 // MARK: - viewDidLoad:
   
-  private func loadEquipment() {
-    equipment = []                                                                        // <- We need fresh data.
-    for (key, val) in udef.loadEquipmentKeysAsDictVals() { equipment.append((key, val)) } // <- Fresh data :)
-    if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
-  }
 
 	override func viewDidLoad() {
-		super.viewDidLoad()
-    loadEquipment()                                                                       // <- Loads all of our `standard` data into `equipment`.
+    super.viewDidLoad()
+
+    loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
+      equipment = []                                                                        // <- We need fresh data.
+      for (key, val) in udef.loadEquipmentKeysAsDictVals() { equipment.append((key, val)) } // <- Fresh data :)
+      if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
+    }
 	}
   
   
@@ -80,45 +69,58 @@ class ItemView: UITableViewController {
   @IBAction func clickNew(_ sender: UIButton) {
       addNewItem(toArray: &equipment)
       itemViewTable.reloadData()
-      let alert = Alerter(inViewController: self)
-      alert.showAlertMsg("Test Alert", message: "This will disappear in ", time: 2)
+      Toast.make(message: "New Item Added!", viewController: self)
   }
 
-  
-// MARK: - didSelectRow():
+
+// MARK: - clickDeleteMode:
   
   private var isDeleteMode = false
   
   @IBAction func clickDeleteMode(_ sender: UIButton) {
     // FIXME: Import toggle()
     isDeleteMode
-    ? (isDeleteMode = false)
-    : (isDeleteMode = true)
+      ? (isDeleteMode = false)
+      : (isDeleteMode = true)
+    
+    equipment = []
+    udef.deleteEquipment()
+    
+    addNewItem(toArray: &equipment)
+    itemViewTable.reloadData()
+    Toast.make(message: "Equipment Deleted!", viewController: self)
   }
   
-  private func doDeleteMode(selectedRow: Int) {
-    // TODO: Stuff
+  
+// MARK: - didSelectRow():
+  
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func doDeleteMode(selectedRow: Int) {
+      // TODO: Stuff
+    }
+    
+    func doRegularMode(selectedRow: Int) {
+      
+      globalEquipItemStuff.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
+      presentVC(named: "Item Info")
+    }
+    
+    doRegularMode(selectedRow: indexPath.row)
+    // FIXME: Fix deletemode
+    /* isDeleteMode
+     ? doDeleteMode ( selectedRow: indexPath.row )
+     : doRegularMode( selectedRow: indexPath.row )
+     */
   }
-  
-  private func doRegularMode(selectedRow: Int) {
-  
-    globalEquipItemStuff.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
-    presentVC(named: "Item Info")
-  }
-  
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    isDeleteMode
-    ? doDeleteMode ( selectedRow: indexPath.row )
-    : doRegularMode( selectedRow: indexPath.row )
-	}
 
   
 // MARK: - numberOfRowsInSection:
     
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
 		-> Int {
-      return equipment.count;
-	}
+      return equipment.count
+  }
 
   
 // MARK: - cellForRowAt():

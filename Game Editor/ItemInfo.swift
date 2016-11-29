@@ -6,13 +6,17 @@
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
 
-// FIXME: I need to set up new / loaded item
+// FIXME: Level slider adjusts ALL values not the relevant ones
+// FIXME: Add a type to items..
+
+// FIXME: Changing level doesn"t change any of the values yet
+// FIXME: Remove keyboard
+
 // FIXME: I need to rig the name / slot and a second TableView that shows teh list of slots then returns a string
-// FIXME: Make the first view controller
 
 // TODO: Make the labels editText
 // TODO: Two VC so I can close the vars?
-// NOTE: If you change the item to a class, then we will need to refactor and avoid crash..
+// FIXME: If you change the item to a class, then we will need to refactor and avoid crash..
 
 import Foundation
 import UIKit
@@ -93,6 +97,8 @@ import UIKit
             static var item: Equipable? { didSet { print("should be a let") } }// Should be a let :{
             
           }
+
+// MARK: - ItemInfo:
 
 class ItemInfo: UITableViewController {
   
@@ -205,12 +211,27 @@ class ItemInfo: UITableViewController {
   @IBOutlet weak var levelVal:    IntLabel!
   @IBOutlet weak var levelSlider: UISlider!
    fileprivate func levelDidLoad() {
-     setSlider(levelSlider, fromItem: itemModSave, itemValue: itemModSave.level)
-     levelSlider.matchLabelToSelf(label: levelVal)
+    levelSlider.minimumValue = 1
+    levelSlider.maximumValue = 5
+    levelSlider.value        = Float(itemModSave.level)
+    levelSlider.matchLabelToSelf(label: levelVal)
    }
+  fileprivate func didLoad() {
+    nameDidLoad()
+    protDidLoad()
+    mdefDidLoad()
+    hpDidLoad()
+    mpDidLoad()
+    apDidLoad()
+    mpowDidLoad()
+    costDidLoad()
+    levelDidLoad()
+  }
   @IBAction func levelSlide( _ sender: UISlider ){
-    sender.matchLabelToSelf(label: levelVal)
+    levelVal.int      = Int(sender.value)
     itemModSave.level = levelVal.int
+    didLoad()
+    
   }
   
 // MARK: - Buttons:
@@ -218,7 +239,7 @@ class ItemInfo: UITableViewController {
   @IBAction func clickSave(_ sender: UIButton) {
     nameDidSave()
     itemModSave.saveToUD()
-    udef.printl(itemModSave.key())
+    Toast.make(message: "Item Saved!", viewController: self)
   }
   
   @IBAction func clickLoad(_ sender: UIButton) {
@@ -241,6 +262,7 @@ class ItemInfo: UITableViewController {
     levelDidLoad()
     
   }
+  
   
 }
 
