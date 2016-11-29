@@ -65,23 +65,48 @@ extension udef {
 	}
 }
 
-// For equipables?
+// Load equipment:
 extension udef {
-    
+  
+  private static func clean(dirtyKey: String) {
+    print("Cleaning", dirtyKey, "value was not NSDictionary")
+    set(nil, dirtyKey)
+  }
+  
   static func loadEquipmentKeysAsDictVals() -> [String:String] {
     
     var returnMatchedDict: [String: String] = [:]
     
-    let itemKey = ziggly(Keys.Item.equip.rawValue)
+    let equipmentKey = ziggly(Keys.Item.equip.rawValue)
     
     for (key, val) in UserDefaults.standard.dictionaryRepresentation() {
-      if key.contains(itemKey) {
-        let val2 = val as! NSDictionary
-        let name = val2.value(forKey: "name") as! String
-        returnMatchedDict[name] = ziggly(key) // Our desired format: ["Sword": "Ziggy->Sword
+      // Find all keys in 'standard' that match equipmentKey:
+      if key.contains(equipmentKey) {
+        // Error checking:
+        if let val2 = val as? NSDictionary {
+          let name = val2.value(forKey: "name") as! String
+          returnMatchedDict[name] = ziggly(key) // Our desired format: ["Sword": "Ziggy->Sword
+        } else { clean(dirtyKey: key) }
+        
       }
     }
     
     return returnMatchedDict
   }
 }
+
+// Delete equipment:
+extension udef {
+  
+  static func deleteEquipment() {
+    
+    let itemKey = ziggly(Keys.Item.equip.rawValue)
+    
+    for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
+      if key.contains(itemKey) {
+        set(nil, key)
+      }
+    }
+  }
+}
+

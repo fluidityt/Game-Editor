@@ -113,6 +113,7 @@ class ItemInfo: UITableViewController {
     }
     
     itemModSave.name = nameVal.text!
+    print(itemModSave.name)
   }
   
   
