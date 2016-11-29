@@ -32,38 +32,41 @@ extension UIViewController {
 // TODO: Header
 
 class ItemView: UITableViewController {
-
-  // MARK: - clickNew:
-  
-  @IBAction func clickNew(_ sender: Any) {
-  }
-  
  
-// MARK: - viewDidLoad:
+  private var equipment = [(name: "Crash Inc", key: "Crash Key")]
+
+  private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {
+    let newItem = globalEquipItemStuff.newItem()
+    newItem.saveToUD()
+    equipArray.append( (name: newItem.name, key: newItem.key()) )
+  }
+
   
-		private var equipment = [(name: "Crash Inc", key: "Crash Key")]
+  // MARK: - viewDidLoad:
   
-    private func loadEquipment() {
+  private func loadEquipment() {
     
-    equipment = []
-    for (key, val) in udef.loadEquipmentKeysAsDictVals() {
-      equipment.append((key, val))
-    }
+    equipment = []                                                                        // <- We need fresh data.
     
-    if equipment.isEmpty { // Makes sure that we have a key to load for didSelect():
-      let ourOnlyItem = globalEquipItemStuff.defaultItem()
-      ourOnlyItem.saveToUD()
-      equipment.append((ourOnlyItem.name, ourOnlyItem.key()))
-    }
+    for (key, val) in udef.loadEquipmentKeysAsDictVals() { equipment.append((key, val)) } // <- Fresh data :)
+    
+    if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
   }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
     loadEquipment()
 	}
+  
+  
+// MARK: - clickNew:
+  
+  @IBAction func clickNew(_ sender: Any) {
+    
+      }
 
   
-  // MARK: - didSelectRow():
+// MARK: - didSelectRow():
   
   private var isDeleteMode = false
   
@@ -75,6 +78,7 @@ class ItemView: UITableViewController {
   }
   
   private func doDeleteMode(selectedRow: Int) {
+    // TODO: Stuff
   }
   
   private func doRegularMode(selectedRow: Int) {
@@ -90,7 +94,7 @@ class ItemView: UITableViewController {
 	}
 
   
-  // MARK: - numberOfRowsInSection:
+// MARK: - numberOfRowsInSection:
     
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
 		-> Int {
@@ -100,9 +104,9 @@ class ItemView: UITableViewController {
   
 // MARK: - cellForRowAt():
     
-func grabCell(indexPath: IndexPath) -> UITableViewCell {
-		return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-	}
+  func grabCell(indexPath: IndexPath) -> UITableViewCell {
+      return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    }
     
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
 		-> UITableViewCell {
