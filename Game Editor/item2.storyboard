@@ -11,7 +11,7 @@
         <!--Item View-->
         <scene sceneID="x6Z-an-FJF">
             <objects>
-                <tableViewController id="NxL-q2-9Bu" customClass="ItemView" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Item View" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NxL-q2-9Bu" customClass="ItemView" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RAS-ec-JO0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,6 +57,9 @@
                             <outlet property="delegate" destination="NxL-q2-9Bu" id="Sm6-Do-bLZ"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="itemViewTable" destination="RAS-ec-JO0" id="cir-dN-Gdt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5E9-05-9zc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

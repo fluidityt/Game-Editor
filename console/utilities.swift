@@ -35,9 +35,13 @@ func ziggly(_ key: String) -> String {
 
 extension udef {
   
+  // FIXME: Give prompt to over-write existing data... ?
 	/** Saves values with easy to find id: */
 	static func set( _ val: Any?, _ forKey: String ) {
 		let ud = UserDefaults.standard
+    let key = ziggly(forKey)
+    
+    if ud.value(forKey: key) != nil { print("overwriting key:", key) }
 		ud.setValue( val, forKey: ziggly(forKey) )
 		ud.synchronize()
 	}

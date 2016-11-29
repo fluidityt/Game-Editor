@@ -93,6 +93,7 @@ extension Equipable {
          "level": String( level )
     ]
     
+    // FIXME: Give prompt to over-write existing data... ?
     udef.set( info, key() )
   }
   
