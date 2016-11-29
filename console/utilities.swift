@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // VERY COOL EXTENSION:
 extension String {
@@ -32,6 +33,83 @@ func ziggly(_ key: String) -> String {
   let properZigKey = udef.udKey + improperZigKey
   return properZigKey
 }
+
+public class Toast {
+  
+  let viewController: UIViewController
+  
+  var alertController: UIAlertController?
+  
+  // For timer:
+  var alertTimer:   Timer?,
+      baseMessage:  String?,
+      remainingTime = 0
+  
+  let title:        String,
+      message:      String,
+      duration:     Int
+  
+  init(inViewController vc: UIViewController, title: String, message: String, duration: Int) {
+    self.viewController = vc
+    self.title          = title
+    self.message        = message
+    self.duration       = duration
+  }
+  
+  func showAlertMsg() {
+    
+    guard (alertController == nil) else {
+      print("Alert already displayed")
+      return
+    }
+    
+    // alertTimer:
+    remainingTime   = duration
+    alertTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown),
+                                      userInfo: nil, repeats: true)
+    
+    // alertController
+    baseMessage     = message
+    alertController = UIAlertController(title: title, message: baseMessage, preferredStyle: .alert)
+    
+    // Cancel action:
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+      print("Alert was cancelled")
+      self.alertController=nil
+      self.alertTimer?.invalidate()
+      self.alertTimer=nil
+    }
+    
+    alertController!.addAction(cancelAction)
+    viewController!.present(alertController!, animated: true, completion: nil)
+  }
+  
+  @objc func countDown() {
+    
+    self.remainingTime -= 1
+    if (self.remainingTime < 0) {
+      self.alertTimer?.invalidate()
+      self.alertTimer = nil
+      self.alertController!.dismiss(animated: true, completion: {
+        self.alertController = nil
+      })
+    } else {
+      self.alertController!.message = self.alertMessage()
+    }
+    
+  }
+  
+  func alertMessage() -> String {
+    var message=""
+    if let baseMessage=self.baseMessage {
+      message=baseMessage+" "
+    }
+    return(message+"\(self.remainingTime)")
+  }
+}
+
+
+// MARK: - udef:
 
 extension udef {
   
