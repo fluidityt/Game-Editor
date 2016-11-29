@@ -32,10 +32,22 @@ extension UIViewController {
   }
 }
 
+func toast(title: String = "Toast", message: String, duration: Int = 2, viewController vc: UIViewController) {
+  
+    Toast(inViewController: vc, title: title, message: message, duration: duration).showAlertMsg()
+  
+}
 // MARK: - Class:
 
 class ItemView: UITableViewController {
- 
+  
+  
+
+  
+  
+  
+  
+  
   @IBOutlet var itemViewTable: UITableView!
   
   private var equipment = [(name: "Crash Inc", key: "Crash Key")]
@@ -68,6 +80,8 @@ class ItemView: UITableViewController {
   @IBAction func clickNew(_ sender: UIButton) {
       addNewItem(toArray: &equipment)
       itemViewTable.reloadData()
+      let alert = Alerter(inViewController: self)
+      alert.showAlertMsg("Test Alert", message: "This will disappear in ", time: 2)
   }
 
   

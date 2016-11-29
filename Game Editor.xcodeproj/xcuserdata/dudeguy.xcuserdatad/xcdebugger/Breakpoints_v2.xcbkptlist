@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Game Editor/ItemView.swift"
-            timestampString = "502081102.327514"
+            timestampString = "502083432.23634"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "doDeleteMode(selectedRow:)"
             landmarkType = "7">
          </BreakpointContent>
