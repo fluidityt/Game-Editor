@@ -7,29 +7,61 @@
 //
 import Foundation
 
+var variable: [String: Any?] = ["playerName": "Angela"]
 
-var sword = makeSword()!
-sword.saveToUD()
-sword.name = "Buster"
-sword.saveToUD()
-print(udef.loadEquipmentKeysAsDictVals())
-UserDefaults.resetStandardUserDefaults()
-print(udef.loadEquipmentKeysAsDictVals())
+
+// Dialogue scene
+// Shop scene
+// Battle scene
+// Menu scene
+
 
 /*
+ description
+ choices -> var update
+ selection -> screen update
+ description / dialogue
  
- 0. Load the list of equipment into a dictionary listOfEquipmentModel = [nameToDisplayInView: keyToInstantiateWith]
+ button 1 - 4 (paginated for 8, 12, etc)
  
- 1. Make the "list of equipment" table view from that dictionary.count and
-    (this will list names but not instantiate)
-  2. Instantiate object on .didSelectCell() with `keyTo..` which is `listOf..[nameTo..]` 
-     -- dealloc on "return"
- 3. Store object into the target View Controller's static property "itemToWorkOn"
- 4. Make changes to IBOutlet vars on GUI change
- 5. update "itemToWorkOn" on "save", then .saveToUD() -- only do: `dealloc` if click return with no saving
+ key-value -> key-value
  
+ intro() { // scene1:
  
+  description
+  name input
+  description
+  head to which part of town
+ 
+ intro_text = loadFromKey(intro1-1)
+ display(intro_text)
+ player_name = readline()
+ display(intro_text_hello_name
+ display(intro_text_town_decision)
+ town_decision = readline()
+
+ switch town_decision {
+    case intro_text_town_decision.1
+      player_hasnt_visited_town_2 = true
+      play(town_1) -> display(town_1_intro)
+    case intro_text_town_decision.2
+      play(town_2) -> display(town_2_intro)
+ }
+}
+ 
+town_1() {
+ 
+ display(town_1_intro)
+ 
+}
+ 
+struct Block {
+ 
+  var affectors = [String: Any?]
+ 
+}
+ 
+
+
 /* MARK: End */ print("")
-
-
 */
