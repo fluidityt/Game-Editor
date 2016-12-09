@@ -2,7 +2,7 @@
 //  TypeView.swift
 //  Game Editor
 //
-//  Created by Dude Guy  on 12/9/16.
+//  Created by  Dude Guy  on 12/9/16.
 //  Copyright © 2016 Dude Guy. All rights reserved.
 //
 
