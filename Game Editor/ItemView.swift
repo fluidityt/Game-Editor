@@ -34,9 +34,10 @@ extension UIViewController {
 
 enum EquipmentToShow: String {
   case
-  weapons = "Weapons",
+  // FIXME: mod this to be from the Key.enum
+  weapons = "Weapon",
   armor = "Armor",
-  accessories = "Accessories",
+  accessories = "Accessory",
   error = "Error"
 }
 
@@ -50,6 +51,9 @@ class ItemView: UITableViewController {
   
   @IBOutlet private var itemViewTable: UITableView!
   
+  @IBAction func goBack(_ sender: UIButton) {
+    presentVC(named: "Type View")
+  }
   private var equipment = [(name: "Crash Inc", key: "Crash Key")]
 
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
@@ -69,7 +73,12 @@ class ItemView: UITableViewController {
 
     loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
       equipment = []                                                                        // <- We need fresh data.
-      for (key, val) in udef.loadEquipmentKeysAsDictVals() { equipment.append((key, val)) } // <- Fresh data :)
+      for (key, val) in udef.loadEquipmentKeysAsDictVals() {
+        // FIXME: Append keys in Equip page.
+        if key.contains(titleLabel.text!) {
+          equipment.append((key, val))                                                      // <- Fresh data :)j
+        }
+      }
       if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
     }
 	}

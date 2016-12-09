@@ -38,6 +38,11 @@ enum Keys: String {
 	case item = "Item->"
 	enum Item: String {
 		case equip = "Item->Equip->"
+    enum Equip: String {
+      case weapon = "Weapon->"
+      case armor  = "Armor->"
+      case accessory = "Accessory->"
+    }
 	}
 }
 
@@ -61,6 +66,25 @@ struct Equipable {
       level: Int
 }
 
+extension Equipable {
+  func findType() -> Keys.Item.Equip {
+    switch slot {
+      case .head, .chest, .feet, .legs: return .armor
+      case .hands: return .weapon
+      case .finger: return .accessory
+    }
+  }
+  
+  static func findType(slot: Slot) -> Keys.Item.Equip {
+   switch slot {
+      case .head, .chest, .feet, .legs: return .armor
+      case .hands: return .weapon
+      case .finger: return .accessory
+    }
+  }
+}
+
+
 // MARK: - Protocol:
 
 extension Equipable {
@@ -69,12 +93,20 @@ extension Equipable {
   
   /** Used in save: */
   func key() -> String {
-    return ziggly(Keys.Item.equip.rawValue + slot.rawValue + name)
+    return ziggly(Keys.Item.equip.rawValue + findType().rawValue + slot.rawValue + name)
   }
   
   /** Used in load:*/
-  static func key( nameOfItem: String, slotOfItem: String ) -> String {
-    return ziggly(Keys.Item.equip.rawValue + slotOfItem + nameOfItem)
+  static func key( nameOfItem: String, slotOfItem: Slot ) -> String {
+    return ziggly (
+      Keys.Item.equip.rawValue
+      +
+      findType(slot: slotOfItem).rawValue
+      +
+      slotOfItem.rawValue
+      +
+      nameOfItem
+    )
   }
   
   /** Called only in the item editor page:*/
@@ -114,7 +146,7 @@ extension Equipable {
       
       initializer1: do {
         if let name = named { if let slot = slotted {
-          let key = E.key( nameOfItem: name, slotOfItem: slot.rawValue )
+          let key = E.key( nameOfItem: name, slotOfItem: slot )
           return ud.value( forKey: key ) as! [String: String] /**/ } /**/
         }
       }

@@ -114,7 +114,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPK-nQ-is1">
-                                    <rect key="frame" x="0.0" y="0.0" width="133" height="44"/>
+                                    <rect key="frame" x="15" y="0.0" width="97" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.90992030199999996" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="Delete Mode"/>
@@ -123,12 +123,20 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jht-ho-ph7">
-                                    <rect key="frame" x="191" y="0.0" width="110" height="30"/>
+                                    <rect key="frame" x="226" y="6" width="86" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.83664534400000001" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="New"/>
                                     <connections>
                                         <action selector="clickNew:" destination="NxL-q2-9Bu" eventType="touchUpInside" id="mPK-bH-Pq6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6V8-sk-Kh8">
+                                    <rect key="frame" x="133" y="14" width="55" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="go back"/>
+                                    <connections>
+                                        <action selector="goBack:" destination="NxL-q2-9Bu" eventType="touchUpInside" id="V6W-NM-7vi"/>
                                     </connections>
                                 </button>
                             </subviews>
