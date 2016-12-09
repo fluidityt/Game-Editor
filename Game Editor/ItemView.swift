@@ -32,16 +32,27 @@ extension UIViewController {
   }
 }
 
+enum EquipmentToShow: String {
+  case
+  weapons = "Weapons",
+  armor = "Armor",
+  accessories = "Accessories",
+  error = "Error"
+}
 
 // MARK: - Class:
 
 class ItemView: UITableViewController {
   
-  @IBOutlet var itemViewTable: UITableView!
+  static var equipmentToShow: EquipmentToShow = .error                                    // <- This is modified from the previous VC
+  
+  @IBOutlet weak var titleLabel: UILabel! { didSet { titleLabel.text = ItemView.equipmentToShow.rawValue } }
+  
+  @IBOutlet private var itemViewTable: UITableView!
   
   private var equipment = [(name: "Crash Inc", key: "Crash Key")]
 
-  private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {
+  private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
     var newItem = globalEquipItemStuff.newItem()
     newItem.name += ( " item with ID:  " + UUID().uuidString )
@@ -66,7 +77,7 @@ class ItemView: UITableViewController {
   
 // MARK: - clickNew:
   
-  @IBAction func clickNew(_ sender: UIButton) {
+  @IBAction private func clickNew(_ sender: UIButton) {
       addNewItem(toArray: &equipment)
       itemViewTable.reloadData()
       Toast.make(message: "New Item Added!", viewController: self)
@@ -77,14 +88,14 @@ class ItemView: UITableViewController {
   
   private var isDeleteMode = false
   
-  @IBAction func clickDeleteMode(_ sender: UIButton) {
+  @IBAction private func clickDeleteMode(_ sender: UIButton) {
     // FIXME: Import toggle()
     isDeleteMode
       ? (isDeleteMode = false)
       : (isDeleteMode = true)
     
     equipment = []
-    udef.deleteEquipment()
+    udef.deleteEquipment() // <- FIXME: Uhh.. I don't actually want to do this, right?
     
     addNewItem(toArray: &equipment)
     itemViewTable.reloadData()
@@ -125,7 +136,7 @@ class ItemView: UITableViewController {
   
 // MARK: - cellForRowAt():
     
-  func grabCell(indexPath: IndexPath) -> UITableViewCell {
+  private func grabCell(indexPath: IndexPath) -> UITableViewCell {
       return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     }
     

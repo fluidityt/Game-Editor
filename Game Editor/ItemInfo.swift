@@ -21,7 +21,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Util stuff:
+          // MARK: - Util stuff:
 
           private func placeholder() {
             /*
@@ -55,6 +55,7 @@ import UIKit
 
           }
 
+          // FIXME: Wow, this is stupid-complicated for no reason:
           fileprivate func setSlider(_ slider: UISlider,
                                    fromItem item: Equipable,
                                    min1: Float = 1,
@@ -88,23 +89,22 @@ import UIKit
               slider.value = Float(itemValue)
             }
 
-          // NOTE: Modify this in the previous VC .didSelectCell before .presentView or whatever...
+          // NOTE: Modify .item in the previous VC .didSelectCell before you .presentView to this file.
           enum globalEquipItemStuff {
-            
-            static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 0, mdef: 0, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-            static func errorItem() -> Equipable { return Equipable(name: "Error", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-            static func newItem() -> Equipable { return Equipable(name: "New", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+            static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 0,  mdef: 0,  hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+            static func errorItem()   -> Equipable { return Equipable(name: "Error",   slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+            static func newItem()     -> Equipable { return Equipable(name: "New",     slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
             static var item: Equipable? { didSet { print("should be a let") } }// Should be a let :{
-            
           }
 
 // MARK: - ItemInfo:
 
 class ItemInfo: UITableViewController {
   
-  /* Item: */ private var itemModSave = globalEquipItemStuff.item ?? globalEquipItemStuff.errorItem()
+  /* Item: */ private var
+  itemModSave = globalEquipItemStuff.item ?? globalEquipItemStuff.errorItem()             // <- The item that we modify then save. Loaded in previous screen.
   
-// MARK: - Values:
+// MARK: - Values in UI:
  
   //NAME:
   @IBOutlet weak var nameVal: UITextField!
@@ -216,6 +216,7 @@ class ItemInfo: UITableViewController {
     levelSlider.value        = Float(itemModSave.level)
     levelSlider.matchLabelToSelf(label: levelVal)
    }
+  
   fileprivate func didLoad() {
     nameDidLoad()
     protDidLoad()
@@ -227,7 +228,8 @@ class ItemInfo: UITableViewController {
     costDidLoad()
     levelDidLoad()
   }
-  @IBAction func levelSlide( _ sender: UISlider ){
+  
+  @IBAction func levelSlide( _ sender: UISlider ){                                         // <- When we move level, we need to re-update all the others.
     levelVal.int      = Int(sender.value)
     itemModSave.level = levelVal.int
     didLoad()
@@ -242,6 +244,7 @@ class ItemInfo: UITableViewController {
     Toast.make(message: "Item Saved!", viewController: self)
   }
   
+  // I'm not sure what this does.. is it reload?
   @IBAction func clickLoad(_ sender: UIButton) {
     if let loadedItem = Equipable(loadFromName: nil, forSlot: nil, loadFromKey: itemModSave.key()) {
       itemModSave = loadedItem
@@ -249,42 +252,18 @@ class ItemInfo: UITableViewController {
       print("default item--key may crash")
       itemModSave = globalEquipItemStuff.defaultItem()
     }
-    
-    
-    nameDidLoad()
-    protDidLoad()
-    mdefDidLoad()
-    hpDidLoad()
-    mpDidLoad()
-    apDidLoad()
-    mpowDidLoad()
-    costDidLoad()
-    levelDidLoad()
-    
+  
+      didLoad()
   }
-  
-  
 }
 
 // MARK: - View stuff:
 
 extension ItemInfo {
-  
   override func viewDidLoad() {
-    
     super.viewDidLoad()
-    
-    nameDidLoad()
-    protDidLoad()
-    mdefDidLoad()
-    hpDidLoad()
-    mpDidLoad()
-    apDidLoad()
-    mpowDidLoad()
-    costDidLoad()
-    levelDidLoad()
-  
-    globalEquipItemStuff.item = nil // Because!
+    didLoad()
+    globalEquipItemStuff.item = nil                                                       // <- Because we want ensure that we get a fresh new item.
   }
 }
 
