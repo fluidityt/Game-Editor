@@ -32,9 +32,9 @@ extension UIViewController {
   }
 }
 
+// FIXME: mod this to be from the Key.enum
 enum EquipmentToShow: String {
   case
-  // FIXME: mod this to be from the Key.enum
   weapons = "Weapon",
   armor = "Armor",
   accessories = "Accessory",
@@ -47,7 +47,17 @@ class ItemView: UITableViewController {
   
   static var equipmentToShow: EquipmentToShow = .error                                    // <- This is modified from the previous VC
   
-  @IBOutlet weak var titleLabel: UILabel! { didSet { titleLabel.text = ItemView.equipmentToShow.rawValue } }
+  @IBOutlet weak var titleLabel: UILabel! { didSet {
+    titleLabel.text = ItemView.equipmentToShow.rawValue
+    // FIXEME: hotfix
+    switch titleLabel.text! {
+    case "Weapon": ItemInfo.itemType = .weapons
+    case "Armor": ItemInfo.itemType = .armor
+    case "Accessory": ItemInfo.itemType = .accessories
+      default: ItemInfo.itemType = .error
+    }
+    }
+  }
   
   @IBOutlet private var itemViewTable: UITableView!
   
@@ -55,7 +65,7 @@ class ItemView: UITableViewController {
     presentVC(named: "Type View")
   }
   private var equipment = [(name: "Crash Inc", key: "Crash Key")]
-
+  
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
     var newItem = globalEquipItemStuff.newItem()
@@ -63,14 +73,14 @@ class ItemView: UITableViewController {
     newItem.saveToUD()
     equipArray.append( (name: newItem.name, key: newItem.key()) )
   }
-
   
-// MARK: - viewDidLoad:
   
-
-	override func viewDidLoad() {
+  // MARK: - viewDidLoad:
+  
+  
+  override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
       equipment = []                                                                        // <- We need fresh data.
       for (key, val) in udef.loadEquipmentKeysAsDictVals() {
@@ -81,19 +91,19 @@ class ItemView: UITableViewController {
       }
       if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
     }
-	}
+  }
   
   
-// MARK: - clickNew:
+  // MARK: - clickNew:
   
   @IBAction private func clickNew(_ sender: UIButton) {
-      addNewItem(toArray: &equipment)
-      itemViewTable.reloadData()
-      Toast.make(message: "New Item Added!", viewController: self)
+    addNewItem(toArray: &equipment)
+    itemViewTable.reloadData()
+    Toast.make(message: "New Item Added!", viewController: self)
   }
-
-
-// MARK: - clickDeleteMode:
+  
+  
+  // MARK: - clickDeleteMode:
   
   private var isDeleteMode = false
   
@@ -112,7 +122,7 @@ class ItemView: UITableViewController {
   }
   
   
-// MARK: - didSelectRow():
+  // MARK: - didSelectRow():
   
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -121,7 +131,7 @@ class ItemView: UITableViewController {
     }
     
     func doRegularMode(selectedRow: Int) {
-      
+      print(equipment[selectedRow].key)
       globalEquipItemStuff.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
       presentVC(named: "Item Info")
     }
@@ -133,29 +143,29 @@ class ItemView: UITableViewController {
      : doRegularMode( selectedRow: indexPath.row )
      */
   }
-
   
-// MARK: - numberOfRowsInSection:
-    
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
-		-> Int {
+  
+  // MARK: - numberOfRowsInSection:
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
+    -> Int {
       return equipment.count
   }
-
   
-// MARK: - cellForRowAt():
-    
+  
+  // MARK: - cellForRowAt():
+  
   private func grabCell(indexPath: IndexPath) -> UITableViewCell {
-      return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    }
-    
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
-		-> UITableViewCell {
-
-			let cell = grabCell(indexPath: indexPath)
-			cell.textLabel?.text = equipment[indexPath.row].name
-
-			return cell
-	}
-
+    return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+    -> UITableViewCell {
+      
+      let cell = grabCell(indexPath: indexPath)
+      cell.textLabel?.text = equipment[indexPath.row].name
+      
+      return cell
+  }
+  
 } // EoC
