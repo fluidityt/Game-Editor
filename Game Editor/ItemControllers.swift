@@ -16,7 +16,7 @@ fileprivate enum filal {
   // Type to use for last 2 VC:
   static var equipmentTypeSelected = "none"
   
-  // Returners:
+  // For making items from Equipable.makeX(slot: Slot):
   static func findSlot() -> Slot {
   typealias KIE = Keys.Item.Equip
     switch equipmentTypeSelected {
@@ -25,11 +25,6 @@ fileprivate enum filal {
       case KIE.accessory.rawValue:  return Slot.finger
       default:                      fatalError("no item type found")
     }
-  }
-  
-  static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: findSlot(), prot: 0,  mdef: 0,  hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func errorItem()   -> Equipable { return Equipable(name: "Error",   slot: findSlot(), prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func newItem()     -> Equipable { return Equipable(name: "New \(findSlot().rawValue)",    slot: findSlot(),  prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
   }
   
   // Item mod save?:
@@ -43,7 +38,7 @@ fileprivate enum filal {
 
 class DetailCtrlr: UITableViewController {
 
-  private var itemModSave = filal.item ?? filal.errorItem()  // <- The item that we modify then save. Loaded in previous screen.
+  private var itemModSave = filal.item ?? Equipable.makeError(slot: filal.findSlot())     // <- The item that we modify then save. Loaded in previous screen.
 
   // FIXME: Wow, this is stupid-complicated for no reason:
   private func setSlider(_ slider: UISlider,
@@ -230,7 +225,7 @@ class DetailCtrlr: UITableViewController {
       itemModSave = loadedItem
     } else {
       print("default item--key may crash")
-      itemModSave = filal.defaultItem()
+      itemModSave = Equipable.makeDefault(slot: filal.findSlot())
     }
     
     didLoad()
@@ -268,7 +263,7 @@ class ListCtrl: UITableViewController {
   
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
-    var newItem = filal.newItem()
+    var newItem = Equipable.makeNew(slot: filal.findSlot())
     newItem.name += ( " item with ID:  " + UUID().uuidString )
     newItem.saveToUD()
     equipArray.append( (name: newItem.name, key: newItem.key()) )
