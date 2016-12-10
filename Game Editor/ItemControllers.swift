@@ -11,22 +11,25 @@ import UIKit
 
 // MARK: - Top:
 
-fileprivate enum global {
+fileprivate enum filal {
 
   // Type to use for last 2 VC:
   static var equipmentTypeSelected = "none"
   
   // Returners:
-  static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 0,  mdef: 0,  hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func errorItem()   -> Equipable { return Equipable(name: "Error",   slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func newItem()     -> Equipable {
-    typealias KIE = Keys.Item.Equip
+  static func findSlot() -> Slot {
+  typealias KIE = Keys.Item.Equip
     switch equipmentTypeSelected {
-      case KIE.weapon.rawValue:            return Equipable(name: "New Weapon",    slot: .hands,  prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
-      case KIE.armor.rawValue:             return Equipable(name: "New Armor",     slot: .head,   prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
-      case KIE.accessory.rawValue:         return Equipable(name: "New Accessory", slot: .finger, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
-      default:                             fatalError("no item type found")
+      case KIE.weapon.rawValue:     return Slot.hands
+      case KIE.armor.rawValue:      return Slot.chest
+      case KIE.accessory.rawValue:  return Slot.finger
+      default:                      fatalError("no item type found")
     }
+  }
+  
+  static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: findSlot(), prot: 0,  mdef: 0,  hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+  static func errorItem()   -> Equipable { return Equipable(name: "Error",   slot: findSlot(), prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+  static func newItem()     -> Equipable { return Equipable(name: "New \(findSlot().rawValue)",    slot: findSlot(),  prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
   }
   
   // Item mod save?:
@@ -40,7 +43,7 @@ fileprivate enum global {
 
 class DetailCtrlr: UITableViewController {
 
-  private var itemModSave = global.item ?? global.errorItem()  // <- The item that we modify then save. Loaded in previous screen.
+  private var itemModSave = filal.item ?? filal.errorItem()  // <- The item that we modify then save. Loaded in previous screen.
 
   // FIXME: Wow, this is stupid-complicated for no reason:
   private func setSlider(_ slider: UISlider,
@@ -227,7 +230,7 @@ class DetailCtrlr: UITableViewController {
       itemModSave = loadedItem
     } else {
       print("default item--key may crash")
-      itemModSave = global.defaultItem()
+      itemModSave = filal.defaultItem()
     }
     
     didLoad()
@@ -238,7 +241,7 @@ class DetailCtrlr: UITableViewController {
     didLoad()
     // FIXME: Hide uneeded cells here
     // itemInfoTableView.deleteRows(at:, with: <#T##UITableViewRowAnimation#>)
-    global.item = nil                                                       // <- Because we want ensure that we get a fresh new item.
+    filal.item = nil                                                       // <- Because we want ensure that we get a fresh new item.
   }
 }
 
@@ -252,7 +255,7 @@ class ListCtrl: UITableViewController {
   
   @IBOutlet private weak var
   titleLabel: UILabel! {
-    didSet { titleLabel.text = global.equipmentTypeSelected }
+    didSet { titleLabel.text = filal.equipmentTypeSelected }
   }
   
   @IBOutlet private var
@@ -263,15 +266,14 @@ class ListCtrl: UITableViewController {
     presentVC(named: "Type View")
   }
   
-  
-  
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
-    var newItem = global.newItem()
+    var newItem = filal.newItem()
     newItem.name += ( " item with ID:  " + UUID().uuidString )
     newItem.saveToUD()
     equipArray.append( (name: newItem.name, key: newItem.key()) )
   }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -307,7 +309,6 @@ class ListCtrl: UITableViewController {
     Toast.make(message: "Equipment Deleted!", viewController: self)
   }
   
-  
   override   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     func doDeleteMode(selectedRow: Int) {
       // TODO: Stuff
@@ -315,7 +316,7 @@ class ListCtrl: UITableViewController {
     
     func doRegularMode(selectedRow: Int) {
       print(equipment[selectedRow].key)
-      global.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
+      filal.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
       presentVC(named: "Item Info")
     }
     
@@ -327,16 +328,10 @@ class ListCtrl: UITableViewController {
      */
   }
   
-  
-  
-  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
     -> Int {
       return equipment.count
   }
-  
-  
-  // MARK: - cellForRowAt():
   
   private func grabCell(indexPath: IndexPath) -> UITableViewCell {
     return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -360,24 +355,24 @@ class MainCtrlr: UITableViewController {
   
   @IBAction private func
     clickedWeapon(_ sender: UIButton) {
-  global.equipmentTypeSelected = Keys.Item.Equip.weapon.rawValue
+  filal.equipmentTypeSelected = Keys.Item.Equip.weapon.rawValue
     presentVC(named: "Item View")
   }
   
   @IBAction private func
     clickedArmor(_ sender: UIButton) {
-  global.equipmentTypeSelected = Keys.Item.Equip.armor.rawValue
+  filal.equipmentTypeSelected = Keys.Item.Equip.armor.rawValue
     presentVC(named: "Item View")
   }
   
   @IBAction private func
     clickedAccessories(_ sender: UIButton) {
-      global.equipmentTypeSelected = Keys.Item.Equip.accessory.rawValue
+      filal.equipmentTypeSelected = Keys.Item.Equip.accessory.rawValue
     presentVC(named: "Item View")
   }
   
   override func viewDidLoad() {
-    global.equipmentTypeSelected = "none"
+    filal.equipmentTypeSelected = "none"
   }
 }
 

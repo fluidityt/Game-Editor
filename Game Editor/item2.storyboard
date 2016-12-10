@@ -301,7 +301,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerY" secondItem="Wrj-dK-L6i" secondAttribute="centerY" id="4xg-tI-HpO"/>
-                                                <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerX" secondItem="Wrj-dK-L6i" secondAttribute="centerX" id="aur-go-QRX"/>
+                                                <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerX" secondItem="Wrj-dK-L6i" secondAttribute="centerX" constant="27" id="aur-go-QRX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
