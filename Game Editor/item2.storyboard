@@ -552,21 +552,28 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="apCell" destination="VGy-IP-WuJ" id="zo6-17-AY6"/>
                         <outlet property="apSlider" destination="D7G-j1-woe" id="cfl-jb-JEG"/>
                         <outlet property="apVal" destination="K8t-Im-SDh" id="2IQ-CW-bQl"/>
                         <outlet property="costSlider" destination="rPj-ET-cjB" id="jdy-QK-F9N"/>
                         <outlet property="costVal" destination="H5R-Zn-dGf" id="s1M-bN-cZq"/>
+                        <outlet property="hpCell" destination="Kbq-g2-Xy7" id="97l-Oq-ktA"/>
                         <outlet property="hpSlider" destination="ckh-p6-MF5" id="ECX-o0-yXQ"/>
                         <outlet property="hpVal" destination="gub-9l-0Z5" id="z3B-il-N30"/>
+                        <outlet property="itemInfoTableView" destination="8TM-ft-1QJ" id="T3M-DX-gVv"/>
                         <outlet property="levelSlider" destination="sUr-Bd-Jab" id="YK3-Zu-aO4"/>
                         <outlet property="levelVal" destination="2za-b2-Sha" id="CtR-km-dxE"/>
+                        <outlet property="mdefCell" destination="4jh-u4-veP" id="sek-IU-M8t"/>
                         <outlet property="mdefSlider" destination="0QR-dZ-8L7" id="C56-Et-qFN"/>
                         <outlet property="mdefVal" destination="cJ8-Y3-QAW" id="w5S-Bg-7ee"/>
+                        <outlet property="mpCell" destination="XMz-og-TaU" id="diK-TX-2u1"/>
                         <outlet property="mpSlider" destination="5GG-LJ-jUM" id="Wls-xw-QUo"/>
                         <outlet property="mpVal" destination="Afs-sT-3DU" id="YFy-l1-sJo"/>
+                        <outlet property="mpowCell" destination="9Al-wm-0M3" id="wkR-ap-1co"/>
                         <outlet property="mpowSlider" destination="Hbi-9L-Shr" id="GjG-Mg-9td"/>
                         <outlet property="mpowVal" destination="Sdd-0o-PmB" id="YJr-Xo-15N"/>
                         <outlet property="nameVal" destination="ECi-iK-Gma" id="Cfa-q6-wRG"/>
+                        <outlet property="protCell" destination="BPB-im-7G1" id="N35-fT-tyh"/>
                         <outlet property="protSlider" destination="pYX-WE-iUd" id="LAS-RU-Kh4"/>
                         <outlet property="protVal" destination="Ibg-LG-1kw" id="NGQ-hy-4tC"/>
                     </connections>
