@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Type View Scene-->
+        <!--Main Ctrlr-->
         <scene sceneID="lQT-eN-g7s">
             <objects>
-                <tableViewController storyboardIdentifier="Type View" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qEi-hu-0J5" userLabel="Type View Scene" customClass="TypeView" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Type View" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qEi-hu-0J5" customClass="MainCtrlr" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cOI-ZN-Eco">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Weapons"/>
                                                     <connections>
-                                                        <action selector="clickedWeapon:" destination="qEi-hu-0J5" eventType="touchUpInside" id="Nv5-De-Pvp"/>
+                                                        <action selector="clickedWeapon:" destination="qEi-hu-0J5" eventType="touchUpInside" id="QhI-FO-D7J"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -87,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="-133" y="241"/>
         </scene>
-        <!--Item View-->
+        <!--List Ctrlr-->
         <scene sceneID="x6Z-an-FJF">
             <objects>
-                <tableViewController storyboardIdentifier="Item View" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NxL-q2-9Bu" customClass="ItemView" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Item View" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NxL-q2-9Bu" userLabel="List Ctrlr" customClass="ListCtrl" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RAS-ec-JO0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,17 +160,17 @@
                     </tableView>
                     <connections>
                         <outlet property="itemViewTable" destination="RAS-ec-JO0" id="cir-dN-Gdt"/>
-                        <outlet property="titleLabel" destination="AQa-6F-OQB" id="8EU-iZ-P6Z"/>
+                        <outlet property="titleLabel" destination="AQa-6F-OQB" id="5vP-FE-vcH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5E9-05-9zc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="695.625" y="240.8450704225352"/>
         </scene>
-        <!--Item Info-->
+        <!--Detail Ctrlr-->
         <scene sceneID="byd-VG-C8n">
             <objects>
-                <tableViewController storyboardIdentifier="Item Info" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tvM-ZU-MDY" customClass="ItemInfo" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Item Info" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tvM-ZU-MDY" customClass="DetailCtrlr" customModule="Game_Editor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8TM-ft-1QJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -546,10 +546,6 @@
                                 </cells>
                             </tableViewSection>
                         </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="tvM-ZU-MDY" id="qXF-Qi-m2F"/>
-                            <outlet property="delegate" destination="tvM-ZU-MDY" id="K5I-vD-3i1"/>
-                        </connections>
                     </tableView>
                     <connections>
                         <outlet property="apCell" destination="VGy-IP-WuJ" id="hR5-cS-ncE"/>
@@ -560,7 +556,7 @@
                         <outlet property="hpCell" destination="Kbq-g2-Xy7" id="97l-Oq-ktA"/>
                         <outlet property="hpSlider" destination="ckh-p6-MF5" id="ECX-o0-yXQ"/>
                         <outlet property="hpVal" destination="gub-9l-0Z5" id="z3B-il-N30"/>
-                        <outlet property="itemInfoTableView" destination="8TM-ft-1QJ" id="T3M-DX-gVv"/>
+                        <outlet property="itemInfoTableView" destination="8TM-ft-1QJ" id="dQr-fq-ZnX"/>
                         <outlet property="levelSlider" destination="sUr-Bd-Jab" id="YK3-Zu-aO4"/>
                         <outlet property="levelVal" destination="2za-b2-Sha" id="CtR-km-dxE"/>
                         <outlet property="mdefCell" destination="4jh-u4-veP" id="sek-IU-M8t"/>
@@ -572,7 +568,7 @@
                         <outlet property="mpowCell" destination="9Al-wm-0M3" id="wkR-ap-1co"/>
                         <outlet property="mpowSlider" destination="Hbi-9L-Shr" id="GjG-Mg-9td"/>
                         <outlet property="mpowVal" destination="Sdd-0o-PmB" id="YJr-Xo-15N"/>
-                        <outlet property="nameVal" destination="ECi-iK-Gma" id="Cfa-q6-wRG"/>
+                        <outlet property="nameVal" destination="ECi-iK-Gma" id="vVO-Tu-QFg"/>
                         <outlet property="protCell" destination="BPB-im-7G1" id="N35-fT-tyh"/>
                         <outlet property="protSlider" destination="pYX-WE-iUd" id="LAS-RU-Kh4"/>
                         <outlet property="protVal" destination="Ibg-LG-1kw" id="NGQ-hy-4tC"/>

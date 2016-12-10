@@ -11,36 +11,28 @@ import UIKit
 
 // MARK: - Top:
 
+fileprivate enum global {
 
-fileprivate enum globalEquipItemStuff {                                                    // <- NOTE: Modify .item in the previous VC .didSelectCell before you .presentView to this file.
+  // Type to use for last 2 VC:
+  static var equipmentTypeSelected = "none"
+  
+  // Returners:
   static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: .head, prot: 0,  mdef: 0,  hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
   static func errorItem()   -> Equipable { return Equipable(name: "Error",   slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
   static func newItem()     -> Equipable {
-    switch DetailCtrlr.itemType! {
-    case .armor:
-      return Equipable(name: "New Armor", slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
-    case .weapons:
-      return Equipable(name: "New Weapon", slot: .hands, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
-    case.accessories:
-      return Equipable(name: "New Accessory", slot: .finger, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
-    default:
-      fatalError("no item type found");
+    typealias KIE = Keys.Item.Equip
+    switch equipmentTypeSelected {
+      case KIE.weapon.rawValue:            return Equipable(name: "New Weapon",    slot: .hands,  prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
+      case KIE.armor.rawValue:             return Equipable(name: "New Armor",     slot: .head,   prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
+      case KIE.accessory.rawValue:         return Equipable(name: "New Accessory", slot: .finger, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
+      default:                             fatalError("no item type found")
     }
-    /* Never called:*/ return Equipable(name: "error",  slot: .head, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
-    
   }
+  
+  // Item mod save?:
   static var item: Equipable? {                                                           // <- Should be a let :{
     didSet { print("should be a let: static item changed.") }
   }
-}
-
-// FIXME: mod this to be from the Key.enum
-enum EquipmentToShow: String {
-  case
-  weapons = "Weapon",
-  armor = "Armor",
-  accessories = "Accessory",
-  error = "Error"
 }
 
 
@@ -48,9 +40,7 @@ enum EquipmentToShow: String {
 
 class DetailCtrlr: UITableViewController {
 
-  static var itemType: EquipmentToShow?                                                    // <- COUPLED -- MODIFY FROM OTHER CLASSES:
-
-  private var itemModSave = globalEquipItemStuff.item ?? globalEquipItemStuff.errorItem()  // <- The item that we modify then save. Loaded in previous screen.
+  private var itemModSave = global.item ?? global.errorItem()  // <- The item that we modify then save. Loaded in previous screen.
 
   // FIXME: Wow, this is stupid-complicated for no reason:
   private func setSlider(_ slider: UISlider,
@@ -237,7 +227,7 @@ class DetailCtrlr: UITableViewController {
       itemModSave = loadedItem
     } else {
       print("default item--key may crash")
-      itemModSave = globalEquipItemStuff.defaultItem()
+      itemModSave = global.defaultItem()
     }
     
     didLoad()
@@ -248,7 +238,7 @@ class DetailCtrlr: UITableViewController {
     didLoad()
     // FIXME: Hide uneeded cells here
     // itemInfoTableView.deleteRows(at:, with: <#T##UITableViewRowAnimation#>)
-    globalEquipItemStuff.item = nil                                                       // <- Because we want ensure that we get a fresh new item.
+    global.item = nil                                                       // <- Because we want ensure that we get a fresh new item.
   }
 }
 
@@ -257,24 +247,12 @@ class DetailCtrlr: UITableViewController {
 
 class ListCtrl: UITableViewController {
   
-  // COUPLED -> Modify from previous VC
-  static var equipmentToShow: EquipmentToShow = .error                                    // <- This is modified from the previous VC
-  
   private var isDeleteMode = false
   private var equipment = [(name: "Crash Inc", key: "Crash Key")]
   
   @IBOutlet private weak var
   titleLabel: UILabel! {
-    didSet {
-      titleLabel.text = ListCtrl.equipmentToShow.rawValue
-      // FIXEME: hotfix
-      switch titleLabel.text! {
-      case "Weapon": DetailCtrlr.itemType = .weapons
-      case "Armor": DetailCtrlr.itemType = .armor
-      case "Accessory": DetailCtrlr.itemType = .accessories
-      default: DetailCtrlr.itemType = .error
-      }
-    }
+    didSet { titleLabel.text = global.equipmentTypeSelected }
   }
   
   @IBOutlet private var
@@ -289,7 +267,7 @@ class ListCtrl: UITableViewController {
   
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
-    var newItem = globalEquipItemStuff.newItem()
+    var newItem = global.newItem()
     newItem.name += ( " item with ID:  " + UUID().uuidString )
     newItem.saveToUD()
     equipArray.append( (name: newItem.name, key: newItem.key()) )
@@ -337,7 +315,7 @@ class ListCtrl: UITableViewController {
     
     func doRegularMode(selectedRow: Int) {
       print(equipment[selectedRow].key)
-      globalEquipItemStuff.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
+      global.item = Equipable.loadFromKey( ziggly(equipment[selectedRow].key) )
       presentVC(named: "Item Info")
     }
     
@@ -382,24 +360,24 @@ class MainCtrlr: UITableViewController {
   
   @IBAction private func
     clickedWeapon(_ sender: UIButton) {
-    ListCtrl.equipmentToShow = .weapons
+  global.equipmentTypeSelected = Keys.Item.Equip.weapon.rawValue
     presentVC(named: "Item View")
   }
   
   @IBAction private func
     clickedArmor(_ sender: UIButton) {
-    ListCtrl.equipmentToShow = .armor
+  global.equipmentTypeSelected = Keys.Item.Equip.armor.rawValue
     presentVC(named: "Item View")
   }
   
   @IBAction private func
     clickedAccessories(_ sender: UIButton) {
-    ListCtrl.equipmentToShow = .accessories
+      global.equipmentTypeSelected = Keys.Item.Equip.accessory.rawValue
     presentVC(named: "Item View")
   }
   
   override func viewDidLoad() {
-    print("hi")
+    global.equipmentTypeSelected = "none"
   }
 }
 
