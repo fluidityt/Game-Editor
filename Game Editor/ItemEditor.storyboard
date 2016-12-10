@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,15 +27,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qu-Cp-Wm5">
-                                                    <rect key="frame" x="128" y="7" width="64" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qu-Cp-Wm5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                     <state key="normal" title="Weapons"/>
                                                     <connections>
                                                         <action selector="clickedWeapon:" destination="qEi-hu-0J5" eventType="touchUpInside" id="QhI-FO-D7J"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8Qu-Cp-Wm5" firstAttribute="centerX" secondItem="MOk-rU-2We" secondAttribute="centerX" id="URv-bl-gmw"/>
+                                                <constraint firstItem="8Qu-Cp-Wm5" firstAttribute="centerY" secondItem="MOk-rU-2We" secondAttribute="centerY" id="YTQ-rc-NFc"/>
+                                                <constraint firstItem="8Qu-Cp-Wm5" firstAttribute="height" secondItem="MOk-rU-2We" secondAttribute="height" id="c3g-SD-LM3"/>
+                                                <constraint firstItem="8Qu-Cp-Wm5" firstAttribute="width" secondItem="MOk-rU-2We" secondAttribute="width" id="rHL-x5-BCA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8QS-Z3-ZOJ">
@@ -44,15 +50,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ona-9w-FZL">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ona-9w-FZL">
                                                     <rect key="frame" x="139" y="6" width="43" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Armor"/>
                                                     <connections>
                                                         <action selector="clickedArmor:" destination="qEi-hu-0J5" eventType="touchUpInside" id="O4J-cb-gEt"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ona-9w-FZL" firstAttribute="centerY" secondItem="l6X-hV-M0s" secondAttribute="centerY" id="1LM-82-wU3"/>
+                                                <constraint firstItem="Ona-9w-FZL" firstAttribute="width" secondItem="l6X-hV-M0s" secondAttribute="width" constant="-277" id="E8m-IO-tYX"/>
+                                                <constraint firstItem="Ona-9w-FZL" firstAttribute="centerX" secondItem="l6X-hV-M0s" secondAttribute="centerX" id="bfn-5e-jpC"/>
+                                                <constraint firstItem="Ona-9w-FZL" firstAttribute="height" secondItem="l6X-hV-M0s" secondAttribute="height" constant="-13" id="czd-7b-5Ln"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="quP-q2-Xld">
@@ -62,9 +73,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s38-wM-Bq5" userLabel="Accessories">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s38-wM-Bq5" userLabel="Accessories">
                                                     <rect key="frame" x="118" y="6" width="83" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Accessories"/>
                                                     <connections>
                                                         <action selector="clickedAccessories:" destination="qEi-hu-0J5" eventType="touchUpInside" id="xuP-rf-tW2"/>
@@ -72,6 +82,12 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="s38-wM-Bq5" firstAttribute="centerX" secondItem="0Yw-qT-Hba" secondAttribute="centerX" id="2Rw-Ho-e8x"/>
+                                                <constraint firstItem="s38-wM-Bq5" firstAttribute="width" secondItem="0Yw-qT-Hba" secondAttribute="width" constant="-237" id="9Mn-vV-eTh"/>
+                                                <constraint firstItem="s38-wM-Bq5" firstAttribute="centerY" secondItem="0Yw-qT-Hba" secondAttribute="centerY" id="OZ4-KQ-BHQ"/>
+                                                <constraint firstItem="s38-wM-Bq5" firstAttribute="height" secondItem="0Yw-qT-Hba" secondAttribute="height" constant="-13" id="ekl-Rj-awR"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -85,7 +101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNm-h7-fIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133" y="241"/>
+            <point key="canvasLocation" x="-133.125" y="240.8450704225352"/>
         </scene>
         <!--List Ctrlr-->
         <scene sceneID="x6Z-an-FJF">
@@ -217,8 +233,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ECi-iK-Gma" userLabel="NameET">
-                                                    <rect key="frame" x="138" y="7" width="100" height="30"/>
+                                                <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ECi-iK-Gma" userLabel="NameET">
+                                                    <rect key="frame" x="109" y="7" width="103" height="30"/>
                                                     <color key="backgroundColor" red="0.84658333330000002" green="0.84658333330000002" blue="0.84658333330000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -245,8 +261,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=".. Slot Name" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-Pr-jmz" userLabel="SlotET">
-                                                    <rect key="frame" x="136" y="6" width="103" height="30"/>
+                                                <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=".. Slot Name" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-Pr-jmz" userLabel="SlotET">
+                                                    <rect key="frame" x="109" y="8" width="103" height="30"/>
                                                     <color key="backgroundColor" red="0.84658333330000002" green="0.84658333330000002" blue="0.84658333330000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -254,8 +270,8 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Geg-Pr-jmz" firstAttribute="centerX" secondItem="9nS-Oj-hWa" secondAttribute="centerX" id="apI-Nd-qyv"/>
-                                                <constraint firstItem="Geg-Pr-jmz" firstAttribute="centerY" secondItem="9nS-Oj-hWa" secondAttribute="centerY" id="dH8-qV-cE7"/>
+                                                <constraint firstItem="Geg-Pr-jmz" firstAttribute="centerX" secondItem="9nS-Oj-hWa" secondAttribute="centerX" constant="0.5" id="apI-Nd-qyv"/>
+                                                <constraint firstItem="Geg-Pr-jmz" firstAttribute="centerY" secondItem="9nS-Oj-hWa" secondAttribute="centerY" constant="1.5" id="dH8-qV-cE7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -285,12 +301,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibg-LG-1kw" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="pYX-WE-iUd" userLabel="nameSlider">
                                                     <rect key="frame" x="220" y="6" width="105" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -298,10 +308,17 @@
                                                         <action selector="protSlide:" destination="tvM-ZU-MDY" eventType="valueChanged" id="WWi-ci-HpF"/>
                                                     </connections>
                                                 </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibg-LG-1kw" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerY" secondItem="Wrj-dK-L6i" secondAttribute="centerY" id="4xg-tI-HpO"/>
-                                                <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerX" secondItem="Wrj-dK-L6i" secondAttribute="centerX" constant="27" id="aur-go-QRX"/>
+                                                <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerY" secondItem="Wrj-dK-L6i" secondAttribute="centerY" id="AcL-1j-O1I"/>
+                                                <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerX" secondItem="Wrj-dK-L6i" secondAttribute="centerX" id="RKW-v1-vva"/>
+                                                <constraint firstItem="Ibg-LG-1kw" firstAttribute="centerX" secondItem="Wrj-dK-L6i" secondAttribute="centerX" id="Xu2-Jv-9mS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -319,8 +336,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJ8-Y3-QAW" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJ8-Y3-QAW" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -353,8 +370,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gub-9l-0Z5" userLabel="hpVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gub-9l-0Z5" userLabel="hpVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -387,8 +404,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-sT-3DU" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-sT-3DU" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -421,8 +438,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-Im-SDh" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-Im-SDh" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -455,8 +472,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-0o-PmB" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-0o-PmB" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -489,8 +506,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-Zn-dGf" userLabel="costVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-Zn-dGf" userLabel="costVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -523,8 +540,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2za-b2-Sha" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
-                                                    <rect key="frame" x="137" y="11" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2za-b2-Sha" userLabel="nameVal" customClass="IntLabel" customModule="Game_Editor" customModuleProvider="target">
+                                                    <rect key="frame" x="152" y="11" width="16" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -581,14 +598,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMW-bQ-lva">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMW-bQ-lva">
                                 <rect key="frame" x="29" y="11" width="100" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="aUu-lp-PDd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hht-Pz-hl8" userLabel="ED">
+                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=".. Item Name" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hht-Pz-hl8" userLabel="ED">
                                 <rect key="frame" x="137" y="6" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.84658333330000002" green="0.84658333330000002" blue="0.84658333330000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
@@ -597,8 +616,11 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hht-Pz-hl8" firstAttribute="centerX" secondItem="Ig6-Ph-Mxl" secondAttribute="centerX" id="NoY-Xq-DRp"/>
-                            <constraint firstItem="hht-Pz-hl8" firstAttribute="centerY" secondItem="Ig6-Ph-Mxl" secondAttribute="centerY" id="s7O-QS-hWp"/>
+                            <constraint firstItem="hht-Pz-hl8" firstAttribute="leading" secondItem="ZMW-bQ-lva" secondAttribute="trailing" constant="8" symbolic="YES" id="2M9-cE-6Mw"/>
+                            <constraint firstItem="hht-Pz-hl8" firstAttribute="centerY" secondItem="Ig6-Ph-Mxl" secondAttribute="centerY" id="7tJ-ay-RSu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hht-Pz-hl8" secondAttribute="trailing" constant="75" id="H1z-bZ-JhI"/>
+                            <constraint firstItem="ZMW-bQ-lva" firstAttribute="centerY" secondItem="hht-Pz-hl8" secondAttribute="centerY" id="XP8-tY-mp5"/>
+                            <constraint firstItem="ZMW-bQ-lva" firstAttribute="leading" secondItem="Ig6-Ph-Mxl" secondAttribute="leadingMargin" constant="21" id="nr6-Up-bNn"/>
                         </constraints>
                     </tableViewCellContentView>
                 </tableViewCell>
@@ -616,8 +638,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akn-qU-e0a" userLabel="Val">
-                                <rect key="frame" x="137" y="10" width="100" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akn-qU-e0a" userLabel="Val">
+                                <rect key="frame" x="152" y="12" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
