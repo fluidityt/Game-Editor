@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class IntLabel: UILabel {
+public class IntLabel: UILabel {
   var int: Int = -1
 }
 
-extension UISlider {
+public extension UISlider {
   
   func matchLabelToSelf(label: IntLabel) {
     // FIXME: round to 5 algo
@@ -23,11 +23,18 @@ extension UISlider {
   
 }
 
-extension UIViewController {
-  func presentVC(named vc: String) {
+public extension UIViewController {
+   func presentVC(named vc: String) {
     if let sb2 = storyboard {
       present(sb2.instantiateViewController(withIdentifier: vc), animated: true, completion: nil)
     } else { fatalError("couldnt load storyboard") }
   }
 }
+
+public extension UITableViewController {
+  func grabCell(indexPath: IndexPath) -> UITableViewCell {
+    return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+  }
+}
+
 

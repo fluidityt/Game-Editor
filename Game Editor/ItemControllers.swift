@@ -247,6 +247,54 @@ class ListCtrl: UITableViewController {
   
   private var isDeleteMode = false
   private var equipment = [(name: "Crash Inc", key: "Crash Key")]
+  private var deletePlanetIndexPath: IndexPath? = nil
+  
+  private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
+    // FIXME: Hotfixed... change to let and not a UUID:
+    var newItem = Equipable.makeNew(slot: filal.findSlot())
+    newItem.name += ( " item with ID:  " + UUID().uuidString )
+    newItem.saveToUD()
+    equipArray.append( (name: newItem.name, key: newItem.key()) )
+  }
+  
+  
+  private func handleDeletePlanet(alertAction: UIAlertAction!) {
+    if let indexPath = deletePlanetIndexPath {
+      tableView.beginUpdates()
+      
+      equipment.remove(at: indexPath.row)
+      
+      // Note that indexPath is wrapped in an array:  [indexPath]
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      
+      deletePlanetIndexPath = nil
+      
+      tableView.endUpdates()
+    }
+  }
+  
+  private func cancelDeletePlanet(alertAction: UIAlertAction!) {
+    deletePlanetIndexPath = nil
+  }
+  
+  private func confirmDelete(planet: String) {
+    let alert = UIAlertController(title: "Delete Planet", message: "Are you sure you want to permanently delete \(planet)?", preferredStyle: .actionSheet)
+    
+    let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeletePlanet)
+    let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeletePlanet)
+    
+    alert.addAction(DeleteAction)
+    alert.addAction(CancelAction)
+    
+    // Support display in iPad
+    alert.popoverPresentationController?.sourceView = self.view
+    alert.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.size.width / 2.0,
+                                                             y: view.bounds.size.height / 2.0,
+                                                             width: 1.0,
+                                                             height: 1.0)
+    
+    present(alert, animated: true, completion: nil)
+  }
   
   @IBOutlet private weak var
   titleLabel: UILabel! {
@@ -259,29 +307,6 @@ class ListCtrl: UITableViewController {
   @IBAction private func
     goBack(_ sender: UIButton) {
     presentVC(named: "Type View")
-  }
-  
-  private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
-    // FIXME: Hotfixed... change to let and not a UUID:
-    var newItem = Equipable.makeNew(slot: filal.findSlot())
-    newItem.name += ( " item with ID:  " + UUID().uuidString )
-    newItem.saveToUD()
-    equipArray.append( (name: newItem.name, key: newItem.key()) )
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
-      equipment = []                                                                        // <- We need fresh data.
-      for (key, val) in udef.loadEquipmentKeysAsDictVals() {
-        // FIXME: Append keys in Equip page.
-        if key.contains(titleLabel.text!) {
-          equipment.append((key, val))                                                      // <- Fresh data :)j
-        }
-      }
-      if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
-    }
   }
   
   @IBAction private func clickNew(_ sender: UIButton) {
@@ -304,7 +329,7 @@ class ListCtrl: UITableViewController {
     Toast.make(message: "Equipment Deleted!", viewController: self)
   }
   
-  override   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     func doDeleteMode(selectedRow: Int) {
       // TODO: Stuff
     }
@@ -328,16 +353,6 @@ class ListCtrl: UITableViewController {
       return equipment.count
   }
   
-  var deletePlanetIndexPath: IndexPath? = nil
-  
-  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-            deletePlanetIndexPath = indexPath
-            let planetToDelete = planets[indexPath.row]
-            confirmDelete(planetToDelete)
-        }
-  }
-  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
     -> UITableViewCell {
       
@@ -345,6 +360,30 @@ class ListCtrl: UITableViewController {
       cell.textLabel?.text = equipment[indexPath.row].name
       
       return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                          forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      deletePlanetIndexPath = indexPath
+      let planetToDelete = equipment[indexPath.row]
+      confirmDelete(planet: planetToDelete)
+    }
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
+      equipment = []                                                                        // <- We need fresh data.
+      for (key, val) in udef.loadEquipmentKeysAsDictVals() {
+        // FIXME: Append keys in Equip page.
+        if key.contains(titleLabel.text!) {
+          equipment.append((key, val))                                                      // <- Fresh data :)j
+        }
+      }
+      if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
+    }
   }
   
 }
