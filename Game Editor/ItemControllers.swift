@@ -328,8 +328,14 @@ class ListCtrl: UITableViewController {
       return equipment.count
   }
   
-  private func grabCell(indexPath: IndexPath) -> UITableViewCell {
-    return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+  var deletePlanetIndexPath: IndexPath? = nil
+  
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+            deletePlanetIndexPath = indexPath
+            let planetToDelete = planets[indexPath.row]
+            confirmDelete(planetToDelete)
+        }
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
