@@ -247,7 +247,7 @@ class ListCtrl: UITableViewController {
   
   private var isDeleteMode = false
   private var equipment = [(name: "Crash Inc", key: "Crash Key")]
-  private var deletePlanetIndexPath: IndexPath? = nil
+  private var deletionIP: IndexPath? = nil
   
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
@@ -257,9 +257,8 @@ class ListCtrl: UITableViewController {
     equipArray.append( (name: newItem.name, key: newItem.key()) )
   }
   
-  
-  private func handleDeletePlanet(alertAction: UIAlertAction!) {
-    if let indexPath = deletePlanetIndexPath {
+  private func deleteRow(alertAction: UIAlertAction!) {
+    if let indexPath = deletionIP {
       tableView.beginUpdates()
       
       equipment.remove(at: indexPath.row)
@@ -267,14 +266,14 @@ class ListCtrl: UITableViewController {
       // Note that indexPath is wrapped in an array:  [indexPath]
       tableView.deleteRows(at: [indexPath], with: .automatic)
       
-      deletePlanetIndexPath = nil
+      deletionIP = nil
       
       tableView.endUpdates()
     }
   }
   
-  private func cancelDeletePlanet(alertAction: UIAlertAction!) {
-    deletePlanetIndexPath = nil
+  private func cancelDeletion(alertAction: UIAlertAction!) {
+    deletionIP = nil
   }
   
   private func confirmDelete(planet: (name: String, key: String)) {
@@ -282,8 +281,8 @@ class ListCtrl: UITableViewController {
                                   message: "Are you sure you want to permanently delete \(planet.name)?",
                                   preferredStyle: .actionSheet)
     
-    let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeletePlanet)
-    let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeletePlanet)
+    let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: deleteRow)
+    let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeletion)
     
     alert.addAction(DeleteAction)
     alert.addAction(CancelAction)
@@ -367,7 +366,7 @@ class ListCtrl: UITableViewController {
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
                           forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      deletePlanetIndexPath = indexPath
+      deletionIP = indexPath
       let planetToDelete = equipment[indexPath.row]
       confirmDelete(planet: planetToDelete)
     }
