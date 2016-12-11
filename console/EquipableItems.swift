@@ -124,7 +124,7 @@ extension Equipable {
          "cost": String( cost ),
          "level": String( level )
     ]
-    
+    print(" saving info for key", NSDictionary(dictionary:info), key());    print("\n")
     // FIXME: Give prompt to over-write existing data... ?
     udef.set( info, key() )
   }
@@ -187,6 +187,12 @@ extension Equipable {
   }
 }
 
+extension Equipable {
+  
+ static func makeDefault(slot: Slot) -> Equipable { return Equipable(name: "Default", slot: slot, prot: 0,  mdef: 0,  hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+ static func makeError(slot: Slot) -> Equipable { return Equipable(name: "Error",   slot: slot, prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
+ static func makeNew(slot: Slot) -> Equipable { return Equipable(name: "New \(slot.rawValue)", slot: slot,  prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)}
+}
 // MARK: Utility:
 
 func makeSword() -> Equipable? {

@@ -16,7 +16,7 @@ fileprivate enum filal {
   // Type to use for last 2 VC:
   static var equipmentTypeSelected = "none"
   
-  // Returners:
+  // For making items from Equipable.makeX(slot: Slot):
   static func findSlot() -> Slot {
   typealias KIE = Keys.Item.Equip
     switch equipmentTypeSelected {
@@ -25,11 +25,6 @@ fileprivate enum filal {
       case KIE.accessory.rawValue:  return Slot.finger
       default:                      fatalError("no item type found")
     }
-  }
-  
-  static func defaultItem() -> Equipable { return Equipable(name: "Default", slot: findSlot(), prot: 0,  mdef: 0,  hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func errorItem()   -> Equipable { return Equipable(name: "Error",   slot: findSlot(), prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0) }
-  static func newItem()     -> Equipable { return Equipable(name: "New \(findSlot().rawValue)",    slot: findSlot(),  prot: 30, mdef: 20, hp: 0, mp: 0, ap: 0, mpow: 0, cost: 0, level: 0)
   }
   
   // Item mod save?:
@@ -43,7 +38,7 @@ fileprivate enum filal {
 
 class DetailCtrlr: UITableViewController {
 
-  private var itemModSave = filal.item ?? filal.errorItem()  // <- The item that we modify then save. Loaded in previous screen.
+  private var itemModSave = filal.item ?? Equipable.makeError(slot: filal.findSlot())     // <- The item that we modify then save. Loaded in previous screen.
 
   // FIXME: Wow, this is stupid-complicated for no reason:
   private func setSlider(_ slider: UISlider,
@@ -222,23 +217,36 @@ class DetailCtrlr: UITableViewController {
     Toast.make(message: "Item Saved!", viewController: self)
   }
   
-  // I'm not sure what this does.. is it reload?
-  @IBAction private func clickLoad(_ sender: UIButton) {
-    if let loadedItem = Equipable(loadFromName: nil,
-                                  forSlot: nil,
-                                  loadFromKey: itemModSave.key()) {
-      itemModSave = loadedItem
-    } else {
-      print("default item--key may crash")
-      itemModSave = filal.defaultItem()
-    }
-    
-    didLoad()
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     didLoad()
+    
+    func showWeapons(){
+      protCell.isHidden = true
+      mdefCell.isHidden = true
+      hpCell.isHidden = true
+      mpCell.isHidden = true
+    }
+    func showArmor(){
+      apCell.isHidden = true
+      hpCell.isHidden = true
+      mpCell.isHidden = true
+      mpowCell.isHidden = true
+    }
+    func showAcessories(){
+      protCell.isHidden = true
+      mdefCell.isHidden = true
+      apCell.isHidden = true
+      mpowCell.isHidden = true
+    }
+    
+    switch filal.equipmentTypeSelected {
+      case Keys.Item.Equip.weapon.rawValue: showWeapons()
+      case Keys.Item.Equip.armor.rawValue: showArmor()
+      case Keys.Item.Equip.accessory.rawValue: showAcessories()
+      default: fatalError("no string found")
+
+    }
     // FIXME: Hide uneeded cells here
     // itemInfoTableView.deleteRows(at:, with: <#T##UITableViewRowAnimation#>)
     filal.item = nil                                                       // <- Because we want ensure that we get a fresh new item.
@@ -251,42 +259,66 @@ class DetailCtrlr: UITableViewController {
 class ListCtrl: UITableViewController {
   
   private var isDeleteMode = false
-  private var equipment = [(name: "Crash Inc", key: "Crash Key")]
+  private var equipment = [(name: "Crash Inc", key: "Crash Key")]                         // <- temporary
+  private var deletionIP: IndexPath? = nil
   
-  @IBOutlet private weak var
-  titleLabel: UILabel! {
+  private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
+    // FIXME: Hotfixed... change to let and not a UUID:
+    var newItem = Equipable.makeNew(slot: filal.findSlot())
+    newItem.name += ( " item with ID:  " + UUID().uuidString )
+    newItem.saveToUD()
+    equipArray.append( (name: newItem.name, key: newItem.key()) )
+  }
+  
+  private func deleteRow(alertAction: UIAlertAction!) {
+    if let indexPath = deletionIP {
+      tableView.beginUpdates()
+      
+      equipment.remove(at: indexPath.row)
+      
+      // Note that indexPath is wrapped in an array:  [indexPath]
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      
+      deletionIP = nil
+      
+      tableView.endUpdates()
+    }
+  }
+  
+  private func cancelDeletion(alertAction: UIAlertAction!) {
+    deletionIP = nil
+  }
+  
+  private func confirmDelete(planet: (name: String, key: String)) {
+    let alert = UIAlertController(title: "Delete Planet",
+                                  message: "Are you sure you want to permanently delete \(planet.name)?",
+                                  preferredStyle: .actionSheet)
+    
+    let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: deleteRow)
+    let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeletion)
+    
+    alert.addAction(DeleteAction)
+    alert.addAction(CancelAction)
+    
+    // Support display in iPad
+    alert.popoverPresentationController?.sourceView = self.view
+    alert.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.size.width / 2.0,
+                                                             y: view.bounds.size.height / 2.0,
+                                                             width: 1.0,
+                                                             height: 1.0)
+    
+    present(alert, animated: true, completion: nil)
+  }
+  
+  @IBOutlet private weak var titleLabel: UILabel! {
     didSet { titleLabel.text = filal.equipmentTypeSelected }
   }
   
   @IBOutlet private var
   itemViewTable: UITableView!
   
-  @IBAction private func
-    goBack(_ sender: UIButton) {
+  @IBAction private func goBack(_ sender: UIButton) {
     presentVC(named: "Type View")
-  }
-  
-  private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
-    // FIXME: Hotfixed... change to let and not a UUID:
-    var newItem = filal.newItem()
-    newItem.name += ( " item with ID:  " + UUID().uuidString )
-    newItem.saveToUD()
-    equipArray.append( (name: newItem.name, key: newItem.key()) )
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
-      equipment = []                                                                        // <- We need fresh data.
-      for (key, val) in udef.loadEquipmentKeysAsDictVals() {
-        // FIXME: Append keys in Equip page.
-        if key.contains(titleLabel.text!) {
-          equipment.append((key, val))                                                      // <- Fresh data :)j
-        }
-      }
-      if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
-    }
   }
   
   @IBAction private func clickNew(_ sender: UIButton) {
@@ -309,7 +341,9 @@ class ListCtrl: UITableViewController {
     Toast.make(message: "Equipment Deleted!", viewController: self)
   }
   
-  override   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  // I like having the name of the funcs directly under it is easier to find...
+  override func tableView(_ tableView: UITableView,
+                          didSelectRowAt indexPath: IndexPath) {
     func doDeleteMode(selectedRow: Int) {
       // TODO: Stuff
     }
@@ -328,17 +362,13 @@ class ListCtrl: UITableViewController {
      */
   }
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
-    -> Int {
+  override func tableView(_ tableView: UITableView,
+                          numberOfRowsInSection section: Int) -> Int {
       return equipment.count
   }
   
-  private func grabCell(indexPath: IndexPath) -> UITableViewCell {
-    return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-  }
-  
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
-    -> UITableViewCell {
+  override func tableView(_ tableView: UITableView,
+                          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
       let cell = grabCell(indexPath: indexPath)
       cell.textLabel?.text = equipment[indexPath.row].name
@@ -346,7 +376,32 @@ class ListCtrl: UITableViewController {
       return cell
   }
   
+  override func tableView(_ tableView: UITableView,
+                          commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      deletionIP = indexPath
+      let planetToDelete = equipment[indexPath.row]
+      confirmDelete(planet: planetToDelete)
+    }
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // TODO: Make ui test of thi
+    loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
+      equipment = []                                                                        // <- We need fresh data.
+      for (key, val) in udef.loadEquipmentKeysAsDictVals() {
+        // FIXME: Append keys in Equip page.
+        if val.contains(filal.equipmentTypeSelected) {
+          equipment.append((key, val))                                                      // <- Fresh data :)
+        }
+      }
+      if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
+    }
+  }
+  
 }
+
 
 
 // MARK: - Main:
@@ -368,6 +423,7 @@ class MainCtrlr: UITableViewController {
   @IBAction private func
     clickedAccessories(_ sender: UIButton) {
       filal.equipmentTypeSelected = Keys.Item.Equip.accessory.rawValue
+    print(filal.equipmentTypeSelected)
     presentVC(named: "Item View")
   }
   
