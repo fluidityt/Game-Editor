@@ -277,8 +277,10 @@ class ListCtrl: UITableViewController {
     deletePlanetIndexPath = nil
   }
   
-  private func confirmDelete(planet: String) {
-    let alert = UIAlertController(title: "Delete Planet", message: "Are you sure you want to permanently delete \(planet)?", preferredStyle: .actionSheet)
+  private func confirmDelete(planet: (name: String, key: String)) {
+    let alert = UIAlertController(title: "Delete Planet",
+                                  message: "Are you sure you want to permanently delete \(planet.name)?",
+                                  preferredStyle: .actionSheet)
     
     let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeletePlanet)
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeletePlanet)
