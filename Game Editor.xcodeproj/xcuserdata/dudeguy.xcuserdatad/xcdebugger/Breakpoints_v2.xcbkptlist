@@ -42,12 +42,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Game Editor/ItemControllers.swift"
-            timestampString = "503157962.621923"
+            timestampString = "503164661.591883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "handleDeletePlanet(alertAction:)"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "deleteRow(alertAction:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Game Editor/ItemControllers.swift"
+            timestampString = "503164424.259587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Game Editor/ItemControllers.swift"
+            timestampString = "503164425.538052"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Game_Editor.DetailCtrlr.viewDidLoad () -&gt; ()"
+                  moduleName = "Game Editor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dudeguy/Dropbox/Shared%20Desktop/XCODE/5%20Text%20Engine/Game%20Editor/Game%20Editor/ItemControllers.swift"
+                  timestampString = "503164731.724867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "423">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Game_Editor.DetailCtrlr.viewDidLoad () -&gt; ()"
+                  moduleName = "Game Editor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dudeguy/Dropbox/Shared%20Desktop/XCODE/5%20Text%20Engine/Game%20Editor/Game%20Editor/ItemControllers.swift"
+                  timestampString = "503164731.727558"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "629">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Game Editor/ItemControllers.swift"
+            timestampString = "503164426.726011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Game_Editor.DetailCtrlr.viewDidLoad () -&gt; ()"
+                  moduleName = "Game Editor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dudeguy/Dropbox/Shared%20Desktop/XCODE/5%20Text%20Engine/Game%20Editor/Game%20Editor/ItemControllers.swift"
+                  timestampString = "503164731.733335"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "275"
+                  endingLineNumber = "275"
+                  offsetFromSymbolStart = "676">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Game_Editor.DetailCtrlr.viewDidLoad () -&gt; ()"
+                  moduleName = "Game Editor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dudeguy/Dropbox/Shared%20Desktop/XCODE/5%20Text%20Engine/Game%20Editor/Game%20Editor/ItemControllers.swift"
+                  timestampString = "503164731.736895"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "275"
+                  endingLineNumber = "275"
+                  offsetFromSymbolStart = "910">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Game Editor/ItemControllers.swift"
+            timestampString = "503164661.591883"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

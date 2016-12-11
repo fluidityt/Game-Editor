@@ -35,6 +35,13 @@ public extension UITableViewController {
   func grabCell(indexPath: IndexPath) -> UITableViewCell {
     return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
   }
+  
+  func grabCell(name: String) -> UITableViewCell {
+    return tableView.dequeueReusableCell(withIdentifier: name)!
+  }
+      func grabPath(cellName: String) -> IndexPath {
+      return tableView.indexPath(for: (tableView.dequeueReusableCell(withIdentifier: cellName))!)!
+    }
 }
 
 

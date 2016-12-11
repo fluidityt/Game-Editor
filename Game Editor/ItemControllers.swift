@@ -218,7 +218,7 @@ class DetailCtrlr: UITableViewController {
   }
   
   // I'm not sure what this does.. is it reload?
-  @IBAction private func clickLoad(_ sender: UIButton) {
+  /*@IBAction private func clickLoad(_ sender: UIButton) {
     if let loadedItem = Equipable(loadFromName: nil,
                                   forSlot: nil,
                                   loadFromKey: itemModSave.key()) {
@@ -229,11 +229,54 @@ class DetailCtrlr: UITableViewController {
     }
     
     didLoad()
-  }
+  }*/
   
   override func viewDidLoad() {
     super.viewDidLoad()
     didLoad()
+    
+    func showWeapons(){
+      // 4,6,7
+      let deletionPaths = [grabPath(cellName: "Prot Cell"),
+                           grabPath(cellName: "Mdef  Cell"),
+                           grabPath(cellName: "Hp  Cell"),
+                           grabPath(cellName: "Mp  Cell")
+      ]
+      
+      itemInfoTableView.deleteRows(at: deletionPaths, with: UITableViewRowAnimation.fade)
+    }
+    func showArmor(){
+      let deletionPaths = [grabPath(cellName: "Ap Cell"),
+                           grabPath(cellName: "Hp  Cell"),
+                           grabPath(cellName: "Mp  Cell"),
+                           grabPath(cellName: "Mpow  Cell")
+      ]
+      
+      itemInfoTableView.deleteRows(at: deletionPaths, with: UITableViewRowAnimation.fade)
+    }
+    func showAcessories(){
+      let deletionPaths = [itemInfoTableView.indexPath(for: protCell)!,
+                           itemInfoTableView.indexPath(for: mdefCell)!,
+                           itemInfoTableView.indexPath(for: apCell)!,
+                           itemInfoTableView.indexPath(for: mpowCell)!
+      ]
+      
+      itemInfoTableView.deleteRows(at: deletionPaths, with: UITableViewRowAnimation.fade)
+    
+      
+    }
+    
+    
+    switch filal.equipmentTypeSelected {
+    case Keys.Item.Equip.weapon.rawValue: ()//showWeapons()
+      
+    case Keys.Item.Equip.armor.rawValue: ()//showArmor()
+      
+    case Keys.Item.Equip.accessory.rawValue: showAcessories()
+      
+    default: fatalError("no string found")
+      
+    }
     // FIXME: Hide uneeded cells here
     // itemInfoTableView.deleteRows(at:, with: <#T##UITableViewRowAnimation#>)
     filal.item = nil                                                       // <- Because we want ensure that we get a fresh new item.
@@ -251,6 +294,7 @@ class ListCtrl: UITableViewController {
   
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
+    print("addnew", filal.findSlot().rawValue)
     var newItem = Equipable.makeNew(slot: filal.findSlot())
     newItem.name += ( " item with ID:  " + UUID().uuidString )
     newItem.saveToUD()
@@ -297,16 +341,14 @@ class ListCtrl: UITableViewController {
     present(alert, animated: true, completion: nil)
   }
   
-  @IBOutlet private weak var
-  titleLabel: UILabel! {
+  @IBOutlet private weak var titleLabel: UILabel! {
     didSet { titleLabel.text = filal.equipmentTypeSelected }
   }
   
   @IBOutlet private var
   itemViewTable: UITableView!
   
-  @IBAction private func
-    goBack(_ sender: UIButton) {
+  @IBAction private func goBack(_ sender: UIButton) {
     presentVC(named: "Type View")
   }
   
@@ -330,7 +372,9 @@ class ListCtrl: UITableViewController {
     Toast.make(message: "Equipment Deleted!", viewController: self)
   }
   
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  // I like having the name of the funcs directly under it is easier to find...
+  override func tableView(_ tableView: UITableView,
+                          didSelectRowAt indexPath: IndexPath) {
     func doDeleteMode(selectedRow: Int) {
       // TODO: Stuff
     }
@@ -349,13 +393,13 @@ class ListCtrl: UITableViewController {
      */
   }
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
-    -> Int {
+  override func tableView(_ tableView: UITableView,
+                          numberOfRowsInSection section: Int) -> Int {
       return equipment.count
   }
   
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
-    -> UITableViewCell {
+  override func tableView(_ tableView: UITableView,
+                          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
       let cell = grabCell(indexPath: indexPath)
       cell.textLabel?.text = equipment[indexPath.row].name
@@ -363,8 +407,8 @@ class ListCtrl: UITableViewController {
       return cell
   }
   
-  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
-                          forRowAt indexPath: IndexPath) {
+  override func tableView(_ tableView: UITableView,
+                          commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       deletionIP = indexPath
       let planetToDelete = equipment[indexPath.row]
@@ -374,7 +418,8 @@ class ListCtrl: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    // TODO: Make ui test of thi
+    print("vdl", filal.equipmentTypeSelected)
     loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
       equipment = []                                                                        // <- We need fresh data.
       for (key, val) in udef.loadEquipmentKeysAsDictVals() {
