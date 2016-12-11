@@ -217,65 +217,35 @@ class DetailCtrlr: UITableViewController {
     Toast.make(message: "Item Saved!", viewController: self)
   }
   
-  // I'm not sure what this does.. is it reload?
-  /*@IBAction private func clickLoad(_ sender: UIButton) {
-    if let loadedItem = Equipable(loadFromName: nil,
-                                  forSlot: nil,
-                                  loadFromKey: itemModSave.key()) {
-      itemModSave = loadedItem
-    } else {
-      print("default item--key may crash")
-      itemModSave = Equipable.makeDefault(slot: filal.findSlot())
-    }
-    
-    didLoad()
-  }*/
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     didLoad()
     
     func showWeapons(){
-      // 4,6,7
-      let deletionPaths = [grabPath(cellName: "Prot Cell"),
-                           grabPath(cellName: "Mdef  Cell"),
-                           grabPath(cellName: "Hp  Cell"),
-                           grabPath(cellName: "Mp  Cell")
-      ]
-      
-      itemInfoTableView.deleteRows(at: deletionPaths, with: UITableViewRowAnimation.fade)
+      protCell.isHidden = true
+      mdefCell.isHidden = true
+      hpCell.isHidden = true
+      mpCell.isHidden = true
     }
     func showArmor(){
-      let deletionPaths = [grabPath(cellName: "Ap Cell"),
-                           grabPath(cellName: "Hp  Cell"),
-                           grabPath(cellName: "Mp  Cell"),
-                           grabPath(cellName: "Mpow  Cell")
-      ]
-      
-      itemInfoTableView.deleteRows(at: deletionPaths, with: UITableViewRowAnimation.fade)
+      apCell.isHidden = true
+      hpCell.isHidden = true
+      mpCell.isHidden = true
+      mpowCell.isHidden = true
     }
     func showAcessories(){
-      let deletionPaths = [itemInfoTableView.indexPath(for: protCell)!,
-                           itemInfoTableView.indexPath(for: mdefCell)!,
-                           itemInfoTableView.indexPath(for: apCell)!,
-                           itemInfoTableView.indexPath(for: mpowCell)!
-      ]
-      
-      itemInfoTableView.deleteRows(at: deletionPaths, with: UITableViewRowAnimation.fade)
-    
-      
+      protCell.isHidden = true
+      mdefCell.isHidden = true
+      apCell.isHidden = true
+      mpowCell.isHidden = true
     }
     
-    
     switch filal.equipmentTypeSelected {
-    case Keys.Item.Equip.weapon.rawValue: ()//showWeapons()
-      
-    case Keys.Item.Equip.armor.rawValue: ()//showArmor()
-      
-    case Keys.Item.Equip.accessory.rawValue: showAcessories()
-      
-    default: fatalError("no string found")
-      
+      case Keys.Item.Equip.weapon.rawValue: showWeapons()
+      case Keys.Item.Equip.armor.rawValue: showArmor()
+      case Keys.Item.Equip.accessory.rawValue: showAcessories()
+      default: fatalError("no string found")
+
     }
     // FIXME: Hide uneeded cells here
     // itemInfoTableView.deleteRows(at:, with: <#T##UITableViewRowAnimation#>)
@@ -289,12 +259,11 @@ class DetailCtrlr: UITableViewController {
 class ListCtrl: UITableViewController {
   
   private var isDeleteMode = false
-  private var equipment = [(name: "Crash Inc", key: "Crash Key")]
+  private var equipment = [(name: "Crash Inc", key: "Crash Key")]                         // <- temporary
   private var deletionIP: IndexPath? = nil
   
   private func addNewItem(toArray equipArray: inout [(name: String, key: String)]) {      // <- Gives us a new Equipment instance.
     // FIXME: Hotfixed... change to let and not a UUID:
-    print("addnew", filal.findSlot().rawValue)
     var newItem = Equipable.makeNew(slot: filal.findSlot())
     newItem.name += ( " item with ID:  " + UUID().uuidString )
     newItem.saveToUD()
@@ -419,13 +388,12 @@ class ListCtrl: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // TODO: Make ui test of thi
-    print("vdl", filal.equipmentTypeSelected)
     loadEquipment: do {                                                                     // <- Loads all of our `standard` data into `equipment`.
       equipment = []                                                                        // <- We need fresh data.
       for (key, val) in udef.loadEquipmentKeysAsDictVals() {
         // FIXME: Append keys in Equip page.
-        if key.contains(titleLabel.text!) {
-          equipment.append((key, val))                                                      // <- Fresh data :)j
+        if val.contains(filal.equipmentTypeSelected) {
+          equipment.append((key, val))                                                      // <- Fresh data :)
         }
       }
       if equipment.isEmpty { addNewItem(toArray: &equipment) }                              // <- Makes sure that we have a key to load for didSelect().
@@ -433,6 +401,7 @@ class ListCtrl: UITableViewController {
   }
   
 }
+
 
 
 // MARK: - Main:
@@ -454,6 +423,7 @@ class MainCtrlr: UITableViewController {
   @IBAction private func
     clickedAccessories(_ sender: UIButton) {
       filal.equipmentTypeSelected = Keys.Item.Equip.accessory.rawValue
+    print(filal.equipmentTypeSelected)
     presentVC(named: "Item View")
   }
   

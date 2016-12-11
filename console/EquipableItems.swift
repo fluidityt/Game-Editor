@@ -124,7 +124,7 @@ extension Equipable {
          "cost": String( cost ),
          "level": String( level )
     ]
-    
+    print(" saving info for key", NSDictionary(dictionary:info), key());    print("\n")
     // FIXME: Give prompt to over-write existing data... ?
     udef.set( info, key() )
   }

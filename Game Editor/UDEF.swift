@@ -78,7 +78,6 @@ extension udef {
     var returnMatchedDict: [String: String] = [:]
     
     let equipmentKey = ziggly(Keys.Item.equip.rawValue)
-    
     for (key, val) in UserDefaults.standard.dictionaryRepresentation() {
       // Find all keys in 'standard' that match equipmentKey:
       if key.contains(equipmentKey) {
@@ -90,8 +89,8 @@ extension udef {
         
       }
     }
-    
     return returnMatchedDict
+    
   }
 }
 
